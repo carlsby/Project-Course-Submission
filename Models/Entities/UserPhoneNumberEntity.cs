@@ -2,13 +2,12 @@
 
 namespace Project_Course_Submission.Models.Entities
 {
-    public class UserAddressEntity
+    public class UserPhoneNumberEntity
     {
         [Key]
         public int Id { get; set; }
-        public string? StreetName { get; set; }
-        public string? PostalCode { get; set; }
-        public string? City { get; set; }
+        public string? PhoneNumber { get; set; }
+        public bool Confirmed { get; set; }
 
         public string? UserId { get; set; }
         public UserProfileEntity? User { get; set; }

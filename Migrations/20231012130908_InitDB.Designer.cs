@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Course_Submission.Contexts;
 
@@ -11,9 +12,11 @@ using Project_Course_Submission.Contexts;
 namespace Project_Course_Submission.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    partial class IdentityContextModelSnapshot : ModelSnapshot
+    [Migration("20231012130908_InitDB")]
+    partial class InitDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,12 +101,12 @@ namespace Project_Course_Submission.Migrations
                     b.Property<string>("StreetName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserProfileEntityUserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserProfileEntityUserId");
 
                     b.ToTable("UserAddress");
                 });
@@ -122,14 +125,14 @@ namespace Project_Course_Submission.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserProfileEntityUserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserProfileEntityUserId");
 
-                    b.ToTable("UserPhoneNumber");
+                    b.ToTable("UserPhoneNumberEntity");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserProfileEntity", b =>
@@ -152,20 +155,20 @@ namespace Project_Course_Submission.Migrations
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserAddressEntity", b =>
                 {
-                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "User")
+                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "UserProfile")
                         .WithMany("Addresses")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserProfileEntityUserId");
 
-                    b.Navigation("User");
+                    b.Navigation("UserProfile");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserPhoneNumberEntity", b =>
                 {
-                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "User")
+                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "UserProfile")
                         .WithMany("PhoneNumbers")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserProfileEntityUserId");
 
-                    b.Navigation("User");
+                    b.Navigation("UserProfile");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserProfileEntity", b =>
