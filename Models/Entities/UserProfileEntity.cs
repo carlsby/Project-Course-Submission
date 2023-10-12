@@ -14,8 +14,10 @@ namespace Project_Course_Submission.Models.Entities
 
         public IdentityUser User { get; set; } = null!;
 
-        public int AddressId { get; set; }
-        public UserAddressEntity Address { get; set; } = null!;
+        public List<UserAddressEntity> Addresses { get; set; } = new List<UserAddressEntity>();
+
+        public List<UserPhoneNumberEntity> PhoneNumbers { get; set; } = new List<UserPhoneNumberEntity>();
+
 
         public static implicit operator UserViewModel(UserProfileEntity model)
         {
