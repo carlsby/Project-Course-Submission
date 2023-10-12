@@ -8,6 +8,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="compilerconfig.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.12" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.Ui" Version="7.0.12" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
@@ -19,11 +23,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Migrations\" />
 	  <Folder Include="Services\" />
 	  <Folder Include="Views\Partials\Products\" />
 	  <Folder Include="Views\Partials\User\" />
 	  <Folder Include="wwwroot\scss\core\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="compilerconfig.json" />
 	</ItemGroup>
 
 </Project>
