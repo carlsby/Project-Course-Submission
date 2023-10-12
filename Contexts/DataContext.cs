@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Project_Course_Submission.Models.Entities;
 
 namespace Project_Course_Submission.Contexts
 {
