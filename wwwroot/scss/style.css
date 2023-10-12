@@ -3,6 +3,12 @@
   padding: 0px;
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .footer-section {
   background: #151414;
   position: relative;
