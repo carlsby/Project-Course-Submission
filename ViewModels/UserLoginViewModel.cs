@@ -13,5 +13,7 @@ namespace Project_Course_Submission.ViewModels
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; } = null!;
+
+        public bool RememberMe { get; set; }
     }
 }
