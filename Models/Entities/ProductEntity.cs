@@ -16,5 +16,7 @@ namespace Project_Course_Submission.Models.Entities
 		
 		public string? Image { get; set; }	
 		public string? Description { get; set; }
+
+		public ICollection<ProductCategoryEntity> Categories { get; set; } = new HashSet<ProductCategoryEntity>();
 	}
 }
