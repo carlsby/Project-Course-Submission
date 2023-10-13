@@ -136,3 +136,138 @@ body {
   font-size: 14px;
   color: #878787;
 }
+
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.login-section .login-container {
+  text-align: center;
+}
+@media (min-width: 800px) {
+  .login-section .login-container {
+    width: 70%;
+  }
+}
+@media (min-width: 1000px) {
+  .login-section .login-container {
+    width: 50%;
+  }
+}
+@media (min-width: 1400px) {
+  .login-section .login-container {
+    width: 40%;
+  }
+}
+@media (min-width: 1600px) {
+  .login-section .login-container {
+    width: 30%;
+  }
+}
+@media (min-width: 2000px) {
+  .login-section .login-container {
+    width: 20%;
+  }
+}
+.login-section .login-container .si-page-name {
+  color: gray;
+  font-weight: 400;
+  margin-top: 100px;
+}
+.login-section .login-container .si-welcome-div .si-title {
+  font-size: 2rem;
+}
+.login-section .login-container .si-undertext {
+  color: gray;
+  font-weight: 400;
+  font-size: 1rem;
+}
+.login-section .login-container .si-input-div {
+  position: relative;
+}
+.login-section .login-container .si-input-div .si-input {
+  border-radius: 24px;
+  border-color: lightgray;
+  box-shadow: none;
+  width: 90%;
+  z-index: 0;
+}
+.login-section .login-container .si-input-div .si-input-text {
+  position: absolute;
+  bottom: 12px;
+  left: 50px;
+  background-color: white;
+  z-index: 99;
+  font-size: 0.9rem;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.login-section .login-container .si-input-div .si-input-pw {
+  position: absolute;
+  right: 50px;
+  top: 12px;
+}
+.login-section .login-container .si-input-div .si-input-check {
+  position: absolute;
+  right: 54px;
+  top: 12px;
+}
+.login-section .login-container .si-link {
+  text-decoration: none;
+  color: black;
+}
+.login-section .login-container .si-link:hover {
+  transition: 0.2s;
+  color: gray;
+  text-decoration: underline;
+}
+.login-section .login-container .si-btn {
+  border: none;
+  background-color: black;
+  border-radius: 24px;
+  color: white;
+  padding: 10px;
+}
+.login-section .login-container .si-brands-div {
+  width: 60%;
+  margin: 0 auto;
+}
+.login-section .login-container .si-brands-div .si-brand-link {
+  text-decoration: none;
+}
+.login-section .login-container .si-brands-div .si-brand-link .si-brand-logo {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border: 1px solid lightgray;
+  border-radius: 100%;
+}
+.login-section .login-container .si-brands-div .si-brand-link .si-facebook {
+  color: #4267B2;
+}
+.login-section .login-container .si-brands-div .si-brand-link .si-facebook:hover {
+  transition: 0.2s;
+  color: #1d418b;
+  border-color: #1d418b;
+}
+.login-section .login-container .si-brands-div .si-brand-link .si-twitter {
+  color: #26a7de;
+}
+.login-section .login-container .si-brands-div .si-brand-link .si-twitter:hover {
+  transition: 0.2s;
+  color: #1e79a0;
+  border-color: #1e79a0;
+}
+.login-section .login-container .si-brands-div .si-brand-link .si-googleplus {
+  color: #db4a39;
+}
+.login-section .login-container .si-brands-div .si-brand-link .si-googleplus:hover {
+  transition: 0.2s;
+  color: #ba2d1d;
+  border-color: #ba2d1d;
+}
