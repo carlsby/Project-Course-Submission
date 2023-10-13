@@ -13,8 +13,6 @@ namespace Project_Course_Submission.Models.Entities
 
 		[Column(TypeName = "money")]
 		public decimal Price { get; set; }
-		
-		public string? Image { get; set; }	
 		public string? Description { get; set; }
 
 		public ICollection<ProductCategoryEntity> Categories { get; set; } = new HashSet<ProductCategoryEntity>();
