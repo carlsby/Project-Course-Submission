@@ -13,7 +13,7 @@ public class IdentityContext : IdentityDbContext
 
     public DbSet<UserProfileEntity> UserProfiles { get; set; }
     public DbSet<UserAddressEntity> UserAddress { get; set; }
-    public DbSet<UserPhoneNumberEntity> UserPhoneNumber { get; set; }
+    public DbSet<UserPhoneNumbersEntity> UserPhoneNumber { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
