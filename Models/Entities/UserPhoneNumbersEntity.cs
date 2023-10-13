@@ -2,7 +2,7 @@
 
 namespace Project_Course_Submission.Models.Entities
 {
-    public class UserPhoneNumberEntity
+    public class UserPhoneNumbersEntity
     {
         [Key]
         public int Id { get; set; }
