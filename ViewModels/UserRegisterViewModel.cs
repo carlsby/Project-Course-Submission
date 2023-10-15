@@ -42,6 +42,7 @@ namespace Project_Course_Submission.ViewModels
             {
                 UserName = model.Email,
                 Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
             };
         }
 
@@ -61,14 +62,6 @@ namespace Project_Course_Submission.ViewModels
                 StreetName = model.StreetName,
                 PostalCode = model.PostalCode,
                 City = model.City
-            };
-        }
-
-        public static implicit operator PhoneNumberEntity(UserRegisterViewModel model)
-        {
-            return new PhoneNumberEntity
-            {
-                PhoneNumber = model.PhoneNumber,
             };
         }
     }

@@ -16,9 +16,6 @@ namespace Project_Course_Submission.Models.Entities
 
         public List<UserAddressEntity> Addresses { get; set; } = new List<UserAddressEntity>();
 
-        public List<PhoneNumberEntity> PhoneNumbers { get; set; } = new List<PhoneNumberEntity>();
-
-
         public static implicit operator UserViewModel(UserProfileEntity model)
         {
             return new UserViewModel
