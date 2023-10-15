@@ -2,14 +2,14 @@
 
 namespace Project_Course_Submission.Models.Entities
 {
-    public class UserPhoneNumbersEntity
+    public class PhoneNumberEntity
     {
+        [Key]
         public int Id { get; set; }
+        public string? PhoneNumber { get; set; }
+        public bool Confirmed { get; set; }
 
-        public int PhoneNumberId { get; set; }
-        public PhoneNumberEntity? PhoneNumber { get; set; }
-
-        public string UserId { get; set; } = null!;
+        public string? UserId { get; set; }
         public UserProfileEntity? User { get; set; }
     }
 }

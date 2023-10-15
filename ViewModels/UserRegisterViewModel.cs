@@ -54,9 +54,9 @@ namespace Project_Course_Submission.ViewModels
             };
         }
 
-        public static implicit operator UserAddressEntity(UserRegisterViewModel model)
+        public static implicit operator AddressEntity(UserRegisterViewModel model)
         {
-            return new UserAddressEntity
+            return new AddressEntity
             {
                 StreetName = model.StreetName,
                 PostalCode = model.PostalCode,
@@ -64,9 +64,9 @@ namespace Project_Course_Submission.ViewModels
             };
         }
 
-        public static implicit operator UserPhoneNumbersEntity(UserRegisterViewModel model)
+        public static implicit operator PhoneNumberEntity(UserRegisterViewModel model)
         {
-            return new UserPhoneNumbersEntity
+            return new PhoneNumberEntity
             {
                 PhoneNumber = model.PhoneNumber,
             };
