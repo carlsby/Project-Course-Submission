@@ -10,5 +10,10 @@ namespace Project_Course_Submission.Controllers
 		{
 			return View();
 		}
+
+		public IActionResult NewPassword()
+		{
+			return View();
+		}
 	}
 }
