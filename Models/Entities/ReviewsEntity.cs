@@ -10,7 +10,7 @@ namespace Project_Course_Submission.Models.Entities
         public DateTime CommentCreated { get; set; }
         public int Rating { get; set; }
         public string Comment { get; set; } = null!;
-        public UserProfileEntity? UserId { get; set; }
+        public UserProfileEntity? Profile { get; set; }
 
 		
         [ForeignKey(nameof(Product))]
