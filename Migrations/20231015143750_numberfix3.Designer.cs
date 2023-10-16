@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Course_Submission.Contexts;
 
@@ -11,9 +12,11 @@ using Project_Course_Submission.Contexts;
 namespace Project_Course_Submission.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    partial class IdentityContextModelSnapshot : ModelSnapshot
+    [Migration("20231015143750_numberfix3")]
+    partial class numberfix3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,6 +61,12 @@ namespace Project_Course_Submission.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -100,31 +109,7 @@ namespace Project_Course_Submission.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Adresses", (string)null);
-                });
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.PhoneNumberEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Confirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("PhoneNumbers", (string)null);
+                    b.ToTable("Adresses");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserAddressEntity", b =>
@@ -148,7 +133,7 @@ namespace Project_Course_Submission.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserAddress", (string)null);
+                    b.ToTable("UserAddress");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserProfileEntity", b =>
@@ -166,16 +151,7 @@ namespace Project_Course_Submission.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("UserProfiles", (string)null);
-                });
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.PhoneNumberEntity", b =>
-                {
-                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "User")
-                        .WithMany("PhoneNumbers")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
+                    b.ToTable("UserProfiles");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserAddressEntity", b =>
@@ -211,8 +187,6 @@ namespace Project_Course_Submission.Migrations
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserProfileEntity", b =>
                 {
                     b.Navigation("Addresses");
-
-                    b.Navigation("PhoneNumbers");
                 });
 #pragma warning restore 612, 618
         }

@@ -13,7 +13,7 @@ public class IdentityContext : IdentityDbContext
 
     public DbSet<UserProfileEntity> UserProfiles { get; set; }
     public DbSet<UserAddressEntity> UserAddress { get; set; }
-    public DbSet<UserPhoneNumbersEntity> UserPhoneNumber { get; set; }
+    public DbSet<AddressEntity> Adresses { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -24,10 +24,6 @@ public class IdentityContext : IdentityDbContext
         modelBuilder.Ignore<IdentityUserLogin<string>>();
         modelBuilder.Ignore<IdentityUserClaim<string>>();
         modelBuilder.Ignore<IdentityRoleClaim<string>>();
-        modelBuilder.Entity<IdentityUser>()
-            .Ignore(c => c.PhoneNumber)
-            .Ignore(c => c.PhoneNumberConfirmed);
-
 
         modelBuilder.Entity<IdentityUser>().ToTable("Users");
 
