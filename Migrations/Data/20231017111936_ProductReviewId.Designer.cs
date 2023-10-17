@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Course_Submission.Contexts;
 
@@ -11,9 +12,11 @@ using Project_Course_Submission.Contexts;
 namespace Project_Course_Submission.Migrations.Data
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231017111936_ProductReviewId")]
+    partial class ProductReviewId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,80 @@ namespace Project_Course_Submission.Migrations.Data
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IdentityUser");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.AddressEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StreetName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AddressEntity");
+                });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryEntity", b =>
                 {
@@ -117,15 +194,39 @@ namespace Project_Course_Submission.Migrations.Data
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductReviewEntity", b =>
                 {
-                    b.Property<string>("ArticleNumber")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ReviewId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.HasKey("ArticleNumber", "ReviewId");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.HasIndex("ReviewId");
+                    b.Property<string>("ArticleNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CommentCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProfileUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ReviewEntityId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ArticleNumber");
+
+                    b.HasIndex("ProfileUserId");
+
+                    b.HasIndex("ReviewEntityId");
 
                     b.ToTable("ProductReviews");
                 });
@@ -184,6 +285,48 @@ namespace Project_Course_Submission.Migrations.Data
                     b.ToTable("Tags");
                 });
 
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserAddressEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AddressId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserAddressEntity");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserProfileEntity", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("UserProfileEntity");
+                });
+
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductCategoryEntity", b =>
                 {
                     b.HasOne("Project_Course_Submission.Models.Entities.ProductEntity", "Product")
@@ -230,15 +373,17 @@ namespace Project_Course_Submission.Migrations.Data
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Project_Course_Submission.Models.Entities.ReviewEntity", "Review")
-                        .WithMany("Products")
-                        .HasForeignKey("ReviewId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "Profile")
+                        .WithMany()
+                        .HasForeignKey("ProfileUserId");
+
+                    b.HasOne("Project_Course_Submission.Models.Entities.ReviewEntity", null)
+                        .WithMany("ProductReviews")
+                        .HasForeignKey("ReviewEntityId");
 
                     b.Navigation("Product");
 
-                    b.Navigation("Review");
+                    b.Navigation("Profile");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductTagEntity", b =>
@@ -258,6 +403,36 @@ namespace Project_Course_Submission.Migrations.Data
                     b.Navigation("Product");
 
                     b.Navigation("Tag");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserAddressEntity", b =>
+                {
+                    b.HasOne("Project_Course_Submission.Models.Entities.AddressEntity", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "User")
+                        .WithMany("Addresses")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Address");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserProfileEntity", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryEntity", b =>
@@ -283,12 +458,17 @@ namespace Project_Course_Submission.Migrations.Data
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ReviewEntity", b =>
                 {
-                    b.Navigation("Products");
+                    b.Navigation("ProductReviews");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.TagEntity", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserProfileEntity", b =>
+                {
+                    b.Navigation("Addresses");
                 });
 #pragma warning restore 612, 618
         }

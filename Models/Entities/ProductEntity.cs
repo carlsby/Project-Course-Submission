@@ -19,5 +19,8 @@ namespace Project_Course_Submission.Models.Entities
 		public ICollection<ProductTagEntity> Tags { get; set; } = new HashSet<ProductTagEntity>();
 		public ICollection<ProductImageEntity> Images { get; set; } = new HashSet<ProductImageEntity>();
 		public ICollection<ProductReviewEntity> Reviews { get; set; } = new HashSet<ProductReviewEntity>();
+		
+		
+		
 	}
 }
