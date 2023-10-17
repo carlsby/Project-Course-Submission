@@ -12,7 +12,7 @@ namespace Project_Course_Submission.Controllers
         public IActionResult Tracking()
         {
             
-            return View("_Tracking"); 
+            return View("Views/Partials/OrderTracking/_Tracking.cshtml"); 
         }
     }
 }

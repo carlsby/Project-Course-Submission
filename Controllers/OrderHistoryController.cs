@@ -13,7 +13,7 @@ namespace Project_Course_Submission.Controllers
         public IActionResult History()
         {
             // Your action logic here
-            return View("_History"); // Assumes "_History.cshtml" is located in the Views folder
+            return View("Views/Partials/OrderHistory/_History.cshtml"); // Assumes "_History.cshtml" is located in the Views folder
         }
     }
 }
