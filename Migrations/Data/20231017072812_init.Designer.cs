@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Course_Submission.Contexts;
 
@@ -11,9 +12,11 @@ using Project_Course_Submission.Contexts;
 namespace Project_Course_Submission.Migrations.Data
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231017072812_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,7 +238,7 @@ namespace Project_Course_Submission.Migrations.Data
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("ProductTags");
+                    b.ToTable("ProductTagEntity");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.TagEntity", b =>
