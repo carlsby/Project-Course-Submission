@@ -5,8 +5,8 @@ using Project_Course_Submission.ViewModels;
 
 namespace Project_Course_Submission.Controllers
 {
-	public class LoginController : Controller
-	{
+    public class LoginController : Controller
+    {
         private readonly AuthService _auth;
 
         public LoginController(AuthService auth)
@@ -15,9 +15,9 @@ namespace Project_Course_Submission.Controllers
         }
 
         public IActionResult Index()
-		{
-			return View();
-		}
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Index(UserLoginViewModel model)
@@ -36,7 +36,7 @@ namespace Project_Course_Submission.Controllers
         }
 
         [Authorize]
-        public new async Task<IActionResult> Logout()
+        public async Task<IActionResult> Logout()
         {
             if (await _auth.LogoutAsync(User))
             {
