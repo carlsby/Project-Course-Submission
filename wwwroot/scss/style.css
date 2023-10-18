@@ -272,3 +272,26 @@ body {
   color: #ba2d1d;
   border-color: #ba2d1d;
 }
+
+.comment-section {
+  background-color: white;
+}
+
+.comment-section .container .comments {
+  border-bottom: 1px solid black;
+}
+
+.comment-section .container .rating {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.comment-section .container .comment-date {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-section .container .comment-date .month {
+  margin-left: 5px;
+  margin-right: 5px;
+}
