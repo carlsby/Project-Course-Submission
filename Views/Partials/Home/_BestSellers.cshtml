@@ -3,13 +3,17 @@
 @if (Model != null)
 {
 	    <section class="best-sellers">
-        <div class="container">
+		<div class="container">
+			
             @if (!string.IsNullOrEmpty(Model.Title))
             {
+      
                 <h1 class="title">@Model.Title</h1>
+                <p class="view-all">@Model.Ingress<i class="fa-solid fa-arrow-right" id="arrow-icon"></i></p>
+                       
             }
 
-            
+			
             @if (Model.BestItems != null)
             {
                 <div class="grid">

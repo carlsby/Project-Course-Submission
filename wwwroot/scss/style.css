@@ -18,13 +18,23 @@
   color: #111111;
 }
 
+.view-all {
+  font-size: 18px;
+  font-family: "Mulish", sans-serif;
+  color: #111111;
+  text-transform: lowercase;
+}
+
 .best-sellers {
   padding: 40px 20px;
   display: flex;
 }
 .best-sellers .title {
   text-align: center;
-  margin-bottom: 20px;
+}
+.best-sellers .view-all {
+  text-align: right;
+  margin: 12px;
 }
 .best-sellers a {
   text-decoration: none;
@@ -57,6 +67,10 @@
   right: 30px;
   font-size: 24px;
   color: #626262;
+}
+.best-sellers #arrow-icon {
+  margin-left: 5px;
+  font-size: 16px;
 }
 .best-sellers .grid {
   display: flex;

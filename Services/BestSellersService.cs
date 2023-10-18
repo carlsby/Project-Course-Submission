@@ -7,6 +7,7 @@ namespace Project_Course_Submission.Services
         private readonly BestSellersViewModel _bestSellers = new()
         {
             Title = "Best Sellers",
+            Ingress = "View All",
             BestItems = new List<BestSellersItemViewModel>
             { 
                 new BestSellersItemViewModel {Id = "1", Title = "Soft Chill Pants", Price = 30, ImageUrl = "/images/bestsellers/270x295.svg"},
