@@ -1,0 +1,26 @@
+﻿@model BestSellersViewModel
+
+@if (Model != null)
+{
+	    <section class="best-sellers">
+        <div class="container">
+            @if (!string.IsNullOrEmpty(Model.Title))
+            {
+                <h1 class="title">@Model.Title</h1>
+            }
+
+            
+            @if (Model.BestItems != null)
+            {
+                <div class="grid">
+                    @foreach (var item in Model.BestItems)
+                    {
+                        <partial name="/Views/Partials/Home/_BestSellersItem.cshtml" model="item" />
+                    }
+                </div>
+            }
+            </div>
+                </section>
+            
+
+}
