@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Project_Course_Submission.Contexts;
+using Project_Course_Submission.Factories;
 using Project_Course_Submission.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
 
 
+builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<AuthService>();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
@@ -19,7 +21,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
     x.Password.RequiredLength = 8;
     x.User.RequireUniqueEmail = false;
 })
-    .AddEntityFrameworkStores<IdentityContext>();
+    .AddEntityFrameworkStores<IdentityContext>()
+    .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>(); ;
 
 
 var app = builder.Build();

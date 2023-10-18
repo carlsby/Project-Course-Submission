@@ -31,12 +31,15 @@
         .register-validation {
             margin: 0;
             padding: 0;
-            background: #ef1c1c;
-            color: white;
+            color: #ef1c1c;
+            background: none;
+            border: none;
 
             ul {
                 list-style-type: none;
                 margin: 0;
+                font-weight: 700;
+                padding: 0;
             }
         }
 

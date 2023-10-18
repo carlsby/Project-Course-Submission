@@ -2,6 +2,7 @@
 using Project_Course_Submission.Contexts;
 using Project_Course_Submission.Models.Entities;
 using Project_Course_Submission.ViewModels;
+using System.Security.Claims;
 
 namespace Project_Course_Submission.Services
 {
@@ -26,19 +27,6 @@ namespace Project_Course_Submission.Services
 
                 await _userManager.CreateAsync(identityUser, model.Password);
 
-                //AddressEntity addressEntity = new AddressEntity 
-                //{
-                //    StreetName = model.StreetName,
-                //    PostalCode  = model.PostalCode,
-                //    City = model.City,
-                //};
-
-                //UserAddressEntity userAddressEntity = new UserAddressEntity
-                //{
-                //    UserId = identityUser.Id,
-
-                //};
-
                 UserProfileEntity userProfileEntity = new UserProfileEntity
                 {
                     FirstName = model.FirstName,
@@ -52,6 +40,24 @@ namespace Project_Course_Submission.Services
                 return true;
             }catch { return false; }
             
+        }
+
+        public async Task<bool> LogInAsync(UserLoginViewModel model)
+        {
+            try
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+
+                return result.Succeeded;
+            }
+            catch { return false; }
+        }
+
+        public async Task<bool> LogoutAsync(ClaimsPrincipal user)
+        {
+            await _signInManager.SignOutAsync();
+
+            return _signInManager.IsSignedIn(user);
         }
 
     }
