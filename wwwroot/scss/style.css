@@ -272,3 +272,8 @@ body {
   color: #ba2d1d;
   border-color: #ba2d1d;
 }
+
+img {
+  width: 100%;
+  height: 50vh;
+}

@@ -1,7 +1,6 @@
-﻿using AspNetCore;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using Project_Course_Submission.Models;
-using System.Diagnostics;
+
 
 namespace Project_Course_Submission.Controllers
 {
