@@ -16,6 +16,7 @@ namespace Project_Course_Submission.Controllers
 			return View();
 		}
 
+        [Route("account/verification/otp")]
         public IActionResult OTP()
         {
             return View();
