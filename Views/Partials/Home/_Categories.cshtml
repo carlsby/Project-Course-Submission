@@ -1,0 +1,8 @@
+﻿@using Project_Course_Submission.Models.Entities;
+@model IEnumerable<CategoryEntity>
+
+<h2>Kategorier:</h2>
+@foreach (var categoryName in Model)
+{
+    <p>@categoryName</p>
+}

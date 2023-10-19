@@ -58,4 +58,22 @@ public class ProductRepository : TEntityRepository<ProductEntity>
     }
     #endregion
 
+    #region GetCategoriesAsync
+    public async Task<IEnumerable<string>> GetCategoryNamesAsync()
+    {
+        var categoryNames = await _context.Products
+            .SelectMany(product => product.Categories.Select(category => category.Category.CategoryName))
+            .ToListAsync();
+
+        return categoryNames;
+    }
+    #endregion
+
+    #region GetAllAsync
+    public async Task<IEnumerable<CategoryEntity>> GetAllCategoriesAsync()
+    {
+        return await _context.Categories.ToListAsync();
+    }
+    #endregion
+
 }

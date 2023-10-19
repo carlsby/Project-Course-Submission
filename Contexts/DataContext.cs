@@ -5,7 +5,11 @@ namespace Project_Course_Submission.Contexts
 {
 	public class DataContext : DbContext
 	{
-		public DataContext(DbContextOptions<DataContext> options) : base(options) 
+        public DataContext()
+        {
+        }
+
+        public DataContext(DbContextOptions<DataContext> options) : base(options) 
 		{
 		}
 
