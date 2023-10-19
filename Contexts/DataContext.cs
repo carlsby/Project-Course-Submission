@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Project_Course_Submission.Entities;
 using Project_Course_Submission.Models.Entities;
 
 namespace Project_Course_Submission.Contexts
@@ -16,5 +17,6 @@ namespace Project_Course_Submission.Contexts
         public DbSet<ProductTagEntity> ProductTags { get; set; }
         public DbSet<TagEntity> Tags { get; set; }
         public DbSet<ProductEntity> Products { get; set; }
+        public DbSet<OrderEntity> Orders { get; set; }
     }
 }
