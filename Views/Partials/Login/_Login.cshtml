@@ -7,9 +7,6 @@
 <div class="login-section">
     <div class="container login-container d-flex justify-content-center align-items-center">
         <div class="row">
-            <!-- <div class="col-12">
-                <h4 class="si-page-name">Sign in</h4>
-            </div> -->
             <div class="col-12 si-welcome-div">
                 <h1 class="si-title">
                     Welcome Back!
@@ -20,29 +17,38 @@
                     Sign in to continue
                 </h4>
             </div>
-            <div class="si-input-div col-12 mb-3 d-flex justify-content-center">
-                <input type="email" class="form-control si-input" id="si-email" oninput="validateEmail()" />
-                <i class="fas fa-xmark si-input-check"></i>
-                <p class="si-input-text">Email</p>
-            </div>
-            <div class="si-input-div col-12 mb-3 d-flex justify-content-center">
-                <input type="password" class="form-control si-input" id="si-pw" />
-                <i class="fas fa-eye-slash si-input-pw" onclick="togglePassword()"></i>
-                <p class="si-input-text">Password</p>
-            </div>
-            <div class="col-6 mb-3">
-                <input type="checkbox" /> Remember me
-            </div>
-            <div class="col-6 mb-5">
-                <span class="me-4"><a href="/" class="si-link">Forgot password?</a></span>
-            </div>
-            <div class="mb-4">
-                <button class="si-btn col-12">
-                    Sign in
-                </button>
-            </div>
+
+            <form method="post" novalidate>
+
+                <div class="input-div col-12 mb-3 d-flex justify-content-center">
+                    <input asp-for="Email" type="email" class="form-control account-input" id="email" oninput="validateEmail()" />
+                    <i class="fas fa-xmark input-check"></i>
+                    <p class="input-text">Email</p>
+                </div>
+                <div class="input-div col-12 mb-3 d-flex justify-content-center">
+                    <input asp-for="Password" type="password" class="form-control account-input" id="pw" />
+                    <i class="fas fa-eye-slash input-pw" onclick="togglePassword()"></i>
+                    <p class="input-text">Password</p>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <input asp-for="RememberMe" type="checkbox" /> Remember me
+                    </div>
+                    <div class="col-6">
+                        <span class="me-4"><a asp-controller="login" asp-action="forgotpassword" class="si-link">Forgot password?</a></span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger login-validation mb-3"></div>
+                </div>
+                <div class="mb-4 mt-3">
+                    <button class="si-btn col-12">
+                        Sign in
+                    </button>
+                </div>
+            </form>
             <div class="col-12 mb-4">
-                <a href="/" class="si-link">Don't have an account? Sign up.</a>
+                <a asp-controller="register" asp-action="index" class="si-link">Don't have an account? Sign up.</a>
             </div>
             <div class="si-brands-div">
                 <div class="row">
@@ -53,7 +59,7 @@
                         <a href="https://www.twitter.com" target="_blank" class="si-brand-link"><i class="fa-brands fa-twitter si-brand-logo si-twitter"></i></a>
                     </div>
                     <div class="col-4">
-                        <a href="https://www.twitter.com" target="_blank" class="si-brand-link"><i class="fa-brands fa-google-plus-g si-brand-logo si-googleplus"></i></a>
+                        <a href="https://myaccount.google.com/" target="_blank" class="si-brand-link"><i class="fa-brands fa-google-plus-g si-brand-logo si-googleplus"></i></a>
                     </div>
                 </div>
             </div>

@@ -1,12 +1,53 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Project_Course_Submission.Services;
+using Project_Course_Submission.ViewModels;
 
 namespace Project_Course_Submission.Controllers
 {
-	public class LoginController : Controller
-	{
-		public IActionResult Index()
-		{
-			return View();
-		}
-	}
+    public class LoginController : Controller
+    {
+        private readonly AuthService _auth;
+
+        public LoginController(AuthService auth)
+        {
+            _auth = auth;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(UserLoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (await _auth.LogInAsync(model))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError("", "Incorrect email or password.");
+            }
+
+            return View(model);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            if (await _auth.LogoutAsync(User))
+            {
+                return LocalRedirect("/");
+            }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+    }
 }

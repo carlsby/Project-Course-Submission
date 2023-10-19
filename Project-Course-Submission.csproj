@@ -27,8 +27,6 @@
 
 
 	  <Folder Include="Migrations\" />
-
-	  <Folder Include="Services\" />
 	  <Folder Include="Views\Partials\User\" />
 	  <Folder Include="wwwroot\scss\core\" />
 	</ItemGroup>
