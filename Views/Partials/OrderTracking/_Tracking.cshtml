@@ -18,7 +18,7 @@
     </div>
     <div class="col text-center mb-1 mt-3">
         <h5 class="mb-0">Your order:</h5>
-        <h6 class="card-subtitle opacity-75">#123213</h6>
+       <h6 class="card-subtitle opacity-75">#@Model.OrderId</h6> 
     </div>
 </div>
 
@@ -29,16 +29,16 @@
             <div class="col-2 text-center">
                 @if (trackingStatus.IsDot)
                 {
-                    <i class="fa-solid fa-2x fa-dot d-block mb-0"></i>
+                    <i class="fa-solid fa-2x fa-circle-dot d-block mb-0"></i>
                 }
                 else
                 {
-                    <i class="fa-regular fa-2x fa-circle-dot d-block mb-0"></i>
+                    <i class="fa-regular fa-2x fa-circle d-block mb-0"></i>
                 }
                 <i class="fa-solid fa-2x fa-minus fa-rotate-90 d-block"></i>
             </div>
             <div class="col">
-                <p class="font-weight-bold mb-0">@trackingStatus.Status</p>
+                <p class="font-weight-bold mb-0">@trackingStatus.TrackLabel</p>
                 <p class="text-muted mt-0 small">@trackingStatus.TrackDescription</p>
             </div>
         </div>

@@ -33,14 +33,16 @@ namespace Project_Course_Submission.Entities
         public OrderEntity Order { get; set; }
     }
 
-    public class OrderTrack
+    public class OrderTrackEntity
     {
         [Key]
-        public int Id { get; set; }
-        public string EstimatedDate { get; set; }
+        public int TrackId { get; set; }
+        public string? EstimatedDate { get; set; }
         public string TrackDescription { get; set; }
-        public int OrderId { get; set; }
         public bool IsDot { get; set; }
+        public string TrackLabel { get; set; }
+
+        public int OrderId { get; set; }
         public OrderEntity Order { get; set; }
     }
 

@@ -10,6 +10,7 @@ namespace Project_Course_Submission.Contexts
 		{
 		}
 
+        public DbSet<OrderTrackEntity> Tracks { get; set; }
         public DbSet<CategoryEntity> Categories { get; set; }
         public DbSet<ProductCategoryEntity> ProductCategories { get; set; }
         public DbSet<ProductImageEntity> ProductImages { get; set; }
