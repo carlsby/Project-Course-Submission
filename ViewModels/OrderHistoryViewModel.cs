@@ -2,7 +2,7 @@
 {
 public class OrderHistoryViewModel
 {
-    public int OrderNumber { get; set; }
+    public int OrderId { get; set; }
     public DateTime OrderDate { get; set; }
     public string OrderStatus { get; set; }
     public decimal TotalAmount { get; set; }

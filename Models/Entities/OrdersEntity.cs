@@ -5,21 +5,22 @@ namespace Project_Course_Submission.Entities
 {
     public class OrderEntity
     {
-        public int Id { get; set; }  // Primary key
+        [Key]
+        public int Id { get; set; }  
         public DateTime OrderDate { get; set; }
         public string OrderStatus { get; set; }
         public decimal TotalPrice { get; set; }
 
-        // Reference to UserProfileEntity
-        public UserProfileEntity? User { get; set; }
 
-        // Navigation property to OrderItemEntity
+        public UserProfileEntity? User { get; set; }
+        public string UserId { get; set; }
+
         public List<OrderItemEntity> OrderItems { get; set; }
     }
 
     public class OrderItemEntity
     {
-        [Key] // Specify the primary key
+        [Key] 
         public int OrderItemId { get; set; }
         public string ProductName { get; set; }
         public string Size { get; set; }
@@ -27,10 +28,23 @@ namespace Project_Course_Submission.Entities
         public int Quantity { get; set; }
         public decimal Price { get; set; }
 
-        // Foreign key to the parent order
+   
         public int OrderId { get; set; }
 
-        // Navigation property to the parent order
+    
         public OrderEntity Order { get; set; }
     }
+
+    public class OrderTrack
+    {
+        [Key]
+        public int Id { get; set; }
+        public string EstimatedDate { get; set; }
+        public string TrackDescription { get; set; }
+        public int OrderId { get; set; }
+        public bool IsDot { get; set; }
+        public OrderEntity Order { get; set; }
+    }
+
+
 }

@@ -15,10 +15,14 @@
 @foreach (var order in Model)
 {
     <div class="card" style="width: auto;">
-        <div class="card-body" data-toggle="collapse" href="#cardExtension_@order.OrderNumber">
+        <div class="card-body" data-toggle="collapse" href="#cardExtension_@order.OrderId">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h6 class="card-subtitle mb-2 text-black">#@order.OrderNumber</h6>
+                    <h6 class="card-subtitle mb-2 text-black">
+                        <a asp-controller="OrderTracking" asp-action="Tracking" asp-route-orderId="@order.OrderId">
+                            #@order.OrderId
+                        </a>
+                    </h6>
                     <p class="card-text small">@order.OrderDate.ToString("MMM dd, yyyy 'at' h:mm tt")</p>
                 </div>
                 <div>
@@ -27,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div id="cardExtension_@order.OrderNumber" class="collapse bg-light p-3">
+        <div id="cardExtension_@order.OrderId" class="collapse bg-light p-3">
             <div class="row">
                 @foreach (var item in order.OrderItems)
                 {
@@ -37,7 +41,7 @@
                     <div class="col">
                         <div class="d-flex justify-content-end">
                             <p class="card-text small">@item.Quantity</p>
-                            <p class="card-text ml-1 small">$@item.Price.ToString("0.00")</p> 
+                            <p class="card-text ml-1 small">$@item.Price.ToString("0.00")</p>
                         </div>
                     </div>
                 }
