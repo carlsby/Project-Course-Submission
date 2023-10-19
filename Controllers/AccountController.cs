@@ -11,9 +11,25 @@ namespace Project_Course_Submission.Controllers
 			return View();
 		}
 
-		public IActionResult NewPassword()
+
+		public IActionResult Verification()
+		{
+			return View();
+		}
+
+        [Route("account/verification/otp")]
+        public IActionResult OTP()
+        {
+            return View();
+        }
+    }
+    
+  		public IActionResult NewPassword()
 		{
 			return View();
 		}
 	}
+
 }
+
+    
