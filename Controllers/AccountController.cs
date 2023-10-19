@@ -34,8 +34,8 @@ namespace Project_Course_Submission.Controllers
         [HttpPost]
         public IActionResult Verification(PhoneNumberViewModel phoneNumberViewModel)
         {
-            string accountSid = "AC4857a3b575c88d6b68bc6c7bdccd844d";
-            string authToken = "b06a9b16ae197316f348b5e56c29536d";
+            string accountSid = "";
+            string authToken = "";
 
             TwilioClient.Init(accountSid, authToken);
 
