@@ -10,7 +10,7 @@ namespace Project_Course_Submission.Services
             Ingress = "View All",
             BestItems = new List<BestSellersItemViewModel>
             { 
-                new BestSellersItemViewModel {Id = "1", Title = "Soft Chill Pants", Price = 30, ImageUrl = "/images/bestsellers/270x295.svg"},
+                new BestSellersItemViewModel { Id = "1", Title = "Soft Chill Pants", Price = 30, ImageUrl = "/images/bestsellers/270x295.svg"},
 				new BestSellersItemViewModel { Id = "2", Title = "Short Warm Jacket", Price = 30, ImageUrl = "/images/bestsellers/270x295.svg" },
 				new BestSellersItemViewModel { Id = "3", Title = "Short Pocket Jacket", Price = 30, ImageUrl = "/images/bestsellers/270x295.svg" },
 				new BestSellersItemViewModel { Id = "4", Title = "Suit Pants", Price = 30, ImageUrl = "/images/bestsellers/270x295.svg" },

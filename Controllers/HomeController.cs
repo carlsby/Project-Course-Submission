@@ -8,10 +8,12 @@ namespace Project_Course_Submission.Controllers
     public class HomeController : Controller
     {
         private readonly BestSellersService _bestSellersService;
+        private readonly FeaturedProductsService _featuredProductsService;
 
-        public HomeController(BestSellersService bestSellersService)
+        public HomeController(BestSellersService bestSellersService, FeaturedProductsService featuredProductsService)
         {
             _bestSellersService = bestSellersService;
+            _featuredProductsService = featuredProductsService;
         }
 
         public IActionResult Index()
@@ -19,7 +21,8 @@ namespace Project_Course_Submission.Controllers
             var viewModel = new HomeIndexViewModel
             {
                 Title = "Home",
-                BestSellers = _bestSellersService.GetBestSellers()
+                BestSellers = _bestSellersService.GetBestSellers(),
+                FeaturedProducts = _featuredProductsService.GetFeaturedProducts()
             };
             return View(viewModel);
         }
