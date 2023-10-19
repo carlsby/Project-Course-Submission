@@ -12,8 +12,8 @@ using Project_Course_Submission.Contexts;
 namespace Project_Course_Submission.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20231018092445_fixedidentitydb")]
-    partial class fixedidentitydb
+    [Migration("20231019084856_fix54")]
+    partial class fix54
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

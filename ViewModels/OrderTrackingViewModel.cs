@@ -2,10 +2,15 @@
 {
     public class OrderTrackingViewModel
     {
-        public string EstimatedDate { get; set; }
-        public string TrackDescription { get; set; }
-        public bool IsDot { get; set; }
+        public List<OrderTrackingStatus> TrackingStatuses { get; set; }
+    }
 
+    public class OrderTrackingStatus
+    {
+        public string Status { get; set; }
+        public string TrackDescription { get; set; }
+        public string EstimatedDate { get; set; }
+        public bool IsDot { get; set; }
     }
 }
     

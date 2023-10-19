@@ -27,13 +27,13 @@
     {
         <div class="row align" style="margin-left: 10px;">
             <div class="col-2 text-center">
-                @if (string.IsNullOrEmpty(trackingStatus.TrackDescription))
+                @if (trackingStatus.IsDot)
                 {
-                    <i class="fa-regular fa-2x fa-circle-dot d-block mb-0"></i>
+                    <i class="fa-solid fa-2x fa-dot d-block mb-0"></i>
                 }
                 else
                 {
-                    <i class="fa-solid fa-2x fa-dot d-block mb-0"></i>
+                    <i class="fa-regular fa-2x fa-circle-dot d-block mb-0"></i>
                 }
                 <i class="fa-solid fa-2x fa-minus fa-rotate-90 d-block"></i>
             </div>
