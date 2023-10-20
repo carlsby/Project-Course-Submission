@@ -1,0 +1,21 @@
+﻿@model UserViewModel
+
+<div class="account-section">
+    <div class="container account-container">
+        <div class="input-div col-12 mb-3 d-flex justify-content-center">
+            <input asp-for="FirstName" type="text" class="form-control account-input" id="firstname" oninput="validateFirstName()" />
+            <i class="fas fa-xmark input-check firstname-check"></i>
+            <p class="input-text">First name</p>
+        </div>
+        <div class="input-div col-12 mb-3 d-flex justify-content-center">
+            <input asp-for="LastName" type="text" class="form-control account-input" id="lastname" oninput="validateLastName()" />
+            <i class="fas fa-xmark input-check lastname-check"></i>
+            <p class="input-text">Last name</p>
+        </div>
+        <div class="input-div col-12 mb-3 d-flex justify-content-center">
+            <input asp-for="Email" type="email" class="form-control account-input" id="email" oninput="validateEmail()" />
+            <i class="fas fa-xmark input-check email-check"></i>
+            <p class="input-text">Email</p>
+        </div>
+    </div>
+</div>
