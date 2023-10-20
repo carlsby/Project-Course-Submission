@@ -1,10 +1,11 @@
 ﻿
 <div class="category-icons">
-@foreach (var categoryName in Model.Categories)
+@foreach (var category in Model.Categories)
 {
     <div class="category-icon">
 			<div class="category-icon-circle"></div>
-            <p>@categoryName.CategoryName</p>
+            
+            <p>@category.CategoryName</p>
       
     </div>
 }

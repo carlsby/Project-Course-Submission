@@ -14,6 +14,7 @@ namespace Project_Course_Submission.Contexts
 		}
 
 		public DbSet<CategoryEntity> Categories { get; set; }
+		public DbSet<CategoryImageEntity> CategoryImages { get; set; }
 		public DbSet<ProductCategoryEntity> ProductCategories { get; set; }
 		public DbSet<ProductImageEntity> ProductImages { get; set; }
 		public DbSet<ImageEntity> Images { get; set; }

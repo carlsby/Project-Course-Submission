@@ -2,19 +2,25 @@
 using System.Linq.Expressions;
 using Project_Course_Submission.Contexts;
 using Project_Course_Submission.Models.Entities;
+using Microsoft.AspNetCore.Hosting;
+using Project_Course_Submission.Migrations.Data;
 
 namespace Project_Course_Submission.Services.Repositories;
 
 public class ProductRepository : TEntityRepository<ProductEntity>
 {
     private readonly DataContext _context;
-    public ProductRepository(DataContext context) : base(context)
+    private readonly IWebHostEnvironment _webHostEnvironment;
+	public ProductRepository(DataContext context,IWebHostEnvironment webHostEnvironment) : base(context)
     {
         _context = context;
+        _webHostEnvironment = webHostEnvironment;
     }
 
-    #region GetAllAsync
-    public override async Task<IEnumerable<ProductEntity>> GetAllAsync()
+
+
+	#region GetAllAsync
+	public override async Task<IEnumerable<ProductEntity>> GetAllAsync()
     {
         var items = await _context.Products
             .Include(x => x.Tags)
@@ -59,7 +65,7 @@ public class ProductRepository : TEntityRepository<ProductEntity>
     #endregion
 
     #region GetCategoriesAsync
-    public async Task<IEnumerable<string>> GetCategoryNamesAsync()
+    public async Task<IEnumerable<string>> GetCategoriesAsync()
     {
         var categoryNames = await _context.Products
             .SelectMany(product => product.Categories.Select(category => category.Category.CategoryName))
@@ -69,11 +75,14 @@ public class ProductRepository : TEntityRepository<ProductEntity>
     }
     #endregion
 
-    #region GetAllAsync
+    #region GetAllCategoriesAsync
     public async Task<IEnumerable<CategoryEntity>> GetAllCategoriesAsync()
     {
         return await _context.Categories.ToListAsync();
     }
-    #endregion
+	#endregion
+
+
+
 
 }

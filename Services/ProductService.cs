@@ -14,21 +14,18 @@ namespace Project_Course_Submission.Services
             _prodRepo = prodRepo;
         }
 
-        public async Task<IEnumerable<CategoryEntity>> GetCategoriesAsync()
+        public async Task<IEnumerable<string>> GetCategoriesAsync()
         {
             var items = await _prodRepo.GetAllAsync();
 
-            var categoryList = items
-                .SelectMany(item => item.Categories)
-                .Select(category => new CategoryEntity
-                {
-                    CategoryName = category.Category.CategoryName,
-                    CategoryImage = category.Category.CategoryImage,
-                })
-                .Distinct()
-                .ToList();
 
-            return categoryList;
+			var categoryList = items
+				.SelectMany(item => item.Categories)
+				.Select(category => category.Category.CategoryName)
+				.Distinct()
+				.ToList();
+
+			return categoryList;
         }
     }
         //public async Task<List<string>> GetCategoryListAsync()

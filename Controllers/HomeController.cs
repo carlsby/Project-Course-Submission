@@ -23,27 +23,26 @@ namespace Project_Course_Submission.Controllers
             _productService = productService;
         }
 
-		public async Task<IActionResult> Index()
-		{
-			var categoryEntities = await _productService.GetCategoriesAsync();
-
-			var viewModel = new HomeIndexViewModel
+        public async Task<IActionResult> Index()
+        {
+            var categoryName = await _productService.GetCategoriesAsync();
+			var categoryItems = categoryName.Select(categoryName => 
+            new CategoryItemViewModel
 			{
-				Title = "Home",
-				Categories = categoryEntities.Select(category => new CategoryItemViewModel
-				{
-					CategoryName = category.CategoryName,
-					CategoryImage = category.CategoryImage
-				}).ToList(),
-				BestSellers = _bestSellersService.GetBestSellers(),
-				FeaturedProducts = _featuredProductsService.GetFeaturedProducts()
-			};
+				CategoryName = categoryName
+			}).ToList();
+			var viewModel = new HomeIndexViewModel
+            {
+                Title = "Home",
+                Categories = categoryItems,
+                BestSellers = _bestSellersService.GetBestSellers(),
+                FeaturedProducts = _featuredProductsService.GetFeaturedProducts()
+            };
+            return View(viewModel);
+        
+        }
 
-			return View(viewModel);
-		}
-
-
-		public IActionResult Privacy()
+        public IActionResult Privacy()
         {
             return View();
         }

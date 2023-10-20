@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Course_Submission.Contexts;
 
@@ -11,9 +12,11 @@ using Project_Course_Submission.Contexts;
 namespace Project_Course_Submission.Migrations.Data
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231020123324_RemoveImage")]
+    partial class RemoveImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,29 +40,6 @@ namespace Project_Course_Submission.Migrations.Data
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryImageEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ImageId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ImageId");
-
-                    b.ToTable("CategoryImages");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ImageEntity", b =>
@@ -207,25 +187,6 @@ namespace Project_Course_Submission.Migrations.Data
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryImageEntity", b =>
-                {
-                    b.HasOne("Project_Course_Submission.Models.Entities.CategoryEntity", "Category")
-                        .WithMany("Images")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Project_Course_Submission.Models.Entities.ImageEntity", "Image")
-                        .WithMany()
-                        .HasForeignKey("ImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Image");
-                });
-
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductCategoryEntity", b =>
                 {
                     b.HasOne("Project_Course_Submission.Models.Entities.ProductEntity", "Product")
@@ -304,8 +265,6 @@ namespace Project_Course_Submission.Migrations.Data
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryEntity", b =>
                 {
-                    b.Navigation("Images");
-
                     b.Navigation("Products");
                 });
 

@@ -99,13 +99,16 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: #007bff;
+  background-color: #626262;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   color: #fff;
   font-weight: bold;
+  background-image: url("/images/categories/accessories.jpg");
+  background-size: cover;
+  object-fit: contain;
 }
 
 p {
