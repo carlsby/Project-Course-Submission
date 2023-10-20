@@ -26,7 +26,7 @@ namespace Project_Course_Submission.Controllers
             {
                 if (await _auth.LogInAsync(model))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Account");
                 }
 
                 ModelState.AddModelError("", "Incorrect email or password.");
