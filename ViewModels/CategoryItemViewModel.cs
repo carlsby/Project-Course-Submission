@@ -2,8 +2,10 @@
 {
     public class CategoryItemViewModel
     {
-       
+        public int Id { get; set; }
         public string CategoryName { get; set; } = null!;
+
+        public string CategoryImage { get; set; } = null!;
 
     }
 }

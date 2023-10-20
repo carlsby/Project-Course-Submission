@@ -1,8 +1,11 @@
-﻿@using Project_Course_Submission.Models.Entities;
-@model IEnumerable<CategoryEntity>
-
-<h2>Kategorier:</h2>
-@foreach (var categoryName in Model)
+﻿
+<div class="category-icons">
+@foreach (var categoryName in Model.Categories)
 {
-    <p>@categoryName</p>
+    <div class="category-icon">
+			<div class="category-icon-circle"></div>
+            <p>@categoryName.CategoryName</p>
+      
+    </div>
 }
+</div>

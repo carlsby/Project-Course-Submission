@@ -4,7 +4,7 @@ public class HomeIndexViewModel
 {
     public string Title { get; set; } = "Home";
 
-    public List<CategoryItemViewModel> Categories { get; set; } = null!;
+    public List<CategoryItemViewModel> Categories { get; set; } = new List<CategoryItemViewModel>();
 
     public BestSellersViewModel BestSellers { get; set; } = null!;
 

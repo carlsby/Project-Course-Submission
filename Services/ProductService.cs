@@ -1,4 +1,5 @@
 ﻿using Project_Course_Submission.Migrations.Data;
+using Project_Course_Submission.Models.Entities;
 using Project_Course_Submission.Services.Repositories;
 using Project_Course_Submission.ViewModels;
 
@@ -13,13 +14,17 @@ namespace Project_Course_Submission.Services
             _prodRepo = prodRepo;
         }
 
-        public async Task<IEnumerable<string>> GetCategoriesAsync()
+        public async Task<IEnumerable<CategoryEntity>> GetCategoriesAsync()
         {
             var items = await _prodRepo.GetAllAsync();
 
             var categoryList = items
                 .SelectMany(item => item.Categories)
-                .Select(category => category.Category.CategoryName)
+                .Select(category => new CategoryEntity
+                {
+                    CategoryName = category.Category.CategoryName,
+                    CategoryImage = category.Category.CategoryImage,
+                })
                 .Distinct()
                 .ToList();
 
