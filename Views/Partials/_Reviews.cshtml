@@ -1,35 +1,32 @@
-﻿<!--Comment-Section-->
-<section class="comment-section">
-    <div class="container">
-        <div class="comments">
-            <h4 class="comment-name">Kim Svensson</h4>
-            <div class="rating">
-                <i class="fa-sharp fa-solid fa-star"></i>
-                <i class="fa-sharp fa-solid fa-star"></i>
-                <i class="fa-sharp fa-solid fa-star"></i>
-                <i class="fa-sharp fa-solid fa-star"></i>
-                <i class="fa-sharp fa-solid fa-star"></i>
+﻿@{
+    var reviews = await reviewService.GetAllAsync();
+}
+
+@if(reviews != null){
+
+    foreach(var review in reviews)
+    {
+         <!--Comment-Section-->
+        <section class="comment-section">
+            <div class="container">
+                <div class="comments">
+                    <h4 class="comment-name">Kim Svensson</h4>
+                    <div class="rating">
+                        <i class="fa-sharp fa-solid fa-star"></i>
+                        <i class="fa-sharp fa-solid fa-star"></i>
+                        <i class="fa-sharp fa-solid fa-star"></i>
+                        <i class="fa-sharp fa-solid fa-star"></i>
+                        <i class="fa-sharp fa-solid fa-star"></i>
+                    </div>
+                    <div class="comment-date">
+                        <div class="date">@review.CommentCreated</div>
+                        
+                    </div>
+                    <p class="comment-description">@review.Comment</p>
+                </div>
             </div>
-            <div class="comment-date">
-                <div class="day">15</div>
-                <div class="month">may</div>
-                <div class="year">2023</div>
-            </div>
-            <p class="comment-description">Very nice and comfy shirt!</p>
-        </div>
-        <div class="comments">
-            <h4 class="comment-name">Kim Svensson</h4>
-            <div class="rating">
-                <i class="fa-sharp fa-solid fa-star"></i>
-                <i class="fa-sharp fa-solid fa-star"></i>
-                <i class="fa-sharp fa-solid fa-star"></i>
-            </div>
-            <div class="comment-date">
-                <div class="day">15</div>
-                <div class="month">may</div>
-                <div class="year">2023</div>
-            </div>
-            <p class="comment-description">Very nice and comfy shirt!</p>
-        </div>
-    </div>
-</section>
+        </section>
+        
+    }
+   
+}
