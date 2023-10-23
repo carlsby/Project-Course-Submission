@@ -4,6 +4,7 @@ using Project_Course_Submission.Contexts;
 using Project_Course_Submission.Models.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Project_Course_Submission.Migrations.Data;
+using ImageEntity = Project_Course_Submission.Migrations.Data.ImageEntity;
 
 namespace Project_Course_Submission.Services.Repositories;
 
@@ -27,6 +28,8 @@ public class ProductRepository : TEntityRepository<ProductEntity>
             .ThenInclude(x => x.Tag)
             .Include(x => x.Categories)
             .ThenInclude(x => x.Category)
+            .Include(x => x.Images)
+            .ThenInclude(x => x.Image)
             .ToListAsync();
 
         return items;

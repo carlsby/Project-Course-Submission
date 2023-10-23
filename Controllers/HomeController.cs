@@ -1,8 +1,10 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using Project_Course_Submission.Migrations.Data;
 using Project_Course_Submission.Services;
 using Project_Course_Submission.Services.Repositories;
 using Project_Course_Submission.ViewModels;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Project_Course_Submission.Controllers
 {
@@ -25,15 +27,20 @@ namespace Project_Course_Submission.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var categoryName = await _productService.GetCategoriesAsync();
-			var categoryItems = categoryName.Select(categoryName => 
-            new CategoryItemViewModel
-			{
-				CategoryName = categoryName
-			}).ToList();
+			var categoryImages = await _productService.GetCategoryImagesAsync();
+			var categoryName = await _productService.GetCategoriesAsync();
+
+			var categoryItems = categoryName.Select(categoryName =>
+		new CategoryItemViewModel
+		{
+            CategoryName = categoryName,
+            
+
+        }).ToList();
+
 			var viewModel = new HomeIndexViewModel
-            {
-                Title = "Home",
+			{
+				Title = "Home",
                 Categories = categoryItems,
                 BestSellers = _bestSellersService.GetBestSellers(),
                 FeaturedProducts = _featuredProductsService.GetFeaturedProducts()
@@ -48,3 +55,23 @@ namespace Project_Course_Submission.Controllers
         }
     }
 }
+
+
+//public async Task<IActionResult> Index()
+//{
+//    var categoryName = await _productService.GetCategoriesAsync();
+//    var categoryItems = categoryName.Select(categoryName =>
+//    new CategoryItemViewModel
+//    {
+//        CategoryName = categoryName
+//    }).ToList();
+//    var viewModel = new HomeIndexViewModel
+//    {
+//        Title = "Home",
+//        Categories = categoryItems,
+//        BestSellers = _bestSellersService.GetBestSellers(),
+//        FeaturedProducts = _featuredProductsService.GetFeaturedProducts()
+//    };
+//    return View(viewModel);
+
+//}

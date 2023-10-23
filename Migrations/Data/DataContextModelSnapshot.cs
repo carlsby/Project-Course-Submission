@@ -216,7 +216,7 @@ namespace Project_Course_Submission.Migrations.Data
                         .IsRequired();
 
                     b.HasOne("Project_Course_Submission.Models.Entities.ImageEntity", "Image")
-                        .WithMany()
+                        .WithMany("Categories")
                         .HasForeignKey("ImageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -311,6 +311,8 @@ namespace Project_Course_Submission.Migrations.Data
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ImageEntity", b =>
                 {
+                    b.Navigation("Categories");
+
                     b.Navigation("Products");
                 });
 
