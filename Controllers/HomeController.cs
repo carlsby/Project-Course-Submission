@@ -17,7 +17,7 @@ namespace Project_Course_Submission.Controllers
 
 
 
-        public HomeController(BestSellersService bestSellersService, FeaturedProductsService featuredProductsService, ProductRepository productRepository, ProductService productService, CategoriesService categoriesService)
+        public HomeController(BestSellersService bestSellersService, FeaturedProductsService featuredProductsService, ProductService productService, CategoriesService categoriesService)
         {
             _bestSellersService = bestSellersService;
             _featuredProductsService = featuredProductsService;
