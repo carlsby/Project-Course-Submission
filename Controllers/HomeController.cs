@@ -12,7 +12,6 @@ namespace Project_Course_Submission.Controllers
     {
         private readonly BestSellersService _bestSellersService;
         private readonly FeaturedProductsService _featuredProductsService;
-        private readonly ProductRepository _productRepository;
         private readonly ProductService _productService;
         private readonly CategoriesService _categoriesService;
 
@@ -22,7 +21,6 @@ namespace Project_Course_Submission.Controllers
         {
             _bestSellersService = bestSellersService;
             _featuredProductsService = featuredProductsService;
-            _productRepository = productRepository;
             _productService = productService;
             _categoriesService = categoriesService;
         }

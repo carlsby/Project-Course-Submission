@@ -2,8 +2,6 @@
     @foreach (var category in Model.Categories)
     {
         <div class="category-icon">
-           
-               
                 @if (Model.CategoryImagesId != null)
                 {
                     foreach (var categoryImage in Model.CategoryImagesId)
@@ -17,8 +15,7 @@
                     }
                 } 
                 <p>@category.CategoryName</p>
-            </div>
-       
-    }
+        </div>
+       }
 </div>
 
