@@ -37,13 +37,12 @@ namespace Project_Course_Submission.Entities
     {
         [Key]
         public int TrackId { get; set; }
-        public string? EstimatedDate { get; set; }
         public string TrackDescription { get; set; }
         public bool IsDot { get; set; }
-        public string TrackLabel { get; set; }
-
         public int OrderId { get; set; }
         public OrderEntity Order { get; set; }
+        public string? TrackLabel { get; set; }
+
     }
 
 

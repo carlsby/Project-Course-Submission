@@ -22,7 +22,7 @@ namespace Project_Course_Submission.Controllers
                 {
                     TrackLabel = track.TrackLabel,
                     TrackDescription = track.TrackDescription,
-                    IsDot = track.IsDot
+                    IsDot = track.IsDot,
                 })
                 .ToList();
 

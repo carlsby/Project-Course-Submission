@@ -11,7 +11,6 @@
         public string Status { get; set; }
         public string TrackLabel { get; set; }
         public string TrackDescription { get; set; }
-        public string EstimatedDate { get; set; }
         public bool IsDot { get; set; }
     }
 }

@@ -1,0 +1,57 @@
+﻿@model List<WishlistViewModel>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div class="topnav">
+    <div class="row align-items-center">
+        <div class="col-auto" style="margin-left:15px;">
+            <i class="fa-solid fa-bars-staggered fa-xl"></i>
+        </div>
+        <div class="col text-center navbar-text">
+            <h5>Wishlist</h5>
+        </div>
+        <div class="col-auto" style="margin-right:15px;">
+            <i class="fa-solid fa-bag-shopping fa-xl"></i>
+        </div>
+    </div>
+</div>
+
+<div class="container" style=" padding-bottom: 30px; padding-top: 22px;">
+    @foreach (var product in Model)
+{
+    <div class="row" stlye="">
+            <div class="col-2">
+                <div class="image-placeholder" style="width: 95px; height: 95px; background-color: #ccc; margin: auto; padding-left: 20px; background-image: url('@product.ProductImg'); background-size: cover;">
+                </div>
+        </div>
+        <div class="col-7">
+            <div class="card-body" style="padding-left: 33px;">
+                <h7 class="card-title card-text">@product.ProductTitle</h7>
+                    <p class="card-text">$@product.ProductPrice.00</p>
+                    <p class="card-text">
+                        @{
+                            int productReviewRate = product.ProductReviewRate;
+                        }
+
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <i class="fa-@(i <= productReviewRate ? "solid" : "regular") fa-star" style="color: #ffbb00;"></i>
+                        }
+                        (@product.ProductReview)
+                    </p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="d-flex flex-column align-items-center">
+                <a href"">
+                        <i class="fa-solid fa-heart fa-lg" style="color: orangered; margin-bottom: 40px; margin-top: 15px;"></i>
+                </a>
+                <a href="aftonbladet.se">
+                        <i class="fa-solid fa-cart-plus fa-lg" style="color: darkblue;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr></hr>
+    }
+</div>
