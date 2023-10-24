@@ -4,6 +4,10 @@
     justify-content: space-between;
     align-items: center;
    
+    a {
+        text-decoration: none;
+        color: $color-black;
+    }
 }
 
 .category-icon {
@@ -24,8 +28,6 @@
     flex-direction: column;
     color: #fff;
     font-weight: bold;
-  
-    
 }
 
 .category-icon-circle img {
@@ -42,4 +44,5 @@ p {
     font-family: $font-mulish;
     font-size: 14px;
     text-align: center;
+   
 }

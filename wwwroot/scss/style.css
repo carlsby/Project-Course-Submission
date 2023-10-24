@@ -87,6 +87,10 @@
   justify-content: space-between;
   align-items: center;
 }
+.category-icons a {
+  text-decoration: none;
+  color: #111111;
+}
 
 .category-icon {
   display: flex;

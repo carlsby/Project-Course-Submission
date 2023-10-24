@@ -30,6 +30,9 @@
 
 
 	  <Folder Include="Migrations\" />
+
+
+	  <Folder Include="Views\Partials\Categories\" />
 	  <Folder Include="Views\Partials\User\" />
 	</ItemGroup>
 
