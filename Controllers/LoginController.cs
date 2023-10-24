@@ -35,16 +35,6 @@ namespace Project_Course_Submission.Controllers
             return View(model);
         }
 
-        [Authorize]
-        public async Task<IActionResult> Logout()
-        {
-            if (await _auth.LogoutAsync(User))
-            {
-                return LocalRedirect("/");
-            }
-            return RedirectToAction("Index");
-        }
-
         public IActionResult ForgotPassword()
         {
             return View();
