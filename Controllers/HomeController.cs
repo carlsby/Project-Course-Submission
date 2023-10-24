@@ -14,22 +14,24 @@ namespace Project_Course_Submission.Controllers
         private readonly FeaturedProductsService _featuredProductsService;
         private readonly ProductRepository _productRepository;
         private readonly ProductService _productService;
+        private readonly CategoriesService _categoriesService;
 
 
 
-        public HomeController(BestSellersService bestSellersService, FeaturedProductsService featuredProductsService, ProductRepository productRepository, ProductService productService)
+        public HomeController(BestSellersService bestSellersService, FeaturedProductsService featuredProductsService, ProductRepository productRepository, ProductService productService, CategoriesService categoriesService)
         {
             _bestSellersService = bestSellersService;
             _featuredProductsService = featuredProductsService;
             _productRepository = productRepository;
             _productService = productService;
+            _categoriesService = categoriesService;
         }
 
         public async Task<IActionResult> Index()
         {
-			var categoryImages = await _productService.GetCategoryImagesAsync();
+			
 			var categoryName = await _productService.GetCategoriesAsync();
-
+            var categoryImagesId = _categoriesService.GetCategoryImagesId();
 			var categoryItems = categoryName.Select(categoryName =>
 		new CategoryItemViewModel
 		{
@@ -41,6 +43,8 @@ namespace Project_Course_Submission.Controllers
 			var viewModel = new HomeIndexViewModel
 			{
 				Title = "Home",
+                CategoryImagesId = categoryImagesId,
+                CategoryImages = _categoriesService.GetCategoryImages(),
                 Categories = categoryItems,
                 BestSellers = _bestSellersService.GetBestSellers(),
                 FeaturedProducts = _featuredProductsService.GetFeaturedProducts()

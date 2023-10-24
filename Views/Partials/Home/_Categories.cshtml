@@ -2,11 +2,23 @@
     @foreach (var category in Model.Categories)
     {
         <div class="category-icon">
-            <div class="category-icon-circle"> </div>
-            <p>@category.CategoryName</p>
-
-
-        </div>
-
+           
+               
+                @if (Model.CategoryImagesId != null)
+                {
+                    foreach (var categoryImage in Model.CategoryImagesId)
+                    {
+                        if (categoryImage.CategoryName == category.CategoryName)
+                        { 
+                            <div class="category-icon-circle">
+							<img src="@categoryImage.ImageUrl" alt="Image" />
+						</div>
+                        }
+                    }
+                } 
+                <p>@category.CategoryName</p>
+            </div>
+       
     }
 </div>
+
