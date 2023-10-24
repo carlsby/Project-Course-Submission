@@ -23,7 +23,7 @@
             <div class="col-2">
                 <div class="image-placeholder" style="width: 95px; height: 95px; background-color: #ccc; margin: auto; padding-left: 20px; background-image: url('@product.ProductImg'); background-size: cover;">
                 </div>
-        </div>
+                </div>
         <div class="col-7">
             <div class="card-body" style="padding-left: 33px;">
                 <h7 class="card-title card-text">@product.ProductTitle</h7>
@@ -43,9 +43,9 @@
         </div>
         <div class="col-3">
             <div class="d-flex flex-column align-items-center">
-                <a href"">
+                        <a asp-controller="Wishlist" asp-action="Remove" asp-route-id="@product.Id">
                         <i class="fa-solid fa-heart fa-lg" style="color: orangered; margin-bottom: 40px; margin-top: 15px;"></i>
-                </a>
+                        </a>
                 <a href="aftonbladet.se">
                         <i class="fa-solid fa-cart-plus fa-lg" style="color: darkblue;"></i>
                 </a>
@@ -55,3 +55,5 @@
     <hr></hr>
     }
 </div>
+
+

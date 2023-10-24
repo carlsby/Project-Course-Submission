@@ -19,6 +19,17 @@ namespace Project_Course_Submission.Controllers
         {
             return View();
         }
+
+        public IActionResult Remove(int id)
+        {
+
+            var item = _context.Wishlist.FirstOrDefault(i => i.Id == id);
+            _context.Wishlist.Remove(item);
+            _context.SaveChanges();
+
+
+            return RedirectToAction("Wishlist");
+        }
         public IActionResult Wishlist()
         {
 
