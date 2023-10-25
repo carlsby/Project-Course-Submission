@@ -40,7 +40,7 @@ namespace Project_Course_Submission.Controllers
 
 			var viewModel = new HomeIndexViewModel
 			{
-				Title = "Home",
+				Title = "Welcome To Manero",
                 CategoryImagesId = categoryImagesId,
                 CategoryImages = _categoriesService.GetCategoryImages(),
                 Categories = categoryItems,
