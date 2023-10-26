@@ -1,0 +1,47 @@
+﻿@model UserViewModel
+
+<section class="Edit-section">
+    <div class="container Edit-container">
+        <div class="row">
+            <div class="col-12 Edit-welcome-div">
+                <h1 class="Edit-title">
+                    Edit Profile
+                </h1>
+
+                <div class="Circle-container">
+                    <div class="rounded-circle"></div>
+                </div>    
+
+                <form class="Edit-Form" action="#">
+                    <div class="Edit-input-div col-12 mb-3 d-flex justify-content-center">
+                        <input type="tel" class="form-control Edit-input" id="firstname" oninput="validateFirstName()" value="@Model.FirstName" />
+                        <i class="fas fa-xmark Edit-input-check firstname-check"></i>
+                        <p class="Edit-input-text">First name</p>
+                    </div>
+                    <div class="Edit-input-div col-12 mb-3 d-flex justify-content-center">
+                        <input type="tel" class="form-control Edit-input" id="lastname" oninput="validateLastName()" value="@Model.LastName" />
+                        <i class="fas fa-xmark Edit-input-check lastname-check"></i>
+                        <p class="Edit-input-text">Last name</p>
+                    </div>
+                    <div class="Edit-input-div col-12 mb-3 d-flex justify-content-center">
+                        <input type="tel" class="form-control Edit-input" id="email" oninput="validateEmail()" value="@Model.Email" />
+                        <i class="fas fa-xmark Edit-input-check email-check"></i>
+                        <p class="Edit-input-text">Email</p>
+                    </div>
+                    <div class="Edit-input-div col-12 mb-3 d-flex justify-content-center">
+                        <input type="tel" class="form-control Edit-input" id="rr-number" oninput="PhoneNumber()" value="@Model.PhoneNumber" />
+                        <i class="fas fa-xmark Edit-input-check rr-phone-check"></i>
+                        <p class="Edit-input-text">Phone Number</p>
+                    </div>
+                </form>
+
+                <div class="mb-4">
+                    <button class="Edit-send-btn col-6">
+                        Save Changes
+                    </button>
+                </div> 
+
+            </div>
+        </div>
+    </div>
+</section>

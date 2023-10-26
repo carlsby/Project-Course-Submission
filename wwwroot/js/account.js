@@ -1,3 +1,10 @@
+document.addEventListener("DOMContentLoaded", function () {
+    validateFirstName();
+    validateLastName();
+    validateEmail();
+});
+
+
 function togglePassword() {
     var x = document.getElementById("pw");
     var icon = document.querySelector(".input-pw");
