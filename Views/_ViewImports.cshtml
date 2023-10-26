@@ -1,5 +1,9 @@
 ﻿@using Project_Course_Submission
 @using Project_Course_Submission.Models
 @using Project_Course_Submission.ViewModels;
+@using Project_Course_Submission.Services
+@inject SignInManager<IdentityUser> signInManager
+@inject UserManager<IdentityUser> userManager
+@using Microsoft.AspNetCore.Identity;
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
