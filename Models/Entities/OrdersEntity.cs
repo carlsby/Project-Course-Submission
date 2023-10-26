@@ -39,6 +39,7 @@ namespace Project_Course_Submission.Entities
         public int TrackId { get; set; }
         public string TrackDescription { get; set; }
         public bool IsDot { get; set; }
+        public bool IsLine { get; set; }
         public int OrderId { get; set; }
         public OrderEntity Order { get; set; }
         public string? TrackLabel { get; set; }
