@@ -23,10 +23,10 @@ namespace Project_Course_Submission.Factories
 
             var userProfileEntity = await _userService.GetUserProfileAsync(user.Id);
 
-            claimsIdentity.AddClaim(new Claim("FullName", $"{userProfileEntity.FirstName} {userProfileEntity.LastName}"));
-            claimsIdentity.AddClaim(new Claim("FirstName", $"{userProfileEntity.FirstName}"));
-            claimsIdentity.AddClaim(new Claim("LastName", $"{userProfileEntity.LastName}"));
-            claimsIdentity.AddClaim(new Claim("Email", $"{userProfileEntity.User.Email}"));
+            claimsIdentity.AddClaim(new Claim("FullName", $"{userProfileEntity.Content!.FirstName} {userProfileEntity.Content!.LastName}"));
+            claimsIdentity.AddClaim(new Claim("FirstName", $"{userProfileEntity.Content!.FirstName}"));
+            claimsIdentity.AddClaim(new Claim("LastName", $"{userProfileEntity.Content!.LastName}"));
+            claimsIdentity.AddClaim(new Claim("Email", $"{userProfileEntity.Content!.User.Email}"));
 
 
 
