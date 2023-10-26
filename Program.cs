@@ -2,12 +2,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Project_Course_Submission.Contexts;
 using Project_Course_Submission.Services;
+
 using Project_Course_Submission.Services.Repositories;
+
 using Project_Course_Submission.Factories;
 using Project_Course_Submission.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 
 builder.Services.AddControllersWithViews();
@@ -19,10 +22,12 @@ builder.Services.AddScoped<BestSellersService>();
 builder.Services.AddScoped<FeaturedProductsService>();
 builder.Services.AddScoped<ProductRepository>();
 
+builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
+builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("ProductsDatabase")));
 
+builder.Services.AddScoped<ReviewService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<AuthService>();
-
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;

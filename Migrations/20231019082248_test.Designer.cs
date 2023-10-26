@@ -220,6 +220,7 @@ namespace Project_Course_Submission.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
+                    b.ToTable("Adresses");
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
@@ -316,6 +317,7 @@ namespace Project_Course_Submission.Migrations
 
                     b.HasKey("UserId");
 
+                    b.ToTable("UserProfiles");
                     b.ToTable("UserProfiles");
                 });
 

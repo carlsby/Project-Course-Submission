@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Course_Submission.Contexts;
 
@@ -11,9 +12,11 @@ using Project_Course_Submission.Contexts;
 namespace Project_Course_Submission.Migrations.Data
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231023183648_db update")]
+    partial class dbupdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +24,6 @@ namespace Project_Course_Submission.Migrations.Data
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
                 {
@@ -97,7 +99,6 @@ namespace Project_Course_Submission.Migrations.Data
                     b.ToTable("AddressEntity");
                 });
 
-
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -114,31 +115,6 @@ namespace Project_Course_Submission.Migrations.Data
 
                     b.ToTable("Categories");
                 });
-
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryImageEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ImageId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ImageId");
-
-                    b.ToTable("CategoryImages");
-                });
-
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ImageEntity", b =>
                 {
@@ -216,23 +192,6 @@ namespace Project_Course_Submission.Migrations.Data
                     b.ToTable("ProductImages");
                 });
 
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductReviewEntity", b =>
-                {
-                    b.Property<string>("ArticleNumber")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ReviewId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ArticleNumber", "ReviewId");
-
-                    b.HasIndex("ReviewId");
-
-                    b.ToTable("ProductReviews");
-                });
-
-
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductTagEntity", b =>
                 {
                     b.Property<string>("ArticleNumber")
@@ -248,11 +207,7 @@ namespace Project_Course_Submission.Migrations.Data
                     b.ToTable("ProductTags");
                 });
 
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.ReviewEntity", b =>
-
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ReviewsEntity", b =>
-
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -260,16 +215,12 @@ namespace Project_Course_Submission.Migrations.Data
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-
-                    b.Property<string>("Comment")
-
                     b.Property<string>("ArticleNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Comment")
                         .IsRequired()
-
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CommentCreated")
@@ -277,10 +228,6 @@ namespace Project_Course_Submission.Migrations.Data
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
-
-
-                    b.HasKey("Id");
-
 
                     b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
@@ -290,7 +237,6 @@ namespace Project_Course_Submission.Migrations.Data
                     b.HasIndex("ArticleNumber");
 
                     b.HasIndex("UserId1");
-
 
                     b.ToTable("Reviews");
                 });
@@ -311,25 +257,6 @@ namespace Project_Course_Submission.Migrations.Data
 
                     b.ToTable("Tags");
                 });
-
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryImageEntity", b =>
-                {
-                    b.HasOne("Project_Course_Submission.Models.Entities.CategoryEntity", "Category")
-                        .WithMany("Images")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Project_Course_Submission.Models.Entities.ImageEntity", "Image")
-                        .WithMany("Categories")
-                        .HasForeignKey("ImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Image");
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserAddressEntity", b =>
                 {
@@ -371,7 +298,6 @@ namespace Project_Course_Submission.Migrations.Data
                     b.HasKey("UserId");
 
                     b.ToTable("UserProfileEntity");
-
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductCategoryEntity", b =>
@@ -412,26 +338,6 @@ namespace Project_Course_Submission.Migrations.Data
                     b.Navigation("Product");
                 });
 
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductReviewEntity", b =>
-                {
-                    b.HasOne("Project_Course_Submission.Models.Entities.ProductEntity", "Product")
-                        .WithMany("Reviews")
-                        .HasForeignKey("ArticleNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Project_Course_Submission.Models.Entities.ReviewEntity", "Review")
-                        .WithMany("Products")
-                        .HasForeignKey("ReviewId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Review");
-                });
-
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductTagEntity", b =>
                 {
                     b.HasOne("Project_Course_Submission.Models.Entities.ProductEntity", "Product")
@@ -450,11 +356,6 @@ namespace Project_Course_Submission.Migrations.Data
 
                     b.Navigation("Tag");
                 });
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryEntity", b =>
-                {
-                    b.Navigation("Images");
-
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ReviewsEntity", b =>
                 {
@@ -505,16 +406,11 @@ namespace Project_Course_Submission.Migrations.Data
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryEntity", b =>
                 {
-
                     b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ImageEntity", b =>
                 {
-
-                    b.Navigation("Categories");
-
-
                     b.Navigation("Products");
                 });
 
@@ -529,24 +425,14 @@ namespace Project_Course_Submission.Migrations.Data
                     b.Navigation("Tags");
                 });
 
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.ReviewEntity", b =>
-
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.TagEntity", b =>
-
                 {
                     b.Navigation("Products");
                 });
 
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.TagEntity", b =>
-                {
-                    b.Navigation("Products");
-
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserProfileEntity", b =>
                 {
                     b.Navigation("Addresses");
-
                 });
 #pragma warning restore 612, 618
         }
