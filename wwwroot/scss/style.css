@@ -763,7 +763,6 @@ body {
   color: white;
   padding: 10px;
 }
-
 .Edit-section {
   display: flex;
   justify-content: center;
@@ -771,49 +770,60 @@ body {
   min-height: 70vh;
   margin-top: 20px;
 }
+
 .Edit-section .Edit-container {
   text-align: center;
 }
+
 @media (min-width: 800px) {
   .Edit-section .Edit-container {
     width: 70%;
   }
 }
+
 @media (min-width: 1000px) {
   .Edit-section .Edit-container {
     width: 50%;
   }
 }
+
 @media (min-width: 1400px) {
   .Edit-section .Edit-container {
     width: 40%;
   }
 }
+
 @media (min-width: 1600px) {
   .Edit-section .Edit-container {
     width: 30%;
   }
 }
+
 @media (min-width: 2000px) {
   .Edit-section .Edit-container {
     width: 20%;
   }
 }
+
 .Edit-section .Edit-container .Edit-welcome-div {
   margin-bottom: 40px;
 }
+
 .Edit-section .Edit-container .Edit-welcome-div .Edit-title {
   font-size: 2rem;
 }
+
 .Edit-section .Edit-container .Edit-input-div {
   position: relative;
 }
+
 .Edit-section .Edit-container .Edit-input-div .Edit-input {
   border-radius: 24px;
   border-color: lightgray;
   box-shadow: none;
   z-index: 0;
 }
+
 .Edit-section .Edit-container .Edit-input-div .Edit-input-text {
   position: absolute;
   bottom: 12px;
@@ -824,13 +834,14 @@ body {
   padding-left: 10px;
   padding-right: 10px;
 }
+
 .Edit-section .Edit-container .Edit-input-div .Edit-input-check {
   position: absolute;
   right: 54px;
   top: 12px;
 }
 
-.rounded-circle {
+.Edit-section .Edit-container .rounded-circle {
   width: 80px;
   height: 80px;
   line-height: 80px;
@@ -842,7 +853,7 @@ body {
   border: 3px solid #DBE3F5;
 }
 
-.Edit-send-btn {
+.Edit-section .Edit-container .Edit-send-btn {
   margin: 30px;
   border: none;
   background-color: black;
@@ -850,3 +861,4 @@ body {
   color: white;
   padding: 10px;
 }
+

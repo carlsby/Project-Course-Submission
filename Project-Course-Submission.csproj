@@ -29,12 +29,10 @@
 		</PackageReference>
 		<PackageReference Include="Twilio" Version="6.14.1" />
 		<PackageReference Include="Twilio.AspNet.Mvc" Version="8.0.2" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>
-
-
-	  <Folder Include="Migrations\" />
 	  <Folder Include="Views\Partials\User\" />
 	  <Folder Include="wwwroot\scss\core\" />
 	</ItemGroup>
