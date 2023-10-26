@@ -19,7 +19,7 @@
                     <a class="nav-link active" asp-controller="Products" asp-action="Index">PRODUCTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" asp-controller="Contacts" asp-action="Index">CONTACT</a>
+                    <a class="nav-link active" asp-controller="Contacts" asp-action="Index">CONTACTS</a>
                 </li>
                 <li class="nav-item dropdown">
 
@@ -29,7 +29,8 @@
                             @User.FindFirst("FirstName")?.Value
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" asp-controller="login" asp-action="logout"> LOGOUT</a></li>
+
+                            <li><a class="dropdown-item" asp-controller="logout" asp-action="index"> LOGOUT</a></li>
                             <li><a class="dropdown-item" asp-controller="Wishlist" asp-action="Wishlist"> Wishlist</a></li>
                             <li><a class="dropdown-item" asp-controller="OrderHistory" asp-action="History"> Order history</a></li>
                             <li><a class="dropdown-item" asp-controller="MyAdress" asp-action="Index"> My Adress</a></li>

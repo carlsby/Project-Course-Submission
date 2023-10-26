@@ -22,7 +22,7 @@
 
                 <div class="input-div col-12 mb-3 d-flex justify-content-center">
                     <input asp-for="Email" type="email" class="form-control account-input" id="email" oninput="validateEmail()" />
-                    <i class="fas fa-xmark input-check"></i>
+                    <i class="fas fa-xmark input-check email-check"></i>
                     <p class="input-text">Email</p>
                 </div>
                 <div class="input-div col-12 mb-3 d-flex justify-content-center">
@@ -32,7 +32,8 @@
                 </div>
                 <div class="row">
                     <div class="col-6 mb-3">
-                        <input asp-for="RememberMe" type="checkbox" /> Remember me
+                        <input asp-for="RememberMe" type="checkbox" id="rememberMeCheckbox" />
+                        <label class="account-rm-label" for="rememberMeCheckbox">Remember me</label>
                     </div>
                     <div class="col-6">
                         <span class="me-4"><a asp-controller="login" asp-action="forgotpassword" class="si-link">Forgot password?</a></span>

@@ -26,23 +26,13 @@ namespace Project_Course_Submission.Controllers
             {
                 if (await _auth.LogInAsync(model))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Account");
                 }
 
                 ModelState.AddModelError("", "Incorrect email or password.");
             }
 
             return View(model);
-        }
-
-        [Authorize]
-        public async Task<IActionResult> Logout()
-        {
-            if (await _auth.LogoutAsync(User))
-            {
-                return LocalRedirect("/");
-            }
-            return RedirectToAction("Index");
         }
 
         public IActionResult ForgotPassword()
