@@ -2,30 +2,30 @@
 using Project_Course_Submission.Contexts;
 using Project_Course_Submission.Models;
 
-namespace Project_Course_Submission.Services;
-
-public class ReviewService
+namespace Project_Course_Submission.Services
 {
-    private readonly DataContext _context;
-public ReviewService(DataContext context)
+    public class ReviewService
     {
-        _context = context;
-    }
+        private readonly DataContext _context;
 
-
-    public async Task<IEnumerable<ReviewModel>> GetAllAsync()
-    {
-        var reviews = new List<ReviewModel>();
-        var item = await _context.Reviews.ToListAsync();
-
-        foreach (var review in item)
+        public ReviewService(DataContext context)
         {
-            ReviewModel reviewModel = review;
-            reviews.Add(reviewModel);
+            _context = context;
         }
 
-        return reviews;
+        public async Task<IEnumerable<ReviewModel>> GetAllAsync()
+        {
+            var reviews = await _context.Reviews
+                .Select(review => new ReviewModel
+                {
+                    Id = review.Id,
+                    CommentCreated = review.CommentCreated,
+                    Rating = review.Rating,
+                    Comment = review.Comment
+                })
+                .ToListAsync();
+
+            return reviews;
+        }
     }
-
 }
-

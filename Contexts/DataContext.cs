@@ -20,7 +20,7 @@ namespace Project_Course_Submission.Contexts
         public DbSet<ProductCategoryEntity> ProductCategories { get; set; }
         public DbSet<ProductImageEntity> ProductImages { get; set; }
         public DbSet<ImageEntity> Images { get; set; }
-        public DbSet<ReviewsEntity> Reviews { get; set; }
+        public DbSet<ReviewEntity> Reviews { get; set; }
         public DbSet<ProductTagEntity> ProductTags { get; set; }
         public DbSet<TagEntity> Tags { get; set; }
         public DbSet<ProductEntity> Products { get; set; }
