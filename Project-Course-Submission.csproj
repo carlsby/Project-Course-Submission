@@ -45,15 +45,15 @@
 		<PackageReference Include="Twilio.AspNet.Mvc" Version="8.0.2" />
 	</ItemGroup>
 
-<<<<<<< HEAD
+
 
 	  <Folder Include="Migrations\" />
 
 
 	  <Folder Include="Views\Partials\Categories\" />
-=======
+
 	<ItemGroup>
->>>>>>> 765f9a27614e7be52b977be282b6195029b184cc
+765f9a27614e7be52b977be282b6195029b184cc
 	  <Folder Include="Views\Partials\User\" />
 	</ItemGroup>
 
