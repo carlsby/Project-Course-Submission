@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
@@ -6,10 +6,6 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>Project_Course_Submission</RootNamespace>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Compile Remove="Migrations\IdentityContextModelSnapshot.cs" />
-	</ItemGroup>
 
 	<ItemGroup>
 	  <Content Remove="compilerconfig.json" />
@@ -38,23 +34,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-
-
-	  <Folder Include="Migrations\" />
 		<PackageReference Include="Twilio" Version="6.14.1" />
 		<PackageReference Include="Twilio.AspNet.Mvc" Version="8.0.2" />
 	</ItemGroup>
 
-
-
-	  <Folder Include="Migrations\" />
-
-
-	  <Folder Include="Views\Partials\Categories\" />
-
 	<ItemGroup>
-765f9a27614e7be52b977be282b6195029b184cc
 	  <Folder Include="Views\Partials\User\" />
+	  <Folder Include="wwwroot\scss\core\" />
 	</ItemGroup>
 
 	<ItemGroup>
