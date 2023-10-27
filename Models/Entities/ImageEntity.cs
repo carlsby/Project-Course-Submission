@@ -6,5 +6,6 @@
 		public string ImageName { get; set; } = null!;
 
 		public ICollection<ProductImageEntity> Products { get; set; } = new HashSet<ProductImageEntity>();
+		public ICollection<CategoryImageEntity> Categories { get; set; } = new HashSet<CategoryImageEntity>();
 	}
 }

@@ -6,7 +6,7 @@ namespace Project_Course_Submission.Models.Entities
 	public class ProductEntity
 	{
 		[Key]
-		public string ArticleNumber { get; set; } = null!;
+		public string? ArticleNumber { get; set; }
 		public string? ProductName { get; set; }
 		public string Color { get; set; } = null!;
 		public string? Size { get; set; }
@@ -16,8 +16,13 @@ namespace Project_Course_Submission.Models.Entities
 		public string? Description { get; set; }
 
 		public ICollection<ProductCategoryEntity> Categories { get; set; } = new HashSet<ProductCategoryEntity>();
+
+
 		public ICollection<ProductTagEntity> Tags { get; set; } = new HashSet<ProductTagEntity>();
 		public ICollection<ProductImageEntity> Images { get; set; } = new HashSet<ProductImageEntity>();
-		public ICollection<ReviewsEntity> Reviews { get; set; } = new HashSet<ReviewsEntity>();
+		public ICollection<ProductReviewEntity> Reviews { get; set; } = new HashSet<ProductReviewEntity>();
+		
+		
+		
 	}
 }
