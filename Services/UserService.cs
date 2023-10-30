@@ -48,11 +48,23 @@ namespace Project_Course_Submission.Services
             return response;
         }
 
-        public async Task<UserProfileEntity> GetAsync(Expression<Func<UserProfileEntity, bool>> predicate)
+        public async Task<ServiceResponse<UserProfileEntity>> GetAsync(Expression<Func<UserProfileEntity, bool>> predicate)
         {
+            var response = new ServiceResponse<UserProfileEntity>();
+
             var userProfile = await _identityContext.UserProfiles.Include(x => x.Addresses).FirstOrDefaultAsync(predicate);
 
-            return userProfile!;
+            if (userProfile != null)
+            {
+                response.StatusCode = Enums.StatusCode.Ok;
+                response.Content = userProfile;
+            }
+            else
+            {
+                response.StatusCode = Enums.StatusCode.BadRequest;
+            }
+
+            return response;
         }
 
         public async Task<UserViewModel> GetCurrentUserAsync(ClaimsPrincipal claim)
@@ -68,7 +80,7 @@ namespace Project_Course_Submission.Services
                 {
                     var profile = await GetAsync(x => x.UserId == user.Id);
 
-                    userViewModel = profile;
+                    userViewModel = profile.Content!;
                     userViewModel.Email = user.UserName;
                     userViewModel.PhoneNumber = user.PhoneNumber;
                 }

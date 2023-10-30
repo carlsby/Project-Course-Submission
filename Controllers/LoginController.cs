@@ -7,9 +7,9 @@ namespace Project_Course_Submission.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly AuthService _auth;
+        private readonly IAuthService _auth;
 
-        public LoginController(AuthService auth)
+        public LoginController(IAuthService auth)
         {
             _auth = auth;
         }
@@ -24,16 +24,25 @@ namespace Project_Course_Submission.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (await _auth.LogInAsync(model))
+                var response = await _auth.LogInAsync(model);
+
+                if (response.StatusCode == Enums.StatusCode.Ok && response.Content)
                 {
+                    response.StatusCode = Enums.StatusCode.Ok;
                     return RedirectToAction("Index", "Account");
                 }
-
-                ModelState.AddModelError("", "Incorrect email or password.");
+                else
+                {
+                    response.StatusCode = Enums.StatusCode.BadRequest;
+                    ModelState.AddModelError("", "Incorrect email or password.");
+                    return View(model);
+                }
             }
 
             return View(model);
+
         }
+
 
         public IActionResult ForgotPassword()
         {

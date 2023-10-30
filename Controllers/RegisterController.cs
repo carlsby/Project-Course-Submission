@@ -4,20 +4,20 @@ using Project_Course_Submission.ViewModels;
 
 namespace Project_Course_Submission.Controllers
 {
-	public class RegisterController : Controller
-	{
+    public class RegisterController : Controller
+    {
 
-        private readonly AuthService _auth;
+        private readonly IAuthService _auth;
 
-        public RegisterController(AuthService auth)
+        public RegisterController(IAuthService auth)
         {
             _auth = auth;
         }
 
         public IActionResult Index()
-		{
-			return View();
-		}
+        {
+            return View();
+        }
 
 
         [HttpPost]
@@ -25,15 +25,18 @@ namespace Project_Course_Submission.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (await _auth.RegisterAsync(model))
+                var result = await _auth.RegisterAsync(model);
+
+                if (result.Content)
                 {
                     return RedirectToAction("Index", "Login");
                 }
 
-                ModelState.AddModelError("", "A user with the same email already exits.");
+                ModelState.AddModelError("", "A user with the same email already exists.");
             }
 
             return View(model);
         }
+
     }
 }

@@ -14,7 +14,8 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configura
 
 
 builder.Services.AddScoped<UserService>();
-builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 {

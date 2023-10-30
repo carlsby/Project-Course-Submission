@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Identity;
 using Project_Course_Submission.Contexts;
+using Project_Course_Submission.Models;
 using Project_Course_Submission.Models.Entities;
 using Project_Course_Submission.ViewModels;
 using System.Security.Claims;
 
 namespace Project_Course_Submission.Services
 {
-    public class AuthService
+    public interface IAuthService
+    {
+        Task<ServiceResponse<bool>> LogInAsync(UserLoginViewModel model);
+        Task<ServiceResponse<bool>> LogoutAsync(ClaimsPrincipal user);
+        Task<ServiceResponse<bool>> RegisterAsync(UserRegisterViewModel model);
+
+    }
+    public class AuthService : IAuthService
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -19,8 +28,10 @@ namespace Project_Course_Submission.Services
             _identityContext = identityContext;
         }
 
-        public async Task<bool> RegisterAsync(UserRegisterViewModel model)
+        public async Task<ServiceResponse<bool>> RegisterAsync(UserRegisterViewModel model)
         {
+            var response = new ServiceResponse<bool>();
+
             try
             {
                 IdentityUser identityUser = model;
@@ -36,28 +47,57 @@ namespace Project_Course_Submission.Services
 
                 _identityContext.UserProfiles.Add(userProfileEntity);
                 await _identityContext.SaveChangesAsync();
+                response.Content = true;
+                response.StatusCode = Enums.StatusCode.Created;
 
-                return true;
-            }catch { return false; }
-            
+            }
+            catch
+            {
+                response.Content = false;
+                response.StatusCode = Enums.StatusCode.BadRequest;
+            }
+
+            return response;
+
         }
 
-        public async Task<bool> LogInAsync(UserLoginViewModel model)
+        public async Task<ServiceResponse<bool>> LogInAsync(UserLoginViewModel model)
         {
+            var response = new ServiceResponse<bool>();
+
             try
             {
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-
-                return result.Succeeded;
+                response.Content = result.Succeeded;
+                response.StatusCode = result.Succeeded ? Enums.StatusCode.Ok : Enums.StatusCode.BadRequest;
             }
-            catch { return false; }
+            catch
+            {
+                response.Content = false;
+                response.StatusCode = Enums.StatusCode.BadRequest;
+            }
+
+            return response;
         }
 
-        public async Task<bool> LogoutAsync(ClaimsPrincipal user)
-        {
-            await _signInManager.SignOutAsync();
 
-            return _signInManager.IsSignedIn(user);
+        public async Task<ServiceResponse<bool>> LogoutAsync(ClaimsPrincipal user)
+        {
+            var response = new ServiceResponse<bool>();
+
+            try
+            {
+                await _signInManager.SignOutAsync();
+                response.Content = true;
+                response.StatusCode = Enums.StatusCode.Ok;
+            }
+            catch
+            {
+                response.Content = false;
+                response.StatusCode = Enums.StatusCode.BadRequest;
+            }
+
+            return response;
         }
 
     }
