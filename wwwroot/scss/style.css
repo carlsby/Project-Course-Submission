@@ -185,6 +185,17 @@ p {
   margin-bottom: 20px;
 }
 
+.product-page {
+  padding: 40px 20px;
+  display: flex;
+}
+.product-page a {
+  text-decoration: none;
+  color: #111111;
+  font-family: "Mulish", sans-serif;
+  font-size: 22px;
+}
+
 ul {
   margin: 0px;
   padding: 0px;

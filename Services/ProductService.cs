@@ -16,7 +16,16 @@ namespace Project_Course_Submission.Services
 			_prodRepo = prodRepo;
 		}
 
-	     public async Task<IEnumerable<string>> GetCategoriesAsync()
+        public async Task<ProductEntity> GetProductByArticleNumberAsync(string articleNumber)
+        {
+            var product = await _prodRepo.GetAsync(x => x.ArticleNumber == articleNumber);
+
+            return product;
+        }
+
+
+        #region GetCategoriesAsync
+        public async Task<IEnumerable<string>> GetCategoriesAsync()
 		    {
 		         var items = await _prodRepo.GetAllAsync();
 
@@ -29,9 +38,10 @@ namespace Project_Course_Submission.Services
 
 		return categoryList;
 		    }
+        #endregion
 
-		#region GetCategoryImagesAsync 
-		public async Task<IEnumerable<(int CategoryId, int ImageId)>> GetCategoryImagesAsync()
+        #region GetCategoryImagesAsync 
+        public async Task<IEnumerable<(int CategoryId, int ImageId)>> GetCategoryImagesAsync()
 		{
 			var items = await _prodRepo.GetAllAsync();
 
