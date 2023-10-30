@@ -15,8 +15,8 @@ namespace Project_Course_Submission.Services
 		{
 			_prodRepo = prodRepo;
 		}
-
-        public async Task<ProductEntity> GetProductByArticleNumberAsync(string articleNumber)
+	
+		public async Task<ProductEntity> GetProductByArticleNumberAsync(string articleNumber)
         {
             var product = await _prodRepo.GetAsync(x => x.ArticleNumber == articleNumber);
 

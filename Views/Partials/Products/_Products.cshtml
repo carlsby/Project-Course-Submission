@@ -1,28 +1,33 @@
-﻿
-@model IEnumerable<ProductEntity>
+﻿@model ProductIndexViewModel
+
 <section class="product-page">
-<div class="container">
- 
-        @foreach (var product in Model)
-        {
-			<div class="container" id="container-product">
-				
-                    
-                        <a asp-action="details" id="product-route" asp-route-articleNumber="@product.ArticleNumber">@product.ProductName</a>
-					<strong>
-						@product.Price.ToString("0:-")
-                    </strong>
-
-                    
-                    
-
+    <div class="container">
+        <h1>@Model.Title</h1>
+        <div class="product-container">
+            @foreach (var product in Model.Products!)
+            {
+                <div class="product-card">
+                    <img src="product-image-url.jpg" class="product-image" alt="Product Image">
+                    <i class="add-cart fa-regular fa-cart-plus"></i>
+					<i class="fa-regular fa-heart" id="heart-icon"></i>
+                    <div class="product-container">
+                    <h5 class="product-title">@product.ProductName</h5>
+                    <p class="product-description">@product.Description</p>
+                    <p class="product-price">Price: @product.Price.ToString("0:-")</p>
+                    </div>
+                    <div class="star-container">
+                        <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+                        <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+                        <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+                        <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+                        <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+                    </div>
+                    <a asp-action="details" id="product-route" asp-route-articleNumber="@product.ArticleNumber" class="btn btn-primary">Details</a>
                 </div>
-               
-              
-     
-        }
-</div>
-
-
-
+			
+            }
+        </div>
+        
+   
+    </div>
 </section>
