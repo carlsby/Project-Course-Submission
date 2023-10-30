@@ -12,7 +12,7 @@ namespace Project_Course_Submission.Services
     public interface IUserService
     {
         Task<ServiceResponse<UserProfileEntity>> GetUserProfileAsync(string userId);
-
+        Task<ServiceResponse<UserProfileEntity>> GetAsync(Expression<Func<UserProfileEntity, bool>> predicate);
     }
 
     public class UserService : IUserService
