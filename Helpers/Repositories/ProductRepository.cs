@@ -18,10 +18,8 @@ public class ProductRepository : TEntityRepository<ProductEntity>
         _webHostEnvironment = webHostEnvironment;
     }
 
-
-
-	#region GetAllAsync
-	public override async Task<IEnumerable<ProductEntity>> GetAllAsync()
+    #region GetAllAsync
+    public override async Task<IEnumerable<ProductEntity>> GetAllAsync()
     {
         var items = await _context.Products
             .Include(x => x.Tags)
