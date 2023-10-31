@@ -15,6 +15,7 @@ namespace Project_Course_Submission.Models.Entities
 		public decimal Price { get; set; }
 		public string? Description { get; set; }
 
+	
 		public ICollection<ProductCategoryEntity> Categories { get; set; } = new HashSet<ProductCategoryEntity>();
 		public ICollection<ProductTagEntity> Tags { get; set; } = new HashSet<ProductTagEntity>();
 		public ICollection<ProductImageEntity> Images { get; set; } = new HashSet<ProductImageEntity>();

@@ -9,23 +9,33 @@ namespace Project_Course_Submission.Controllers
 	{
 		
         private readonly ProductRepository _productRepository;
-	
-		public ProductsController(ProductRepository productRepository)
+		private readonly ProductService _productService;
+
+		public ProductsController(ProductRepository productRepository, ProductService productService)
 		{
 			_productRepository = productRepository;
+			_productService = productService;
 		}
 		public async Task<ActionResult> Index()
         {
 	
 			var products = await _productRepository.GetAllAsync();
-			var viewModel = new ProductIndexViewModel
-			{
-				Products = products,
-				Title = "Products",
-				
-			};
+            var categoryNames = (await _productRepository.GetCategoriesAsync()).Distinct();
+            var categoryItems = categoryNames.Select(categoryName =>
+                new CategoryItemViewModel
+                {
+                    CategoryName = categoryName,
+                }).ToList();
 
-			return View(viewModel);
+            var viewModel = new ProductIndexViewModel
+            {
+                Products = products,
+                Title = "Our Products",
+                Categories = categoryItems
+            };
+
+
+            return View(viewModel);
 		}
 
         public async Task<IActionResult> Details(string articleNumber)
