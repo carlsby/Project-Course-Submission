@@ -9,5 +9,6 @@ namespace Project_Course_Submission.Models.Entities
         public string? StreetName { get; set; }
         public string? PostalCode { get; set; }
         public string? City { get; set; }
+
     }
 }
