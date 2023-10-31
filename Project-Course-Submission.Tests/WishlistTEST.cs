@@ -11,7 +11,7 @@ using Project_Course_Submission.ViewModels;
 using Xunit;
 using NuGet.ContentModel;
 
-namespace YourProject.Tests.Controllers
+namespace Project_Course_Submission.Tests.Controllers
 {
     public class WishlistControllerTests
     {
@@ -58,8 +58,19 @@ namespace YourProject.Tests.Controllers
             // Assert
             Assert.NotNull(result);
             var model = result.Model as List<WishlistViewModel>;
+            Console.WriteLine($"Product Title: {model}");
             Assert.NotNull(model);
             Assert.NotEmpty(model);
+
+            foreach (var item in model)
+            {
+                Console.WriteLine($"Product Title: {model}");
+                Console.WriteLine($"Product Title: {item.ProductTitle}");
+                Console.WriteLine($"Product Image: {item.ProductImg}");
+                Console.WriteLine($"Product Price: {item.ProductPrice}");
+                Console.WriteLine($"Product Review: {item.ProductReview}");
+                Console.WriteLine($"Product Article Number: {item.ProductsArticleNumber}");
+            }
         }
     }
 }
