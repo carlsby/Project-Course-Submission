@@ -7,9 +7,9 @@ namespace Project_Course_Submission.Factories
 {
     public class CustomClaimsPrincipalFactory : UserClaimsPrincipalFactory<IdentityUser>
     {
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
 
-        public CustomClaimsPrincipalFactory(UserManager<IdentityUser> userManager, IOptions<IdentityOptions> optionsAccessor, UserService userService) : base(userManager, optionsAccessor)
+        public CustomClaimsPrincipalFactory(UserManager<IdentityUser> userManager, IOptions<IdentityOptions> optionsAccessor, IUserService userService) : base(userManager, optionsAccessor)
         {
             _userService = userService;
         }

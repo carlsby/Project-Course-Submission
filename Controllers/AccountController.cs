@@ -10,11 +10,13 @@ namespace Project_Course_Submission.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
+        private readonly ITwilioService _wilioService;
 
-        public AccountController(UserService userService)
+        public AccountController(IUserService userService, ITwilioService wilioService)
         {
             _userService = userService;
+            _wilioService = wilioService;
         }
 
         [Authorize]
@@ -41,25 +43,18 @@ namespace Project_Course_Submission.Controllers
         }
 
         [HttpPost]
-        public IActionResult Verification(PhoneNumberViewModel phoneNumberViewModel)
+        public async Task<IActionResult> Verification(PhoneNumberViewModel phoneNumberViewModel)
         {
-            string accountSid = "AC4857a3b575c88d6b68bc6c7bdccd844d";
-            string authToken = "fce5ce9bd8a949ba32ac3461cd3b35a1";
+            var response = await _wilioService.SendTextVerification(phoneNumberViewModel);
 
-            TwilioClient.Init(accountSid, authToken);
-
-            string fromPhoneNumber = "+13202868756";
-
-            string toPhoneNumber = phoneNumberViewModel.PhoneNumber!;
-            string messageBody = "hej";
-
-            MessageResource.Create(
-                body: messageBody,
-                from: new Twilio.Types.PhoneNumber(fromPhoneNumber),
-                to: new Twilio.Types.PhoneNumber(toPhoneNumber)
-            );
-
-            return RedirectToAction("OTP", "Account");
+            if (response.StatusCode == Enums.StatusCode.Ok)
+            {
+                return RedirectToAction("OTP", "Account");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public async Task<IActionResult> Edit()

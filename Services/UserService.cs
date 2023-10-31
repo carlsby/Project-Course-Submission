@@ -13,6 +13,7 @@ namespace Project_Course_Submission.Services
     {
         Task<ServiceResponse<UserProfileEntity>> GetUserProfileAsync(string userId);
         Task<ServiceResponse<UserProfileEntity>> GetAsync(Expression<Func<UserProfileEntity, bool>> predicate);
+        Task<ServiceResponse<UserViewModel>> GetCurrentUserAsync(ClaimsPrincipal claim);
     }
 
     public class UserService : IUserService
@@ -67,12 +68,13 @@ namespace Project_Course_Submission.Services
             return response;
         }
 
-        public async Task<UserViewModel> GetCurrentUserAsync(ClaimsPrincipal claim)
+        public async Task<ServiceResponse<UserViewModel>> GetCurrentUserAsync(ClaimsPrincipal claim)
         {
             try
             {
                 UserViewModel userViewModel = new();
                 AddressViewModel addressViewModel = new();
+                var response = new ServiceResponse<UserViewModel>();
 
                 var user = await _userManager.FindByEmailAsync(claim.Identity!.Name!);
 
@@ -83,8 +85,9 @@ namespace Project_Course_Submission.Services
                     userViewModel = profile.Content!;
                     userViewModel.Email = user.UserName;
                     userViewModel.PhoneNumber = user.PhoneNumber;
+                    response.Content = userViewModel;
                 }
-                return userViewModel;
+                return response;
             }
             catch { return null!; }
         }
