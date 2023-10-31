@@ -58,7 +58,6 @@ namespace Project_Course_Submission.Tests.Controllers
             // Assert
             Assert.NotNull(result);
             var model = result.Model as List<WishlistViewModel>;
-            Console.WriteLine($"Product Title: {model}");
             Assert.NotNull(model);
             Assert.NotEmpty(model);
 
