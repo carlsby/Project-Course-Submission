@@ -3,24 +3,21 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Course_Submission.Contexts;
 
 #nullable disable
 
-namespace Project_Course_Submission.Migrations
+namespace Project_Course_Submission.Migrations.Identity
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20231019082248_test")]
-    partial class test
+    partial class IdentityContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.12")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -220,7 +217,6 @@ namespace Project_Course_Submission.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("Adresses");
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
@@ -243,39 +239,7 @@ namespace Project_Course_Submission.Migrations
 
                     b.HasKey("Id");
 
-<<<<<<< HEAD:Migrations/IdentityContextModelSnapshot.cs
-                    b.ToTable("Adresses", (string)null);
-                });
-
-<<<<<<< HEAD
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserPhoneNumbersEntity", b =>
-=======
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.PhoneNumberEntity", b =>
->>>>>>> cf2ec567beebe8c85d806a2643ef2b00ca43a5c4
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Confirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("PhoneNumbers", (string)null);
-=======
                     b.ToTable("Adresses");
->>>>>>> 765f9a27614e7be52b977be282b6195029b184cc:Migrations/20231019082248_test.Designer.cs
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserAddressEntity", b =>
@@ -317,7 +281,6 @@ namespace Project_Course_Submission.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("UserProfiles");
                     b.ToTable("UserProfiles");
                 });
 
@@ -372,11 +335,7 @@ namespace Project_Course_Submission.Migrations
                         .IsRequired();
                 });
 
-<<<<<<< HEAD
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserPhoneNumbersEntity", b =>
-=======
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserAddressEntity", b =>
->>>>>>> cf2ec567beebe8c85d806a2643ef2b00ca43a5c4
                 {
                     b.HasOne("Project_Course_Submission.Models.Entities.AddressEntity", "Address")
                         .WithMany()

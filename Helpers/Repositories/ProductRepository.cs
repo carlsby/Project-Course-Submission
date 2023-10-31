@@ -3,8 +3,6 @@ using System.Linq.Expressions;
 using Project_Course_Submission.Contexts;
 using Project_Course_Submission.Models.Entities;
 using Microsoft.AspNetCore.Hosting;
-using Project_Course_Submission.Migrations.Data;
-using ImageEntity = Project_Course_Submission.Migrations.Data.ImageEntity;
 
 namespace Project_Course_Submission.Services.Repositories;
 

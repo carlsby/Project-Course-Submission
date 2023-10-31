@@ -3,14 +3,29 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Project_Course_Submission.Migrations.Data
+namespace Project_Course_Submission.Migrations
 {
     /// <inheritdoc />
-    public partial class ProductsDb : Migration
+    public partial class dbu : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AddressEntity",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StreetName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AddressEntity", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
@@ -50,7 +65,7 @@ namespace Project_Course_Submission.Migrations.Data
                 });
 
             migrationBuilder.CreateTable(
-                name: "ImageEntity",
+                name: "Images",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -59,7 +74,7 @@ namespace Project_Course_Submission.Migrations.Data
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ImageEntity", x => x.Id);
+                    table.PrimaryKey("PK_Images", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,6 +91,21 @@ namespace Project_Course_Submission.Migrations.Data
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.ArticleNumber);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CommentCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -106,6 +136,32 @@ namespace Project_Course_Submission.Migrations.Data
                         name: "FK_UserProfileEntity_IdentityUser_UserId",
                         column: x => x.UserId,
                         principalTable: "IdentityUser",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CategoryImageEntity",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    ImageId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CategoryImageEntity", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CategoryImageEntity_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CategoryImageEntity_Images_ImageId",
+                        column: x => x.ImageId,
+                        principalTable: "Images",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -146,9 +202,9 @@ namespace Project_Course_Submission.Migrations.Data
                 {
                     table.PrimaryKey("PK_ProductImages", x => new { x.ArticleNumber, x.ImageId });
                     table.ForeignKey(
-                        name: "FK_ProductImages_ImageEntity_ImageId",
+                        name: "FK_ProductImages_Images_ImageId",
                         column: x => x.ImageId,
-                        principalTable: "ImageEntity",
+                        principalTable: "Images",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -160,7 +216,31 @@ namespace Project_Course_Submission.Migrations.Data
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductTagEntity",
+                name: "ProductReviewEntity",
+                columns: table => new
+                {
+                    ReviewId = table.Column<int>(type: "int", nullable: false),
+                    ArticleNumber = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductReviewEntity", x => new { x.ArticleNumber, x.ReviewId });
+                    table.ForeignKey(
+                        name: "FK_ProductReviewEntity_Products_ArticleNumber",
+                        column: x => x.ArticleNumber,
+                        principalTable: "Products",
+                        principalColumn: "ArticleNumber",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductReviewEntity_Reviews_ReviewId",
+                        column: x => x.ReviewId,
+                        principalTable: "Reviews",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductTags",
                 columns: table => new
                 {
                     ArticleNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -168,15 +248,15 @@ namespace Project_Course_Submission.Migrations.Data
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductTagEntity", x => new { x.ArticleNumber, x.TagId });
+                    table.PrimaryKey("PK_ProductTags", x => new { x.ArticleNumber, x.TagId });
                     table.ForeignKey(
-                        name: "FK_ProductTagEntity_Products_ArticleNumber",
+                        name: "FK_ProductTags_Products_ArticleNumber",
                         column: x => x.ArticleNumber,
                         principalTable: "Products",
                         principalColumn: "ArticleNumber",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductTagEntity_Tags_TagId",
+                        name: "FK_ProductTags_Tags_TagId",
                         column: x => x.TagId,
                         principalTable: "Tags",
                         principalColumn: "Id",
@@ -184,31 +264,25 @@ namespace Project_Course_Submission.Migrations.Data
                 });
 
             migrationBuilder.CreateTable(
-                name: "Reviews",
+                name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CommentCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false),
-                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ArticleNumber = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OrderStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Reviews", x => x.Id);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reviews_Products_ArticleNumber",
-                        column: x => x.ArticleNumber,
-                        principalTable: "Products",
-                        principalColumn: "ArticleNumber",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Reviews_UserProfileEntity_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Orders_UserProfileEntity_UserId",
+                        column: x => x.UserId,
                         principalTable: "UserProfileEntity",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -217,40 +291,123 @@ namespace Project_Course_Submission.Migrations.Data
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StreetName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    AddressId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserAddressEntity", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_UserAddressEntity_AddressEntity_AddressId",
+                        column: x => x.AddressId,
+                        principalTable: "AddressEntity",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_UserAddressEntity_UserProfileEntity_UserId",
                         column: x => x.UserId,
                         principalTable: "UserProfileEntity",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserPhoneNumbersEntity",
+                name: "Wishlist",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Confirmed = table.Column<bool>(type: "bit", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    ProductTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductImg = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductPrice = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductReview = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductReviewRate = table.Column<int>(type: "int", nullable: false),
+                    ProductsArticleNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserPhoneNumbersEntity", x => x.Id);
+                    table.PrimaryKey("PK_Wishlist", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserPhoneNumbersEntity_UserProfileEntity_UserId",
+                        name: "FK_Wishlist_Products_ProductsArticleNumber",
+                        column: x => x.ProductsArticleNumber,
+                        principalTable: "Products",
+                        principalColumn: "ArticleNumber",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Wishlist_UserProfileEntity_UserId",
                         column: x => x.UserId,
                         principalTable: "UserProfileEntity",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "OrderItemEntity",
+                columns: table => new
+                {
+                    OrderItemId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Size = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Color = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrderId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderItemEntity", x => x.OrderItemId);
+                    table.ForeignKey(
+                        name: "FK_OrderItemEntity_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tracks",
+                columns: table => new
+                {
+                    TrackId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TrackDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDot = table.Column<bool>(type: "bit", nullable: false),
+                    IsLine = table.Column<bool>(type: "bit", nullable: false),
+                    OrderId = table.Column<int>(type: "int", nullable: false),
+                    TrackLabel = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tracks", x => x.TrackId);
+                    table.ForeignKey(
+                        name: "FK_Tracks_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CategoryImageEntity_CategoryId",
+                table: "CategoryImageEntity",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CategoryImageEntity_ImageId",
+                table: "CategoryImageEntity",
+                column: "ImageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItemEntity_OrderId",
+                table: "OrderItemEntity",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_UserId",
+                table: "Orders",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductCategories_CategoryId",
@@ -263,19 +420,24 @@ namespace Project_Course_Submission.Migrations.Data
                 column: "ImageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductTagEntity_TagId",
-                table: "ProductTagEntity",
+                name: "IX_ProductReviewEntity_ReviewId",
+                table: "ProductReviewEntity",
+                column: "ReviewId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductTags_TagId",
+                table: "ProductTags",
                 column: "TagId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_ArticleNumber",
-                table: "Reviews",
-                column: "ArticleNumber");
+                name: "IX_Tracks_OrderId",
+                table: "Tracks",
+                column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_UserId1",
-                table: "Reviews",
-                column: "UserId1");
+                name: "IX_UserAddressEntity_AddressId",
+                table: "UserAddressEntity",
+                column: "AddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserAddressEntity_UserId",
@@ -283,8 +445,13 @@ namespace Project_Course_Submission.Migrations.Data
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserPhoneNumbersEntity_UserId",
-                table: "UserPhoneNumbersEntity",
+                name: "IX_Wishlist_ProductsArticleNumber",
+                table: "Wishlist",
+                column: "ProductsArticleNumber");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Wishlist_UserId",
+                table: "Wishlist",
                 column: "UserId");
         }
 
@@ -292,31 +459,49 @@ namespace Project_Course_Submission.Migrations.Data
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "CategoryImageEntity");
+
+            migrationBuilder.DropTable(
+                name: "OrderItemEntity");
+
+            migrationBuilder.DropTable(
                 name: "ProductCategories");
 
             migrationBuilder.DropTable(
                 name: "ProductImages");
 
             migrationBuilder.DropTable(
-                name: "ProductTagEntity");
+                name: "ProductReviewEntity");
 
             migrationBuilder.DropTable(
-                name: "Reviews");
+                name: "ProductTags");
+
+            migrationBuilder.DropTable(
+                name: "Tracks");
 
             migrationBuilder.DropTable(
                 name: "UserAddressEntity");
 
             migrationBuilder.DropTable(
-                name: "UserPhoneNumbersEntity");
+                name: "Wishlist");
 
             migrationBuilder.DropTable(
                 name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "ImageEntity");
+                name: "Images");
+
+            migrationBuilder.DropTable(
+                name: "Reviews");
 
             migrationBuilder.DropTable(
                 name: "Tags");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "AddressEntity");
 
             migrationBuilder.DropTable(
                 name: "Products");
