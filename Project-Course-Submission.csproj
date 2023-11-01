@@ -8,6 +8,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Project-Course-Submission.Tests\**" />
+	  <Content Remove="Project-Course-Submission.Tests\**" />
+	  <EmbeddedResource Remove="Project-Course-Submission.Tests\**" />
+	  <None Remove="Project-Course-Submission.Tests\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Remove="compilerconfig.json" />
 	</ItemGroup>
 
