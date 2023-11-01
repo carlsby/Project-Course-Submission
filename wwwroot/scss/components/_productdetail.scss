@@ -1,0 +1,72 @@
+﻿
+.container {
+    padding: 40px 80px 40px 80px;
+
+
+
+    .detail-title {
+        margin-top: 10px;
+        font-family: $font-mulish;
+        color: $color-grey;
+        font-size: 24px;
+    }
+
+    .detail-price, {
+        font-family: $font-mulish;
+        font-size: 18px;
+    }
+
+    .detail-description {
+        font-family: 'Segoe UI';
+    }
+
+    .star-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    #star-icon {
+        color: $color-star;
+    }
+
+    #icon-container {
+        position: relative;
+
+        #heart-icon {
+            position: absolute;
+            top: 80px;
+            right: 30px;
+
+            &:hover {
+                color: $color-heart;
+            }
+        }
+    }
+
+    #icon-container i {
+        position: absolute;
+        top: 40px;
+        right: 30px;
+        font-size: 24px;
+        color: $color-grey;
+    }
+
+    #arrow-icon {
+        margin-left: 5px;
+        font-size: 16px;
+    }
+
+    .link-products {
+        margin-top: 15px;
+
+    }
+ 
+    a {
+        text-decoration: none;
+        color: $color-grey;
+        &:hover {
+           color: cadetblue;
+        }
+    }
+}

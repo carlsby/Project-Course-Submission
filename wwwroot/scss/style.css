@@ -185,6 +185,63 @@ p {
   margin-bottom: 20px;
 }
 
+.container {
+  padding: 40px 80px 40px 80px;
+}
+.container .detail-title {
+  margin-top: 10px;
+  font-family: "Mulish", sans-serif;
+  color: #626262;
+  font-size: 24px;
+}
+.container .detail-price {
+  font-family: "Mulish", sans-serif;
+  font-size: 18px;
+}
+.container .detail-description {
+  font-family: "Segoe UI";
+}
+.container .star-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.container #star-icon {
+  color: #FFBE00;
+}
+.container #icon-container {
+  position: relative;
+}
+.container #icon-container #heart-icon {
+  position: absolute;
+  top: 80px;
+  right: 30px;
+}
+.container #icon-container #heart-icon:hover {
+  color: #F4303C;
+}
+.container #icon-container i {
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  font-size: 24px;
+  color: #626262;
+}
+.container #arrow-icon {
+  margin-left: 5px;
+  font-size: 16px;
+}
+.container .link-products {
+  margin-top: 15px;
+}
+.container a {
+  text-decoration: none;
+  color: #626262;
+}
+.container a:hover {
+  color: cadetblue;
+}
+
 .product-page {
   padding: 40px 20px;
   display: flex;
