@@ -2,7 +2,7 @@
     display: flex;
     padding: 40px 20px;
 
-    
+
     .title {
         text-align: left;
     }
@@ -27,12 +27,20 @@
 
     #icon-container {
         position: relative;
-        
 
-        #heart-icon {
+        #cart-featured-icon {
             position: absolute;
-            top: 30px;
-            right: 50px;
+            top: 100px;
+            right: 10px;
+            font-size: 16px;
+        }
+
+
+        #heart-featured-icon {
+            position: absolute;
+            top: 80px;
+            right: 10px;
+            font-size: 14px;
 
             &:hover {
                 color: $color-heart;
@@ -48,12 +56,13 @@
         color: $color-grey;
     }
 
+
     #arrow-icon {
         margin-left: 5px;
         font-size: 16px;
     }
- 
-    .featured-img{
+
+    .featured-img {
         height: 200px;
         object-fit: contain;
     }

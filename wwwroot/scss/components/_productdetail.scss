@@ -2,7 +2,9 @@
 .container {
     padding: 40px 80px 40px 80px;
 
-
+    h2 {
+        margin-bottom: 20px;
+    }
 
     .detail-title {
         margin-top: 10px;
@@ -11,9 +13,29 @@
         font-size: 24px;
     }
 
+    #heart-icon {
+        display: flex;
+        margin-top: 10px;
+        justify-content: flex-end;
+        font-size: 20px;
+
+        &:hover {
+            color: $color-heart;
+        }
+    }
+
+    h4 {
+        margin-top: 5px;
+    }
+
     .detail-price, {
         font-family: $font-mulish;
-        font-size: 18px;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .star-detail-container {
+        margin-top: 10px;
     }
 
     .detail-description {
@@ -52,21 +74,149 @@
         color: $color-grey;
     }
 
+    #cart-icon {
+        color: $color-grey;
+
+        &:hover {
+            color: $color-black;
+        }
+    }
+
     #arrow-icon {
         margin-left: 5px;
         font-size: 16px;
     }
 
-    .link-products {
-        margin-top: 15px;
-
+    .icon-size-container, .icon-color-container {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        gap: 5px;
     }
- 
+
+    .icon-color-container {
+        margin-top: 20px;
+    }
+
+    .size-text, .color-text {
+        font-size: 16px;
+        margin-top: 10px;
+        font-family: $font-mulish;
+        font-size: 14px;
+    }
+
+
+    .icon-size {
+        margin-top: 10px;
+        width: 40px;
+        height: 40px;
+        color: black;
+        border-radius: 50%;
+        border: 1px solid rgb(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: $font-mulish;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 0;
+
+        &:hover {
+            background-color: #DBE3F5;
+            cursor: pointer;
+        }
+    }
+
+    .icon-color {
+        margin-top: 10px;
+        width: 30px;
+        height: 30px;
+        color: black;
+        border-radius: 50%;
+        border: 1px solid rgb(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: $font-mulish;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 0;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .red {
+        background-color: #FF6262;
+    }
+
+    .blue {
+        background-color: #63C7FF;
+    }
+
+    .beige {
+        background-color: #F8E7CD;
+    }
+
+    .navy {
+        background-color: #323858;
+    }
+
+    .black {
+        background-color: $color-black;
+    }
+
+    .link-products {
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        font-family: $font-mulish;
+    }
+
     a {
         text-decoration: none;
         color: $color-grey;
+
         &:hover {
-           color: cadetblue;
+            color: cadetblue;
+        }
+    }
+
+    #quantity-container {
+        margin-top: 20px;
+    }
+
+    #form-quantity {
+        width: 40px;
+    }
+
+    #plus-button, #minus-button {
+        color: $color-black;
+    }
+
+
+
+    .btn-add-to-cart {
+        margin-top: 20px;
+        cursor: pointer;
+        font-family: $font-mulish;
+        padding: 10px 35px;
+        border: 1px solid $color-black;
+        background-color: $color-black;
+        color: white;
+        text-decoration: none;
+        transition: all 0.25s ease-in-out;
+        border-radius: 25px;
+
+        &:hover {
+            color: $color-black;
+            background-color: white;
         }
     }
 }

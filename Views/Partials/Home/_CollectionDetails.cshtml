@@ -6,23 +6,68 @@
         <div class="product-image">
             <img src="~/images/270x295.svg" alt="Detailpage">
         </div>
-        
+        <i class="fa-regular fa-heart" id="heart-icon"></i>
+       
         @if (Model.BestSellers != null)
         {
             <h4>@Model.BestSellers.BestItems.FirstOrDefault()?.Title</h4>
-            <div class="product-description">
+            <div class="detail-description">
                 @Model.BestSellers.BestItems.FirstOrDefault()?.Description
-        </div>
-            <div class="product-price">$@Model.BestSellers.BestItems.FirstOrDefault()?.Price</div>
+            </div>
+            <div class="detail-price">$@Model.BestSellers.BestItems.FirstOrDefault()?.Price</div>
 
         }
         else if (Model.FeaturedProducts != null)
         {
-             <h4>@Model.FeaturedProducts.FeaturedItems.FirstOrDefault()?.Title</h4>
-            <div class="product-description">
+            <h4>@Model.FeaturedProducts.FeaturedItems.FirstOrDefault()?.Title</h4>
+            <div class="detail-description">
                 @Model.FeaturedProducts.FeaturedItems.FirstOrDefault()?.Description
             </div>
-            <div class="product-price">$@Model.FeaturedProducts.FeaturedItems.FirstOrDefault()?.Price</div>
+            <div class="detail-price">$@Model.FeaturedProducts.FeaturedItems.FirstOrDefault()?.Price</div>
         }
+        <div class="star-detail-container">
+            <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+            <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+            <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+            <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+            <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+        </div>
+
+		<div class="size-text">Size</div>
+		<div class="icon-size-container">
+			
+			<div class="icon-size">xs</div>
+			<div class="icon-size">s</div>
+			<div class="icon-size">m</div>
+			<div class="icon-size">l</div>
+			<div class="icon-size">xl</div>
+			<div class="icon-size">xxl</div>
+        </div>
+   
+        
+        <div class="icon-color-container">
+			<div class="size-text">Color</div>
+            <div class="icon-color red"></div>
+            <div class="icon-color blue"></div>
+            <div class="icon-color beige"></div>
+            <div class="icon-color navy"></div>
+            <div class="icon-color black"></div>
+           
+        </div>
+        
+        <div class="col-md-3 col-lg-3 col-xl-2 d-flex" id="quantity-container">
+            <button class="btn btn-link px-2" id="minus-button"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                <i class="fas fa-minus"></i>
+            </button>
+            <input id="form-quantity" min="0" name="quantity" value="1" type="number"
+                   class="form-control form-control-sm" />
+            <button class="btn btn-link px-2" id="plus-button"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                <i class="fas fa-plus"></i>
+            </button>
     </div>
+
+    <button class="btn-add-to-cart">Add To Cart</button>
+
 </section>

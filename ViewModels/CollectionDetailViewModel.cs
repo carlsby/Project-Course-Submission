@@ -2,7 +2,7 @@
 {
    public class CollectionDetailViewModel
     {
-        public string Title { get; set; } = "Detailpage";
+        public string Title { get; set; } = "Details";
         public BestSellersViewModel BestSellers { get; set; } = null!;
         public FeaturedViewModel FeaturedProducts { get; set; } = null!;
     }
