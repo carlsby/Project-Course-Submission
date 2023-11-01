@@ -1,0 +1,21 @@
+﻿@model CollectionDetailViewModel
+
+<section class="detail-section">
+    <div class="container">
+        <h1>@Model.Title</h1>
+        <div class="product-image">
+            <img src="~/images/270x295.svg" alt="Detailpage">
+        </div>
+        <div class="product-description">
+          
+        </div>
+        @if (Model.BestSellers != null)
+        {
+            <div class="product-price">$@Model.BestSellers.BestItems.FirstOrDefault()?.Price</div>
+        }
+        else if (Model.FeaturedProducts != null)
+        {
+            <div class="product-price">$@Model.FeaturedProducts.FeaturedItems.FirstOrDefault()?.Price</div>
+        }
+    </div>
+</section>

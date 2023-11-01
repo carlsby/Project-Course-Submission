@@ -50,6 +50,34 @@ namespace Project_Course_Submission.Controllers
             return View(viewModel);
         
         }
+        public IActionResult Details(string id)
+        {
+            var bestSellersItem = _bestSellersService.GetProductById(id);
+            var featuredItems = _featuredProductsService.GetProductById(id);
+
+            if (bestSellersItem == null && featuredItems == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new CollectionDetailViewModel
+            {
+                BestSellers = new BestSellersViewModel
+                {
+                    BestItems = bestSellersItem != null ? new List<BestSellersItemViewModel> { bestSellersItem } : new List<BestSellersItemViewModel>()
+                },
+                FeaturedProducts = new FeaturedViewModel
+                {
+
+                    FeaturedItems = featuredItems != null ? new List<FeaturedItemViewModel> { featuredItems } : new List<FeaturedItemViewModel>()
+                }
+            
+            };
+
+            return View(viewModel);
+        }
+
+
 
         public IActionResult Privacy()
         {
