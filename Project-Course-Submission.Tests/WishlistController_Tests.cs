@@ -11,22 +11,22 @@ using Project_Course_Submission.ViewModels;
 using Xunit;
 using NuGet.ContentModel;
 
-namespace YourProject.Tests.Controllers
+namespace Project_Course_Submission.Tests.Controllers
 {
     public class WishlistControllerTests
     {
         [Fact]
         public void Wishlist_ReturnsViewResult_WithWishlistItems()
         {
-            // Arrange
+
             var options = new DbContextOptionsBuilder<DataContext>()
                 .UseInMemoryDatabase(databaseName: "TestDatabase")
                 .Options;
 
             using (var context = new DataContext(options))
             {
-                // Add test data to the in-memory database
-                var userId = "123"; // Replace with a user ID
+           
+                var userId = "123"; 
                 context.Wishlist.Add(new WishlistsEntity
                 {
                     Id = 1,
@@ -43,7 +43,7 @@ namespace YourProject.Tests.Controllers
 
             var controller = new WishlistController(new DataContext(options));
 
-            var userClaim = new Claim(ClaimTypes.NameIdentifier, "123"); // Replace "123" with the user ID
+            var userClaim = new Claim(ClaimTypes.NameIdentifier, "123"); 
             var httpContext = new DefaultHttpContext();
             httpContext.User = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim> { userClaim }));
 
@@ -60,6 +60,7 @@ namespace YourProject.Tests.Controllers
             var model = result.Model as List<WishlistViewModel>;
             Assert.NotNull(model);
             Assert.NotEmpty(model);
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Project_Course_Submission.Contexts; // Import your data context
-using Project_Course_Submission.ViewModels; // Import your view models
+using Project_Course_Submission.Contexts; 
+using Project_Course_Submission.ViewModels; 
 using System.Linq;
 using System.Security.Claims;
 
@@ -47,7 +47,7 @@ namespace Project_Course_Submission.Controllers
                 ProductPrice = item.ProductPrice,
                 ProductReview = item.ProductReview,
                 ProductReviewRate = item.ProductReviewRate,
-                ArticleNumber = item.ProductsArticleNumber,
+                ProductsArticleNumber = item.ProductsArticleNumber,
                 UserId = item.UserId
             }).ToList();
 
