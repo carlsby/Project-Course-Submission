@@ -30,17 +30,17 @@
 
         #cart-featured-icon {
             position: absolute;
-            top: 100px;
-            right: 10px;
+            top: 50px;
+            right: 20px;
             font-size: 16px;
         }
 
 
         #heart-featured-icon {
             position: absolute;
-            top: 80px;
-            right: 10px;
-            font-size: 14px;
+            top: 20px;
+            right: 20px;
+            font-size: 16px;
 
             &:hover {
                 color: $color-heart;
@@ -67,10 +67,10 @@
         object-fit: contain;
     }
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
+    .featured-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
 
     .product-container {

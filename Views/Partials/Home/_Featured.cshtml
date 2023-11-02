@@ -16,7 +16,7 @@
 
             @if (Model.FeaturedItems != null)
             {
-                <div class="grid">
+                <div class="featured-grid">
                     @foreach (var item in Model.FeaturedItems)
                     {
                         <partial name="/Views/Partials/Home/_FeaturedItem.cshtml" model="item" />

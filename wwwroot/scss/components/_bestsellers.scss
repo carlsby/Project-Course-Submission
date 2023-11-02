@@ -1,5 +1,5 @@
 ﻿.best-sellers {
-    padding: 40px 20px;
+    
     display: flex;
 
     .title {
@@ -14,7 +14,7 @@
     a {
         text-decoration: none;
     }
-
+    
     .product-container {
         margin-top: 10px;
     }
@@ -60,10 +60,100 @@
     .best-grid {
         display: flex;
         flex-wrap:wrap;
-        justify-content: space-around;
+        justify-content: center;
+        gap: 10px;
+
+
+        .best-img {
+            width: 400px;
+            height: 300px;
+        }
     }
 
     .product-container {
         margin-bottom: 20px;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .best-sellers {
+        .view-all {
+            text-align: right;
+            margin-right: 20px;
+            font-size: 14px;
+        
+
+        #arrow-icon {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+}
+        .title {
+            font-size: 22px;
+            text-align: center;
+        }
+
+        flex-direction: row;
+        align-items: center;
+
+
+        .best-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+
+            .product-title {
+                font-size: 14px;
+            }
+
+
+
+
+            .product-price {
+                font-size: 14px;
+            }
+
+            .best-img {
+                width: 150px;
+                height: 100px;
+            }
+
+            #icon-container {
+                position: relative;
+
+                #heart-icon {
+                    position: absolute;
+                    top: 8px;
+                    right: 12px;
+                    font-size: 16px;
+
+                    &:hover {
+                        color: $color-heart;
+                    }
+                }
+            }
+
+            #add-to-cart-icon {
+                position: absolute;
+                top: 40px;
+                right: 12px;
+                font-size: 16px;
+                color: $color-grey;
+            }
+        }
+
+        .star-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        #star-icon {
+            color: $color-star;
+            font-size: 14px;
+        }
     }
 }
