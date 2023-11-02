@@ -2,11 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Project_Course_Submission.Contexts;
 using Project_Course_Submission.Services;
-
 using Project_Course_Submission.Services.Repositories;
-
 using Project_Course_Submission.Factories;
-using Project_Course_Submission.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,16 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
+builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("ProductDb")));
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<CategoriesService>();
 builder.Services.AddScoped<BestSellersService>();
 builder.Services.AddScoped<FeaturedProductsService>();
 builder.Services.AddScoped<ProductRepository>();
-
-builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
-builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
 
 
 builder.Services.AddScoped<IUserService, UserService>();
