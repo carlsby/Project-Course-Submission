@@ -3,11 +3,22 @@ using Microsoft.AspNetCore.Mvc;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Project_Course_Submission.ViewModels;
+using Project_Course_Submission.Services;
+
 
 namespace Project_Course_Submission.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly IUserService _userService;
+        private readonly ITwilioService _wilioService;
+
+        public AccountController(IUserService userService, ITwilioService wilioService)
+        {
+            _userService = userService;
+            _wilioService = wilioService;
+        }
+
         [Authorize]
         public IActionResult Index()
         {
@@ -32,25 +43,24 @@ namespace Project_Course_Submission.Controllers
         }
 
         [HttpPost]
-        public IActionResult Verification(PhoneNumberViewModel phoneNumberViewModel)
+        public async Task<IActionResult> Verification(PhoneNumberViewModel phoneNumberViewModel)
         {
-            string accountSid = "";
-            string authToken = "";
+            var response = await _wilioService.SendTextVerification(phoneNumberViewModel);
 
-            TwilioClient.Init(accountSid, authToken);
+            if (response.StatusCode == Enums.StatusCode.Ok)
+            {
+                return RedirectToAction("OTP", "Account");
+            }
+            else
+            {
+                return View();
+            }
+        }
 
-            string fromPhoneNumber = "+13202868756";
-
-            string toPhoneNumber = phoneNumberViewModel.PhoneNumber!;
-            string messageBody = "hej";
-
-            MessageResource.Create(
-                body: messageBody,
-                from: new Twilio.Types.PhoneNumber(fromPhoneNumber),
-                to: new Twilio.Types.PhoneNumber(toPhoneNumber)
-            );
-
-            return RedirectToAction("OTP", "Account");
+        public async Task<IActionResult> Edit()
+        {
+            var user = await _userService.GetCurrentUserAsync(User);
+            return View(user);
         }
 
     }

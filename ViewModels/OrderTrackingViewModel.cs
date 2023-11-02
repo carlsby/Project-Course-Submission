@@ -12,6 +12,7 @@
         public string TrackLabel { get; set; }
         public string TrackDescription { get; set; }
         public bool IsDot { get; set; }
+        public bool IsLine { get; set; }
     }
 }
     
