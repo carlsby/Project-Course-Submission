@@ -725,8 +725,8 @@ body {
   font-family: "Mulish", sans-serif;
   position: absolute;
   margin-top: 40%;
-  bottom: 50px;
-  left: 30px;
+  bottom: 6rem;
+  left: 40px;
   font-weight: 700;
   color: #111111;
   padding: 5px;
@@ -737,4 +737,24 @@ img {
   width: 100%;
   height: 50vh;
   object-fit: cover;
+}
+
+.btn-shop-now {
+  margin-top: 20px;
+  cursor: pointer;
+  bottom: 50px;
+  left: 40px;
+  font-family: "Mulish", sans-serif;
+  padding: 10px 35px;
+  border: 1px solid #111111;
+  background-color: #111111;
+  color: white;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  border-radius: 25px;
+  position: absolute;
+}
+.btn-shop-now:hover {
+  color: #111111;
+  background-color: white;
 }

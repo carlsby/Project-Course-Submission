@@ -3,6 +3,7 @@
     overflow: hidden;
     position: relative;
 
+
     #carousel-slide-showcase {
         width: 100%;
         transition: transform 5s ease-in-out;
@@ -12,16 +13,40 @@
         font-family: $font-mulish;
         position: absolute;
         margin-top: 40%;
-        bottom: 50px;
-        left: 30px;
+        bottom: 6rem;
+        left: 40px;
         font-weight: $font-weight-bold;
         color: $color-black;
         padding: 5px;
         font-size: 30px;
     }
 }
-img {
-    width: 100%;
-    height: 50vh;
-    object-fit: cover;
-}
+
+    img {
+        width: 100%;
+        height: 50vh;
+        object-fit: cover;
+ 
+    }
+
+    .btn-shop-now {
+        margin-top: 20px;
+        cursor: pointer;
+        bottom: 50px;
+        left: 40px;
+        font-family: $font-mulish;
+        padding: 10px 35px;
+        border: 1px solid $color-black;
+        background-color: $color-black;
+        color: white;
+        text-decoration: none;
+        transition: all 0.25s ease-in-out;
+        border-radius: 25px;
+        position: absolute;
+
+
+        &:hover {
+            color: $color-black;
+            background-color: white;
+        }
+    }

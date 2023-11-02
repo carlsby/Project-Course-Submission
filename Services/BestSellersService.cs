@@ -27,13 +27,13 @@ namespace Project_Course_Submission.Services
 
         public BestSellersItemViewModel GetProductById(string id)
         {
-            // Hämta listan av "Best Sellers" produkter från ditt BestSellersViewModel.
+            // Hämta listan av "Best Sellers" produkter från BestSellersViewModel
             var bestSellers = _bestSellers.BestItems;
 
-            // Sök efter produkten med matchande ID.
+            // Sök efter produkten med matchande ID
             var product = bestSellers.FirstOrDefault(p => p.Id == id);
 
-            // Returnera produkten om den hittades, annars returnera null.
+            // Returnera produkten om den hittades, annars returnera null
             return product!;
         }
     }
