@@ -4,6 +4,7 @@ using Project_Course_Submission.Contexts;
 using Project_Course_Submission.Models;
 using Project_Course_Submission.Models.Entities;
 using Project_Course_Submission.ViewModels;
+using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Security.Claims;
 
@@ -14,6 +15,7 @@ namespace Project_Course_Submission.Services
         Task<ServiceResponse<UserProfileEntity>> GetUserProfileAsync(string userId);
         Task<ServiceResponse<UserProfileEntity>> GetAsync(Expression<Func<UserProfileEntity, bool>> predicate);
         Task<ServiceResponse<UserViewModel>> GetCurrentUserAsync(ClaimsPrincipal claim);
+        Task<ServiceResponse<ChangePasswordViewModel>> ChangePasswordAsync(string userId, string currentPassword, string newPassword);
     }
 
     public class UserService : IUserService
@@ -91,5 +93,33 @@ namespace Project_Course_Submission.Services
             }
             catch { return null!; }
         }
+
+        public async Task<ServiceResponse<ChangePasswordViewModel>> ChangePasswordAsync(string userId, string currentPassword, string newPassword)
+        {
+            var response = new ServiceResponse<ChangePasswordViewModel>();
+            var identityUser = await _userManager.FindByIdAsync(userId);
+
+            if (identityUser == null)
+            {
+                response.StatusCode = Enums.StatusCode.Notfound;
+                return response;
+            }
+
+            var result = await _userManager.ChangePasswordAsync(identityUser, currentPassword, newPassword);
+
+            if (result.Succeeded)
+            {
+                response.Content = new ChangePasswordViewModel();
+                response.StatusCode = Enums.StatusCode.Ok;
+            }
+            else
+            {
+                response.StatusCode = Enums.StatusCode.BadRequest;
+            }
+
+            return response;
+        }
+
+
     }
 }

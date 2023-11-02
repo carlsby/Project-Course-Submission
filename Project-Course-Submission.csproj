@@ -42,6 +42,7 @@
 		</PackageReference>
 	  <None Remove="Controllers\NewFile.txt" />
 	  <None Remove="Services\NewFile.txt" />
+	  <None Remove="ViewModels\NewFile.txt" />
 	  <None Remove="Views\Partials\Account\NewFile.txt" />
 	</ItemGroup>
 
