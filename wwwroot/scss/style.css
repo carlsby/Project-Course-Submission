@@ -87,9 +87,12 @@
   gap: 5px;
   align-items: center;
 }
-.category-icons a {
+.category-icons #categori-text {
   text-decoration: none;
   color: #111111;
+}
+.category-icons #categori-text:hover {
+  color: #626262;
 }
 
 .category-icon {

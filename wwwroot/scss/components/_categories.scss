@@ -1,13 +1,16 @@
 ﻿.category-icons {
-  
     display: flex;
     justify-content: space-between;
     gap: 5px;
     align-items: center;
-   
-    a {
+
+    #categori-text {
         text-decoration: none;
         color: $color-black;
+
+        &:hover {
+            color: $color-grey;
+        }
     }
 }
 
