@@ -1,7 +1,9 @@
 ﻿<div class="topnav">
     <div class="row align-items-center">
         <div class="col-auto" style="margin-left: 10px;">
-            <i class="fa-solid fa-chevron-left fa-lg"></i>
+            <a style="color: black;" asp-controller="OrderHistory" asp-action="History">
+               <i class="fa-solid fa-chevron-left fa-lg"></i>
+              </a>
         </div>
         <div class="col text-center" style="padding-right: 53px;">
             <h5>Track your order</h5>
@@ -35,12 +37,19 @@
                 {
                     <i class="fa-regular fa-2x fa-circle d-block mb-0"></i>
                 }
-                <i class="fa-solid fa-2x fa-minus fa-rotate-90 d-block"></i>
+                 @if (trackingStatus.IsLine)
+                {
+                    <i class="fa-solid fa-2x fa-minus fa-rotate-90 d-block"></i>
+                }
+                else
+                {                
+                }
             </div>
             <div class="col">
                 <p class="font-weight-bold mb-0">@trackingStatus.TrackLabel</p>
                 <p class="text-muted mt-0 small">@trackingStatus.TrackDescription</p>
             </div>
         </div>
+       
     }
 </div>
