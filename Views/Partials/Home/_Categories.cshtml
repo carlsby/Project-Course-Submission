@@ -1,9 +1,9 @@
 ﻿
-<div class="container">
+
 <div class="category-icons">
     @foreach (var category in Model.Categories)
     {
-        <a asp-controller="Categories" asp-action="Details" asp-route-id="@category.CategoryName" id="categori-text">
+        <a asp-controller="Categories" asp-action="Details" asp-route-id="@category.CategoryName" id="category-text">
         <div class="category-icon">
                 @if (Model.CategoryImagesId != null)
                 {
@@ -24,4 +24,4 @@
        }
 </div>
 
-</div>  
+  
