@@ -25,9 +25,12 @@ builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("IdentityDatabase")));
 
+
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITwilioService, TwilioService>();
 builder.Services.AddScoped<ReviewService>();
-builder.Services.AddScoped<UserService>();
-builder.Services.AddScoped<AuthService>();
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;

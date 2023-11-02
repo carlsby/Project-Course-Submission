@@ -5,11 +5,11 @@ using Project_Course_Submission.ViewModels;
 
 namespace Project_Course_Submission.Controllers
 {
-	public class LogoutController : Controller
-	{
-        private readonly AuthService _auth;
+    public class LogoutController : Controller
+    {
+        private readonly IAuthService _auth;
 
-        public LogoutController(AuthService auth)
+        public LogoutController(IAuthService auth)
         {
             _auth = auth;
         }
@@ -17,11 +17,16 @@ namespace Project_Course_Submission.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            if (await _auth.LogoutAsync(User))
+            var response = await _auth.LogoutAsync(User);
+
+            if (response.Content)
             {
                 return LocalRedirect("/");
             }
-            return RedirectToAction("Index");
+            else
+            {
+                return View();
+            }
         }
     }
 }
