@@ -21,7 +21,7 @@ public class TwilioService : ITwilioService
         try
         {
             string accountSid = "AC4857a3b575c88d6b68bc6c7bdccd844d";
-            string authToken = "0313e76f8b491c7d32133bb6472d15e7";
+            string authToken = "72ca06a7b7443b80c2f37e0dc0f1a77f";
 
             TwilioClient.Init(accountSid, authToken);
             string fromPhoneNumber = "+13202868756";
