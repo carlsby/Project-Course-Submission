@@ -1,0 +1,27 @@
+﻿
+
+<div class="category-icons">
+    @foreach (var category in Model.Categories)
+    {
+        <a asp-controller="Categories" asp-action="Details" asp-route-id="@category.CategoryName">
+        <div class="category-icon">
+                @if (Model.CategoryImagesId != null)
+                {
+                    foreach (var categoryImage in Model.CategoryImagesId)
+                    {
+                        if (categoryImage.CategoryName == category.CategoryName)
+                        { 
+                            <div class="category-icon-circle">
+							<img src="@categoryImage.ImageUrl" alt="Image" />
+						</div>
+                        }
+                    }
+				}
+			</div>
+                <p>@category.CategoryName</p>
+        </a>
+      
+       }
+</div>
+
+  

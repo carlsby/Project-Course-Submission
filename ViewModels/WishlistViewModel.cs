@@ -11,7 +11,7 @@ namespace Project_Course_Submission.ViewModels
         public string ProductReview { get; set; }
         public int ProductReviewRate { get; set; }
 
-        public string ArticleNumber { get; set; }
+        public string ProductsArticleNumber { get; set; }
         public string UserId { get; set; }
     }
 }
