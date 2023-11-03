@@ -10,7 +10,7 @@ namespace Project_Course_Submission.Services
                 LatestItems = new List<LatestProductsItemViewModel>
             {
                 new LatestProductsItemViewModel { Id = "1", Title = "Soft Chill Pants", ImageUrl = "/images/softpants.jpg", ButtonUrl = "Shop Now" },
-                
+                new LatestProductsItemViewModel { Id = "2", Title = "Christmas Gifts", ImageUrl = "/images/christmasgifts.jpg", ButtonUrl = "Find Gifts" },
             }
         };
 

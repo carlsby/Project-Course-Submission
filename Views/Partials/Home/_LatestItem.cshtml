@@ -1,33 +1,15 @@
 ﻿@model LatestProductsItemViewModel
 
-
 <section class="showcase">
 	<div class="container">
 		<div id="carousel-slide-showcase" class="carousel slide" data-bs-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img src="@Model.ImageUrl" alt="soft chill pants" class="latest-img">
-					<div class="card-text">@Model.Title</div>
-					<a asp-controller="Home" asp-action="Details" asp-route-id="@Model.Id" class="btn-shop-now">@Model.ButtonUrl</a>
-				</div>
-				<div class="carousel-item">
-					<img src="@Model.ImageUrl" alt="..." class="latest-img">
-					<div class="card-text">50% off</div>
-					<a asp-controller="Home" asp-action="Details" asp-route-id="@Model.Id" class="btn-shop-now">Shop Now</a>
-				</div>
-				<div class="carousel-item">
-					<img src="@Model.ImageUrl" alt="..." class="latest-img">
-					<div class="card-text">Latest</div>
-					<button class="btn-shop-now">Shop Now</button>
-
-				</div>
-			</div>
-		</div>
-	</div>
+    <img src="@Model.ImageUrl" alt="@Model.Title" class="latest-img">
+    <div class="card-text">@Model.Title</div>
+    <a asp-controller="Home" asp-action="Details" asp-route-id="@Model.Id" class="btn-shop-now">@Model.ButtonUrl</a>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-
-
-    
-
-            
