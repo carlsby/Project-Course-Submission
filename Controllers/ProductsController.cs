@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Project_Course_Submission.Migrations.Data;
 using Project_Course_Submission.Services;
 using Project_Course_Submission.Services.Repositories;
 using Project_Course_Submission.ViewModels;
@@ -41,7 +42,12 @@ namespace Project_Course_Submission.Controllers
         public async Task<IActionResult> Details(string articleNumber)
         {
             var product = await _productRepository.GetAsync(x => x.ArticleNumber == articleNumber);
-
+            var viewModel = new CollectionDetailViewModel
+            {
+            
+                Title = "Details",
+               
+            };
             return View(product); 
         }
 

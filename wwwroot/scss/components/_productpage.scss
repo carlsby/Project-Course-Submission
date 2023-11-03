@@ -1,6 +1,6 @@
 ﻿.product-page {
     display: flex;
-
+    padding: 20px;
     h1 {
         margin-bottom: 40px;
         text-align: left;
@@ -33,60 +33,61 @@
 
     .product-price {
         font-size: 12px;
-    
-        }
-        .star-container {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
+    }
 
-        #star-icon {
-            color: $color-star;
-            font-size: 12px;
-        }
+    .star-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
 
-        #icon-container {
-            position: relative;
+    #star-icon {
+        color: $color-star;
+        font-size: 12px;
+    }
 
-            #heart-icon {
-                position: absolute;
-                top: 8px;
-                right: 20px;
-                font-size: 16px;
+    #icon-container {
+        position: relative;
 
-                &:hover {
-                    color: $color-heart;
-                }
-            }
+        #heart-icon {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 16px;
+            color: $color-grey;
 
-            #add-cart-product {
-                position: absolute;
-                top: 40px;
-                right: 20px;
-                font-size: 16px;
-                color: $color-grey;
+            &:hover {
+                color: $color-heart;
             }
         }
 
-
-        .product-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            gap: 10px;
-
-
-            .product-img {
-                height: 100%;
-                width: 200px;
-            }
-        }
-
-        .product-container {
-            margin-bottom: 20px;
+        #add-cart-product {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+            font-size: 16px;
+            color: $color-grey;
         }
     }
+
+
+    .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px;
+
+
+        .product-img {
+            height: 100%;
+            width: 200px;
+        }
+    }
+
+    .product-container {
+        margin-bottom: 20px;
+    }
+}
 
 
     @media (min-width: 280px) and (max-width: 767px) {
@@ -101,6 +102,9 @@
 
                 h3 {
                     font-size: 16px;
+                }
+                h1 {
+                    font-size: 14px;
                 }
                
                 .product-item {
@@ -136,7 +140,7 @@
                         #heart-icon {
                             position: absolute;
                             font-size: 12px;
-                            top: 5px;
+                            top: 10px;
                             right: 10px;
 
                             &:hover {
@@ -145,7 +149,7 @@
                         }
 
                         #add-cart-product {
-                            top: 35px;
+                            top: 30px;
                             right: 10px;
                             font-size: 12px;
                         }
