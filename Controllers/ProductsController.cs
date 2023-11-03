@@ -42,12 +42,7 @@ namespace Project_Course_Submission.Controllers
         public async Task<IActionResult> Details(string articleNumber)
         {
             var product = await _productRepository.GetAsync(x => x.ArticleNumber == articleNumber);
-            var viewModel = new CollectionDetailViewModel
-            {
             
-                Title = "Details",
-               
-            };
             return View(product); 
         }
 

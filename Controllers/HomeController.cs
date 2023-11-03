@@ -61,8 +61,9 @@ namespace Project_Course_Submission.Controllers
             }
 
             var viewModel = new CollectionDetailViewModel
-            {
-                BestSellers = new BestSellersViewModel
+            { 
+
+            BestSellers = new BestSellersViewModel
                 {
                     BestItems = bestSellersItem != null ? new List<BestSellersItemViewModel> { bestSellersItem } : new List<BestSellersItemViewModel>()
                 },
@@ -70,8 +71,8 @@ namespace Project_Course_Submission.Controllers
                 {
 
                     FeaturedItems = featuredItems != null ? new List<FeaturedItemViewModel> { featuredItems } : new List<FeaturedItemViewModel>()
-                }
-            
+                },
+             Title = "Details",
             };
 
             return View(viewModel);
