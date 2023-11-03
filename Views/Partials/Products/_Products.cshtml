@@ -15,21 +15,22 @@
                             <a asp-action="details" asp-route-articleNumber="@product.ArticleNumber">
                                 <div class="product-item">
                                     <div id="icon-container">
-                                        <img src="~/images/270x295.svg" alt="Product Image">
-                                        <i class="add-cart fa-regular fa-cart-plus"></i>
+                                        <img src="~/images/270x295.svg" alt="Product Image" class="product-img">
+                                        <i class="add-cart fa-regular fa-cart-plus" id="add-cart-product"></i>
                                         <i class="fa-regular fa-heart" id="heart-icon"></i>
                                     </div>
-                                    <div class="product-container">
+									<div class="product-container">
+										<div class="star-container">
+											<span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+											<span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+											<span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+											<span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+											<span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+										</div>
                                         <h5 class="product-title">@product.ProductName</h5>
                                         <div class="product-price">@product.Price.ToString("0:-")</div>
                                     </div>
-                                    <div class="star-container">
-                                        <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
-                                        <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
-                                        <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
-                                        <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
-                                        <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
-                                    </div>
+                                    
                                 </div>
                             </a>
                         }

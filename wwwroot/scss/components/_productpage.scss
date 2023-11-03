@@ -1,38 +1,49 @@
-﻿
-.product-page {
-    padding: 40px 20px;
+﻿.product-page {
     display: flex;
 
     h1 {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
+        text-align: left;
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .product-price {
+        font-size: 16px;
     }
 
     a {
         text-decoration: none;
-        color: $color-black;
-        font-family: $font-mulish;
-        font-size: 22px;
     }
 
     .product-container {
-        margin-top: 10px;
+        margin-top: 5px;
     }
 
-    .product-item {
-        img {
-            width: 100%;
-            height: 200px;
-        }
+    .product-title {
+        font-size: 12px;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
+    .product-price {
+        font-size: 12px;
+    
+        }
         .star-container {
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            margin-bottom: 10px;
         }
 
         #star-icon {
             color: $color-star;
+            font-size: 12px;
         }
 
         #icon-container {
@@ -40,50 +51,106 @@
 
             #heart-icon {
                 position: absolute;
-                top: 20px;
+                top: 8px;
                 right: 20px;
+                font-size: 16px;
 
                 &:hover {
                     color: $color-heart;
                 }
             }
+
+            #add-cart-product {
+                position: absolute;
+                top: 40px;
+                right: 20px;
+                font-size: 16px;
+                color: $color-grey;
+            }
         }
 
-        #icon-container i {
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            font-size: 24px;
-            color: $color-grey;
-        }
 
-        #arrow-icon {
-            margin-left: 5px;
-            font-size: 16px;
-        }
-    }
-
-    @media (min-width: 280px) {
         .product-grid {
-            display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            .product-item {
-                img {
-                    width: 100%;
-                    height: 150px;
-                }
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 10px;
 
-                }
+
+            .product-img {
+                height: 100%;
+                width: 200px;
             }
-       }
+        }
 
-        @media (min-width: 767px) {
+        .product-container {
+            margin-bottom: 20px;
+        }
+    }
+
+
+    @media (min-width: 280px) and (max-width: 767px) {
+        .product-page {
+            padding: 10px;
+
             .product-grid {
-                display: grid;
-                gap: 10px;
-                grid-template-columns: repeat(4, 1fr);
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 8px;
+
+                h3 {
+                    font-size: 16px;
+                }
+               
+                .product-item {
+                    width: 100px;
+               
+
+                    .product-title {
+                        font-size: 12px;
+                        margin: 0;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    .product-price {
+                        font-size: 12px;
+                
+                    }
+
+
+                    .product-img {
+                        width: 100%;
+                        height: 100px;
+                    }
+
+                    .product-container {
+                        margin-top: 5px;
+                    }
+
+                    #icon-container {
+                        position: relative;
+
+                        #heart-icon {
+                            position: absolute;
+                            font-size: 12px;
+                            top: 5px;
+                            right: 10px;
+
+                            &:hover {
+                                color: $color-heart;
+                            }
+                        }
+
+                        #add-cart-product {
+                            top: 35px;
+                            right: 10px;
+                            font-size: 12px;
+                        }
+                    }
+                }
             }
         }
     }
- 
