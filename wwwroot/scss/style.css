@@ -466,93 +466,93 @@ p {
     font-size: 14px;
   }
 }
-.container {
-  padding: 40px 80px 40px 80px;
+.detail-section .container {
+  padding: 20px 20px;
 }
-.container h2 {
+.detail-section .container h2 {
   margin-bottom: 20px;
 }
-.container .detail-title {
+.detail-section .container .detail-title {
   margin-top: 10px;
   font-family: "Mulish", sans-serif;
   color: #626262;
   font-size: 24px;
 }
-.container #heart-icon {
+.detail-section .container #heart-icon {
   display: flex;
   margin-top: 10px;
   justify-content: flex-end;
   font-size: 20px;
 }
-.container #heart-icon:hover {
+.detail-section .container #heart-icon:hover {
   color: #F4303C;
 }
-.container h4 {
+.detail-section .container h4 {
   margin-top: 5px;
 }
-.container .detail-price {
+.detail-section .container .detail-price {
   font-family: "Mulish", sans-serif;
   font-size: 20px;
   margin-top: 10px;
 }
-.container .star-detail-container {
+.detail-section .container .star-detail-container {
   margin-top: 10px;
 }
-.container .detail-description {
+.detail-section .container .detail-description {
   font-family: "Segoe UI";
 }
-.container .star-container {
+.detail-section .container .star-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
-.container #star-icon {
+.detail-section .container #star-icon {
   color: #FFBE00;
 }
-.container #icon-container {
+.detail-section .container #icon-container {
   position: relative;
 }
-.container #icon-container #heart-icon {
+.detail-section .container #icon-container #heart-icon {
   position: absolute;
   top: 80px;
   right: 30px;
 }
-.container #icon-container #heart-icon:hover {
+.detail-section .container #icon-container #heart-icon:hover {
   color: #F4303C;
 }
-.container #icon-container i {
+.detail-section .container #icon-container i {
   position: absolute;
   top: 40px;
   right: 30px;
   font-size: 24px;
   color: #626262;
 }
-.container #cart-icon {
+.detail-section .container #cart-icon {
   color: #626262;
 }
-.container #cart-icon:hover {
+.detail-section .container #cart-icon:hover {
   color: #111111;
 }
-.container #arrow-icon {
+.detail-section .container #arrow-icon {
   margin-left: 5px;
   font-size: 16px;
 }
-.container .icon-size-container, .container .icon-color-container {
+.detail-section .container .icon-size-container, .detail-section .container .icon-color-container {
   display: flex;
   align-items: center;
   justify-content: left;
   gap: 5px;
 }
-.container .icon-color-container {
+.detail-section .container .icon-color-container {
   margin-top: 20px;
 }
-.container .size-text, .container .color-text {
+.detail-section .container .size-text, .detail-section .container .color-text {
   font-size: 16px;
   margin-top: 10px;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
 }
-.container .icon-size {
+.detail-section .container .icon-size {
   margin-top: 10px;
   width: 40px;
   height: 40px;
@@ -569,11 +569,11 @@ p {
   font-weight: bold;
   margin: 0;
 }
-.container .icon-size:hover {
+.detail-section .container .icon-size:hover {
   background-color: #DBE3F5;
   cursor: pointer;
 }
-.container .icon-color {
+.detail-section .container .icon-color {
   margin-top: 10px;
   width: 30px;
   height: 30px;
@@ -590,48 +590,48 @@ p {
   font-weight: bold;
   margin: 0;
 }
-.container .icon-color:hover {
+.detail-section .container .icon-color:hover {
   cursor: pointer;
 }
-.container .red {
+.detail-section .container .red {
   background-color: #FF6262;
 }
-.container .blue {
+.detail-section .container .blue {
   background-color: #63C7FF;
 }
-.container .beige {
+.detail-section .container .beige {
   background-color: #F8E7CD;
 }
-.container .navy {
+.detail-section .container .navy {
   background-color: #323858;
 }
-.container .black {
+.detail-section .container .black {
   background-color: #111111;
 }
-.container .link-products {
+.detail-section .container .link-products {
   margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   font-family: "Mulish", sans-serif;
 }
-.container a {
+.detail-section .container a {
   text-decoration: none;
   color: #626262;
 }
-.container a:hover {
+.detail-section .container a:hover {
   color: cadetblue;
 }
-.container #quantity-container {
+.detail-section .container #quantity-container {
   margin-top: 20px;
 }
-.container #form-quantity {
+.detail-section .container #form-quantity {
   width: 40px;
 }
-.container #plus-button, .container #minus-button {
+.detail-section .container #plus-button, .detail-section .container #minus-button {
   color: #111111;
 }
-.container .btn-add-to-cart {
+.detail-section .container .btn-add-to-cart {
   margin-top: 20px;
   cursor: pointer;
   font-family: "Mulish", sans-serif;
@@ -643,7 +643,7 @@ p {
   transition: all 0.25s ease-in-out;
   border-radius: 25px;
 }
-.container .btn-add-to-cart:hover {
+.detail-section .container .btn-add-to-cart:hover {
   color: #111111;
   background-color: white;
 }
