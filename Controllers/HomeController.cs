@@ -14,15 +14,16 @@ namespace Project_Course_Submission.Controllers
         private readonly FeaturedProductsService _featuredProductsService;
         private readonly ProductService _productService;
         private readonly CategoriesService _categoriesService;
+        private readonly LatestProductsService _latestProductsService;
 
 
-
-        public HomeController(BestSellersService bestSellersService, FeaturedProductsService featuredProductsService, ProductService productService, CategoriesService categoriesService)
+        public HomeController(BestSellersService bestSellersService, FeaturedProductsService featuredProductsService, ProductService productService, CategoriesService categoriesService, LatestProductsService latestProductsService)
         {
             _bestSellersService = bestSellersService;
             _featuredProductsService = featuredProductsService;
             _productService = productService;
             _categoriesService = categoriesService;
+            _latestProductsService = latestProductsService;
         }
 
         public async Task<IActionResult> Index()
@@ -38,12 +39,13 @@ namespace Project_Course_Submission.Controllers
 
         }).ToList();
 
-			var viewModel = new HomeIndexViewModel
-			{
-				Title = "Welcome To Manero",
+            var viewModel = new HomeIndexViewModel
+            {
+                Title = "Welcome To Manero",
                 CategoryImagesId = categoryImagesId,
                 CategoryImages = _categoriesService.GetCategoryImages(),
                 Categories = categoryItems,
+                LatestProducts = _latestProductsService.GetLatestProducts(),
                 BestSellers = _bestSellersService.GetBestSellers(),
                 FeaturedProducts = _featuredProductsService.GetFeaturedProducts()
             };
@@ -54,6 +56,7 @@ namespace Project_Course_Submission.Controllers
         {
             var bestSellersItem = _bestSellersService.GetProductById(id);
             var featuredItems = _featuredProductsService.GetProductById(id);
+            var latestItems = _latestProductsService.GetProductById(id);
 
             if (bestSellersItem == null && featuredItems == null)
             {
@@ -72,7 +75,11 @@ namespace Project_Course_Submission.Controllers
 
                     FeaturedItems = featuredItems != null ? new List<FeaturedItemViewModel> { featuredItems } : new List<FeaturedItemViewModel>()
                 },
-             Title = "Details",
+                LatestProducts = new LatestProductsViewModel
+                {
+                    LatestItems = new List<LatestProductsItemViewModel> { latestItems }
+                },
+                Title = "Details",
             };
 
             return View(viewModel);

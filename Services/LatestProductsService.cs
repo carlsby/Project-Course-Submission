@@ -4,18 +4,15 @@ namespace Project_Course_Submission.Services
 {
     public class LatestProductsService
     {
-
-        public class LatestProductService
-        {
             private readonly LatestProductsViewModel _latest = new()
             {
                 
                 LatestItems = new List<LatestProductsItemViewModel>
             {
-                new LatestProductsItemViewModel { Id = "1", Title = "Soft Chill Pants", ImageUrl = "/images/270x295.svg", ButtonUrl = "Shop Now" },
+                new LatestProductsItemViewModel { Id = "1", Title = "Soft Chill Pants", ImageUrl = "/images/softpants.jpg", ButtonUrl = "Shop Now" },
                 
             }
-            };
+        };
 
             public LatestProductsViewModel GetLatestProducts()
             {
@@ -36,5 +33,4 @@ namespace Project_Course_Submission.Services
         }
     }
 
-}
-}
+

@@ -2,13 +2,13 @@
 
 @if (Model != null)
 {
-	<section class="featured">
+	<section class="latest">
 		<div class="container">
 
 			@if (!string.IsNullOrEmpty(Model.Title))
 			{
 
-				<h1 class="title">@Model.Title</h1>
+				<h1 class="latest-title">@Model.Title</h1>
 				
 
 			}
@@ -16,7 +16,7 @@
 
 			@if (Model.LatestItems != null)
 			{
-				<div class="grid">
+				<div class="latest-grid">
 					@foreach (var item in Model.LatestItems)
 					{
 						<partial name="/Views/Partials/Home/_LatestItem.cshtml" model="item" />

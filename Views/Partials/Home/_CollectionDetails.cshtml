@@ -2,15 +2,16 @@
 
 <section class="detail-section">
     <div class="container">
-        <h2>@Model.Title</h2>
-        <div class="product-image">
-            <img src="~/images/270x295.svg" alt="Detailpage">
+        <h3>@Model.Title</h3>
+        <div id="icon-detail-container">
+            <img src="~/images/270x295.svg" alt="Detailpage" class="detail-img">
+			<i class="fa-regular fa-heart" id="heart-detail-icon"></i>
         </div>
-        <i class="fa-regular fa-heart" id="heart-icon"></i>
-       
+
+        <div class="detail-container">
         @if (Model.BestSellers != null)
         {
-            <h4>@Model.BestSellers.BestItems.FirstOrDefault()?.Title</h4>
+                <h5 class="detail-title">@Model.BestSellers.BestItems.FirstOrDefault()?.Title</h5>
             <div class="detail-description">
                 @Model.BestSellers.BestItems.FirstOrDefault()?.Description
             </div>
@@ -25,6 +26,7 @@
             </div>
             <div class="detail-price">$@Model.FeaturedProducts.FeaturedItems.FirstOrDefault()?.Price</div>
         }
+            </div>
         <div class="star-detail-container">
             <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
             <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
@@ -67,7 +69,10 @@
                 <i class="fas fa-plus"></i>
             </button>
     </div>
-
+    
     <button class="btn-add-to-cart">Add To Cart</button>
-
+        <div class="link-products">
+            <a asp-action="Index" asp-controller="Products">Back to Products</a>
+        </div>
+</div>
 </section>
