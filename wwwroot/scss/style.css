@@ -884,6 +884,27 @@ img {
   top: 12px;
 }
 
+#message {
+  display: block;
+  color: #000;
+  position: relative;
+}
+
+#message p {
+  padding: 10px 35px;
+}
+
+.valid {
+  color: green;
+  display: none;
+}
+
+.invalid {
+  color: red;
+  border: none !important;
+  font-size: 0.8rem;
+}
+
 .forgotpw-section {
   display: flex;
   justify-content: center;
@@ -1230,6 +1251,13 @@ img {
   align-items: center;
   min-height: 70vh;
   margin-top: 20px;
+}
+.Edit-section .edit-change-pw {
+  text-decoration: none;
+  color: black;
+}
+.Edit-section .edit-change-pw:hover {
+  color: gray;
 }
 .Edit-section .Edit-container {
   text-align: center;

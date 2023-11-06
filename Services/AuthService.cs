@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Project_Course_Submission.Contexts;
 using Project_Course_Submission.Models;
 using Project_Course_Submission.Models.Entities;
@@ -100,8 +101,5 @@ namespace Project_Course_Submission.Services
 
             return response;
         }
-
-
-
     }
 }

@@ -6,6 +6,15 @@
     min-height: 70vh;
     margin-top: 20px;
 
+    .edit-change-pw {
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+            color: gray;
+        }
+    }
+
     .Edit-container {
         text-align: center;
 

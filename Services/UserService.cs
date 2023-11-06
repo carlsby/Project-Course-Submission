@@ -12,6 +12,7 @@ namespace Project_Course_Submission.Services
 {
     public interface IUserService
     {
+        Task<ServiceResponse<UserViewModel>> EditUserAsync(UserViewModel model, ClaimsPrincipal claim);
         Task<ServiceResponse<UserProfileEntity>> GetUserProfileAsync(string userId);
         Task<ServiceResponse<UserProfileEntity>> GetAsync(Expression<Func<UserProfileEntity, bool>> predicate);
         Task<ServiceResponse<UserViewModel>> GetCurrentUserAsync(ClaimsPrincipal claim);
@@ -120,6 +121,40 @@ namespace Project_Course_Submission.Services
             return response;
         }
 
+        public async Task<ServiceResponse<UserViewModel>> EditUserAsync(UserViewModel model, ClaimsPrincipal claim)
+        {
+            var response = new ServiceResponse<UserViewModel>();
+
+            try
+            {
+                var currentUserResponse = await GetCurrentUserAsync(claim);
+
+                var currentUser = currentUserResponse.Content;
+
+                var userProfileEntity = await _identityContext.UserProfiles
+                    .Include(x => x.User)
+                    .Include(x => x.Addresses)
+                    .FirstOrDefaultAsync(x => x.User.Email == currentUser!.Email);
+
+                if (userProfileEntity != null)
+                {
+                    userProfileEntity.FirstName = model.FirstName!;
+                    userProfileEntity.LastName = model.LastName!;
+                    userProfileEntity.User.Email = model.Email;
+                    userProfileEntity.User.PhoneNumber = model.PhoneNumber;
+
+                    response.StatusCode = Enums.StatusCode.Ok;
+
+                    await _identityContext.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+            return response;
+        }
 
     }
 }

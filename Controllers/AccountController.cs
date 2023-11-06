@@ -6,9 +6,11 @@ using Project_Course_Submission.ViewModels;
 using Project_Course_Submission.Services;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
+using Project_Course_Submission.Models;
 
 namespace Project_Course_Submission.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly IUserService _userService;
@@ -23,10 +25,22 @@ namespace Project_Course_Submission.Controllers
             _userManager = userManager;
         }
 
-        [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var userResponse = await _userService.GetCurrentUserAsync(User);
+
+            if (userResponse.StatusCode == Enums.StatusCode.BadRequest)
+            {
+                var user = userResponse.Content;
+                var serviceResponse = new ServiceResponse<UserViewModel> { Content = user };
+                return View();
+            }
+            else
+            {
+                var user = userResponse.Content;
+                var serviceResponse = new ServiceResponse<UserViewModel> { Content = user };
+                return View(serviceResponse);
+            }
         }
 
 
@@ -89,6 +103,19 @@ namespace Project_Course_Submission.Controllers
         {
             var user = await _userService.GetCurrentUserAsync(User);
             return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(ServiceResponse<UserViewModel> model)
+        {
+            var response = await _userService.EditUserAsync(model.Content!, User);
+
+            if (response.StatusCode == Enums.StatusCode.Ok)
+            {
+                return RedirectToAction("Index", "Account");
+            }
+
+            return View(model);
         }
 
     }
