@@ -209,9 +209,9 @@
 
                         #heart-best-icon {
                             position: absolute;
-                            top: 20px;
-                            right: 10px;
-                            font-size: 16px;
+                            top: 10px;
+                            right: 20px;
+                            font-size: 14px;
 
                             &:hover {
                                 color: $color-heart;
@@ -221,9 +221,9 @@
 
                         #best-cart-icon {
                             position: absolute;
-                            top: 40px;
-                            right: 10px;
-                            font-size: 16px;
+                            top: 30px;
+                            right: 20px;
+                            font-size: 14px;
                             color: $color-grey;
                         }
                     }

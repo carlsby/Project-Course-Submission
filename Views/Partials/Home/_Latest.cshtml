@@ -2,28 +2,30 @@
 
 @if (Model != null)
 {
-	<section class="latest">
-		<div class="container">
+    <section class="latest">
+        <div class="container">
 
-			@if (!string.IsNullOrEmpty(Model.Title))
-			{
+            @if (!string.IsNullOrEmpty(Model.Title))
+            {
+                <h1 class="latest-title">@Model.Title</h1>
+            }
 
-				<h1 class="latest-title">@Model.Title</h1>
-
-			}
-
-
-			@if (Model.LatestItems != null)
-			{
-				<div class="latest-grid">
-					@foreach (var item in Model.LatestItems)
-					{
-						<partial name="/Views/Partials/Home/_LatestItem.cshtml" model="item" />
-					}
-				</div>
-			}
-		</div>
-	</section>
-
-
+            @if (Model.LatestItems != null && Model.LatestItems.Any())
+            {
+                <div id="carousel-slide-showcase" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach (var item in Model.LatestItems)
+                        {
+                            if (item != null)
+                            {
+                                <div class="carousel-item @(item == Model.LatestItems.First() ? "active" : "")">
+                                    <partial name="/Views/Partials/Home/_LatestItem.cshtml" model="item" />
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
 }

@@ -1,15 +1,12 @@
 ﻿@model LatestProductsItemViewModel
 
-<section class="showcase">
-	<div class="container">
-		<div id="carousel-slide-showcase" class="carousel slide" data-bs-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-    <img src="@Model.ImageUrl" alt="@Model.Title" class="latest-img">
-    <div class="card-text">@Model.Title</div>
-    <a asp-controller="Home" asp-action="Details" asp-route-id="@Model.Id" class="btn-shop-now">@Model.ButtonUrl</a>
-</div>
-</div>
-</div>
+<section class="showcase d-flex justify-content-center">
+    <div class="latest-container">
+        
+            <img src="@Model.ImageUrl" alt="@Model.Title" class="latest-img">
+            <div class="card-text">@Model.Title</div>
+            <a asp-controller="Home" asp-action="Details" asp-route-id="@Model.Id" class="btn-shop-now">@Model.ButtonUrl</a>
+      
+
 </div>
 </section>

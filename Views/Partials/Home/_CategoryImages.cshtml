@@ -2,10 +2,10 @@
 
 @if (Model.CategoryItems != null)
 {
-    <div class="grid">
+   
         @foreach (var item in Model.CategoryItems)
         {
             <partial name="/Views/Partials/Home/_CategoryImageItems.cshtml" model="item" />
         }
-    </div>
+  
 }
