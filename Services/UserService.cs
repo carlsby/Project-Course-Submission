@@ -94,7 +94,7 @@ namespace Project_Course_Submission.Services
             }
             catch { return null!; }
         }
-
+        
         public async Task<ServiceResponse<ChangePasswordViewModel>> ChangePasswordAsync(string userId, string currentPassword, string newPassword)
         {
             var response = new ServiceResponse<ChangePasswordViewModel>();
@@ -146,6 +146,10 @@ namespace Project_Course_Submission.Services
                     response.StatusCode = Enums.StatusCode.Ok;
 
                     await _identityContext.SaveChangesAsync();
+                }
+                else
+                {
+                    response.StatusCode = Enums.StatusCode.BadRequest;
                 }
             }
             catch (Exception ex)
