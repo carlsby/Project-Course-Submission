@@ -4,6 +4,7 @@ using Project_Course_Submission.Contexts;
 using Project_Course_Submission.Models;
 using Project_Course_Submission.Models.Entities;
 using Project_Course_Submission.ViewModels;
+using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Security.Claims;
 
@@ -11,9 +12,11 @@ namespace Project_Course_Submission.Services
 {
     public interface IUserService
     {
+        Task<ServiceResponse<UserViewModel>> EditUserAsync(UserViewModel model, ClaimsPrincipal claim);
         Task<ServiceResponse<UserProfileEntity>> GetUserProfileAsync(string userId);
         Task<ServiceResponse<UserProfileEntity>> GetAsync(Expression<Func<UserProfileEntity, bool>> predicate);
         Task<ServiceResponse<UserViewModel>> GetCurrentUserAsync(ClaimsPrincipal claim);
+        Task<ServiceResponse<ChangePasswordViewModel>> ChangePasswordAsync(string userId, string currentPassword, string newPassword);
     }
 
     public class UserService : IUserService
@@ -91,9 +94,7 @@ namespace Project_Course_Submission.Services
             }
             catch { return null!; }
         }
-<<<<<<< Updated upstream
-=======
-
+        
         public async Task<ServiceResponse<ChangePasswordViewModel>> ChangePasswordAsync(string userId, string currentPassword, string newPassword)
         {
             var response = new ServiceResponse<ChangePasswordViewModel>();
@@ -159,6 +160,5 @@ namespace Project_Course_Submission.Services
             return response;
         }
 
->>>>>>> Stashed changes
     }
 }
