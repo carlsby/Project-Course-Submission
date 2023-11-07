@@ -8,8 +8,8 @@
 @import './components/productpage';
 @import './components/registerform';
 @import './components/footer';
-@import './components/login';
-@import './components/showcase';
+@import './components/_login.scss';
+@import './components/_showcase.scss';
 @import './components/reviews';
 @import './components/login';
 @import './components/register';
@@ -20,10 +20,6 @@
 @import './components/otp';
 @import './components/editaccount';
 @import './components/accountpage';
-<<<<<<< Updated upstream
-@import './components/reviews';
-=======
-@import './components/showcase';
 @import './components/reviews';
 @import './components/login';
 @import './components/register';
@@ -34,4 +30,4 @@
 @import './components/otp';
 @import './components/editaccount';
 @import './components/_Search.scss';
->>>>>>> Stashed changes
+

@@ -9,16 +9,16 @@ namespace Project_Course_Submission.Controllers
 
         public IActionResult Index(string searchText)
         {
-            // Om inget sökord anges visas hela listan
+            
             if (string.IsNullOrEmpty(searchText))
             {
                 return View(Categories);
             }
 
-            // Annars visas endast kategorier som innehåller sökordet
+            
             var result = Categories.Where(c => c.ToLower().Contains(searchText.ToLower())).ToList();
 
-            // Om det inte finns någon kategori som innehåller sökordet, visas en lista med en enda sträng som anger att denna kategori inte finns
+            
 
             if (!result.Any())
             {
