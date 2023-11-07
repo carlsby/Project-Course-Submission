@@ -26,7 +26,7 @@
                     @if (signInManager.IsSignedIn(User))
                     {
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            @User.FindFirst("FirstName")?.Value
+                            <i class="fa-solid fa-user"></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" asp-controller="Account" asp-action="index"> Account</a></li>

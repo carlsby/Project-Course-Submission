@@ -62,7 +62,7 @@ namespace Project_Course_Submission.Controllers
             if (ModelState.IsValid)
             {
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var changePasswordResult = await _userService.ChangePasswordAsync(userId, passwordModel.CurrentPassword, passwordModel.NewPassword);
+                var changePasswordResult = await _userService.ChangePasswordAsync(userId!, passwordModel.CurrentPassword, passwordModel.NewPassword);
 
                 if (changePasswordResult.StatusCode == Enums.StatusCode.Ok)
                 {
