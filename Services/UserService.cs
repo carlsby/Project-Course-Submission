@@ -91,5 +91,74 @@ namespace Project_Course_Submission.Services
             }
             catch { return null!; }
         }
+<<<<<<< Updated upstream
+=======
+
+        public async Task<ServiceResponse<ChangePasswordViewModel>> ChangePasswordAsync(string userId, string currentPassword, string newPassword)
+        {
+            var response = new ServiceResponse<ChangePasswordViewModel>();
+            var identityUser = await _userManager.FindByIdAsync(userId);
+
+            if (identityUser == null)
+            {
+                response.StatusCode = Enums.StatusCode.Notfound;
+                return response;
+            }
+
+            var result = await _userManager.ChangePasswordAsync(identityUser, currentPassword, newPassword);
+
+            if (result.Succeeded)
+            {
+                response.Content = new ChangePasswordViewModel();
+                response.StatusCode = Enums.StatusCode.Ok;
+            }
+            else
+            {
+                response.StatusCode = Enums.StatusCode.BadRequest;
+            }
+
+            return response;
+        }
+
+        public async Task<ServiceResponse<UserViewModel>> EditUserAsync(UserViewModel model, ClaimsPrincipal claim)
+        {
+            var response = new ServiceResponse<UserViewModel>();
+
+            try
+            {
+                var currentUserResponse = await GetCurrentUserAsync(claim);
+
+                var currentUser = currentUserResponse.Content;
+
+                var userProfileEntity = await _identityContext.UserProfiles
+                    .Include(x => x.User)
+                    .Include(x => x.Addresses)
+                    .FirstOrDefaultAsync(x => x.User.Email == currentUser!.Email);
+
+                if (userProfileEntity != null)
+                {
+                    userProfileEntity.FirstName = model.FirstName!;
+                    userProfileEntity.LastName = model.LastName!;
+                    userProfileEntity.User.Email = model.Email;
+                    userProfileEntity.User.PhoneNumber = model.PhoneNumber;
+
+                    response.StatusCode = Enums.StatusCode.Ok;
+
+                    await _identityContext.SaveChangesAsync();
+                }
+                else
+                {
+                    response.StatusCode = Enums.StatusCode.BadRequest;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+            return response;
+        }
+
+>>>>>>> Stashed changes
     }
 }
