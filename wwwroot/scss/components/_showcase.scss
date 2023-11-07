@@ -1,0 +1,27 @@
+﻿.showcase {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    #carousel-slide-showcase {
+        width: 100%;
+        transition: transform 5s ease-in-out;
+    }
+
+    .card-text {
+        font-family: $font-mulish;
+        position: absolute;
+        margin-top: 40%;
+        bottom: 50px;
+        left: 30px;
+        font-weight: $font-weight-bold;
+        color: $color-black;
+        padding: 5px;
+        font-size: 30px;
+    }
+}
+img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+}

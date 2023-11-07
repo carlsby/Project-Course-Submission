@@ -1,0 +1,32 @@
+﻿@model PhoneNumberViewModel
+@{
+}
+<section class="PhoneNumber-section">
+    <div class="container pn-container">
+        <div class="row">
+            <div class="col-12 pn-welcome-div">
+                <h1 class="pn-title">
+                    Verify your phone number
+                </h1>
+
+                <div class="ftpd-instructions">
+                    We have sent you ab SMS with a code to number
+                </div>
+            </div>
+
+            <form method="post" novalidate>
+            <div class="pn-input-div col-12 mb-3 d-flex justify-content-center">
+                <input asp-for="PhoneNumber" type="tel" class="form-control pn-input" id="rr-number" oninput="checkPhoneNumber()" />
+                <p class="pn-input-text">Phone Number</p>
+            </div>
+
+
+            <div class="mb-4">
+                <button type="submit" class="pn-send-btn col-12">
+                    Confirm
+                </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</section>

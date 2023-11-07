@@ -17,7 +17,7 @@ namespace Project_Course_Submission.Migrations.Data
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.12")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -74,6 +74,102 @@ namespace Project_Course_Submission.Migrations.Data
                     b.ToTable("IdentityUser");
                 });
 
+            modelBuilder.Entity("Project_Course_Submission.Entities.OrderEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrderStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Entities.OrderItemEntity", b =>
+                {
+                    b.Property<int>("OrderItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderItemId"));
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("OrderItemId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderItemEntity");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Entities.OrderTrackEntity", b =>
+                {
+                    b.Property<int>("TrackId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TrackId"));
+
+                    b.Property<bool>("IsDot")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsLine")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TrackDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrackLabel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TrackId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("Tracks");
+                });
+
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.AddressEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -89,6 +185,9 @@ namespace Project_Course_Submission.Migrations.Data
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -111,6 +210,29 @@ namespace Project_Course_Submission.Migrations.Data
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryImageEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ImageId");
+
+                    b.ToTable("CategoryImages");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ImageEntity", b =>
@@ -189,6 +311,21 @@ namespace Project_Course_Submission.Migrations.Data
                     b.ToTable("ProductImages");
                 });
 
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductReviewEntity", b =>
+                {
+                    b.Property<string>("ArticleNumber")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ReviewId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ArticleNumber", "ReviewId");
+
+                    b.HasIndex("ReviewId");
+
+                    b.ToTable("ProductReviews");
+                });
+
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductTagEntity", b =>
                 {
                     b.Property<string>("ArticleNumber")
@@ -204,7 +341,7 @@ namespace Project_Course_Submission.Migrations.Data
                     b.ToTable("ProductTags");
                 });
 
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.ReviewsEntity", b =>
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.ReviewEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -212,12 +349,7 @@ namespace Project_Course_Submission.Migrations.Data
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ArticleNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CommentCreated")
@@ -226,14 +358,7 @@ namespace Project_Course_Submission.Migrations.Data
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ArticleNumber");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Reviews");
                 });
@@ -297,6 +422,102 @@ namespace Project_Course_Submission.Migrations.Data
                     b.ToTable("UserProfileEntity");
                 });
 
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.WishlistsEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ProductImg")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductPrice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductReview")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductReviewRate")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductsArticleNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductsArticleNumber");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Wishlist");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Entities.OrderEntity", b =>
+                {
+                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Entities.OrderItemEntity", b =>
+                {
+                    b.HasOne("Project_Course_Submission.Entities.OrderEntity", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Entities.OrderTrackEntity", b =>
+                {
+                    b.HasOne("Project_Course_Submission.Entities.OrderEntity", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryImageEntity", b =>
+                {
+                    b.HasOne("Project_Course_Submission.Models.Entities.CategoryEntity", "Category")
+                        .WithMany("Images")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Project_Course_Submission.Models.Entities.ImageEntity", "Image")
+                        .WithMany("Categories")
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Image");
+                });
+
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductCategoryEntity", b =>
                 {
                     b.HasOne("Project_Course_Submission.Models.Entities.ProductEntity", "Product")
@@ -335,6 +556,25 @@ namespace Project_Course_Submission.Migrations.Data
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductReviewEntity", b =>
+                {
+                    b.HasOne("Project_Course_Submission.Models.Entities.ProductEntity", "Product")
+                        .WithMany("Reviews")
+                        .HasForeignKey("ArticleNumber")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Project_Course_Submission.Models.Entities.ReviewEntity", "Review")
+                        .WithMany("Products")
+                        .HasForeignKey("ReviewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Review");
+                });
+
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductTagEntity", b =>
                 {
                     b.HasOne("Project_Course_Submission.Models.Entities.ProductEntity", "Product")
@@ -352,23 +592,6 @@ namespace Project_Course_Submission.Migrations.Data
                     b.Navigation("Product");
 
                     b.Navigation("Tag");
-                });
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.ReviewsEntity", b =>
-                {
-                    b.HasOne("Project_Course_Submission.Models.Entities.ProductEntity", "Product")
-                        .WithMany("Reviews")
-                        .HasForeignKey("ArticleNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "UserId")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("UserId");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserAddressEntity", b =>
@@ -401,13 +624,41 @@ namespace Project_Course_Submission.Migrations.Data
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.WishlistsEntity", b =>
+                {
+                    b.HasOne("Project_Course_Submission.Models.Entities.ProductEntity", "Products")
+                        .WithMany()
+                        .HasForeignKey("ProductsArticleNumber")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Products");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Entities.OrderEntity", b =>
+                {
+                    b.Navigation("OrderItems");
+                });
+
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryEntity", b =>
                 {
+                    b.Navigation("Images");
+
                     b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ImageEntity", b =>
                 {
+                    b.Navigation("Categories");
+
                     b.Navigation("Products");
                 });
 
@@ -420,6 +671,11 @@ namespace Project_Course_Submission.Migrations.Data
                     b.Navigation("Reviews");
 
                     b.Navigation("Tags");
+                });
+
+            modelBuilder.Entity("Project_Course_Submission.Models.Entities.ReviewEntity", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.TagEntity", b =>

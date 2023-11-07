@@ -1,0 +1,69 @@
+﻿.best-sellers {
+    padding: 40px 20px;
+    display: flex;
+
+    .title {
+        text-align: center;
+    }
+
+    .view-all {
+        text-align: right;
+        margin: 12px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .product-container {
+        margin-top: 10px;
+    }
+
+    .star-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    #star-icon {
+        color: $color-star;
+    }
+
+    #icon-container {
+        position: relative;
+
+        #heart-icon {
+            position: absolute;
+            top: 80px;
+            right: 30px;
+
+            &:hover {
+                color: $color-heart;
+            }
+        }
+    }
+
+    #icon-container i {
+        position: absolute;
+        top: 40px;
+        right: 30px;
+        font-size: 24px;
+        color: $color-grey;
+    }
+
+    #arrow-icon {
+        margin-left: 5px;
+        font-size: 16px;
+    }
+
+ 
+    .best-grid {
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: space-around;
+    }
+
+    .product-container {
+        margin-bottom: 20px;
+    }
+}
