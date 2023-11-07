@@ -12,7 +12,7 @@
 
             @if (Model.LatestItems != null && Model.LatestItems.Any())
             {
-                <div id="carousel-slide-showcase" class="carousel slide" data-ride="carousel">
+                <div id="carousel-slide-showcase" class="carousel slide" data-ride="carousel" data-slide-interval="8000">
                     <div class="carousel-inner">
                         @foreach (var item in Model.LatestItems)
                         {

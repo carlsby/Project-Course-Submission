@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project-Course-Submission", "Project-Course-Submission.csproj", "{D39649EB-B749-4452-9AFB-4C8714E8CC2F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project-Course-Submission.Tests", "..\Project-Course-Submission.Tests\Project-Course-Submission.Tests.csproj", "{F5583951-36C0-4274-85D8-205C8465AB14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project-Course-Filippa.Tests", "..\Project-Course-Submission.Tests\Project-Course-Filippa.Tests.csproj", "{F5583951-36C0-4274-85D8-205C8465AB14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

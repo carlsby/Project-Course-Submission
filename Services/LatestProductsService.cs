@@ -11,8 +11,8 @@ namespace Project_Course_Submission.Services
             {
                 new LatestProductsItemViewModel { Id = "1", Title = "Soft Chill Pants", ImageUrl = "/images/softpants.jpg", ButtonUrl = "Shop Now" },
                 new LatestProductsItemViewModel { Id = "2", Title = "Christmas Gifts", ImageUrl = "/images/christmasgifts.jpg", ButtonUrl = "Find Gifts" },
-                new LatestProductsItemViewModel { Id = "3", Title = "Winter Collection", ImageUrl = "/images/270x295.svg", ButtonUrl = "See More" },
-
+                new LatestProductsItemViewModel { Id = "3", Title = "Winter Collection", ImageUrl = "/images/winter.jpg", ButtonUrl = "See More" },
+                new LatestProductsItemViewModel { Id = "4", Title = "Winter Is Coming", ImageUrl = "/images/christmas.jpg", ButtonUrl = "See More" },
             }
         };
 

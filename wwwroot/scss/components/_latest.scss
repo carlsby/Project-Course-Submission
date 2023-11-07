@@ -2,19 +2,20 @@
 
     #carousel-slide-showcase {
         width: 100%;
-        transition: transform 5s ease-in-out;
+        transition: transform 8s ease-in-out;
     }
+
     .latest-container {
         width: 600px;
-        position: relative; 
-        width: 600px; 
+        position: relative;
+        width: 600px;
     }
-   
+
     .card-text {
         font-family: $font-mulish;
         position: absolute;
         margin-top: 40%;
-        bottom: 6rem;
+        bottom: 8rem;
         left: 70px;
         font-weight: $font-weight-bold;
         color: $color-white;
@@ -26,15 +27,15 @@
     .latest-img {
         width: 100%;
         height: 100%;
-        overflow: hidden; 
+        overflow: hidden;
         object-fit: contain;
     }
 
     .btn-shop-now {
         margin-top: 20px;
         cursor: pointer;
-        bottom: 50px;
-        left: 80px;
+        bottom: 60px;
+        left: 50px;
         font-family: $font-mulish;
         padding: 10px 35px;
         border: 1px solid $color-black;
@@ -51,6 +52,11 @@
             border: 1px solid $color-white;
             background-color: $color-white;
         }
-    } 
-}
-    
+    }
+
+    @media (min-width: 280px) and (max-width: 912px) {
+        .showcase {
+
+        }
+        }
+    }
