@@ -1,7 +1,6 @@
-﻿@import './core/fonts';
+@import './core/fonts';
 @import './core/colors';
 @import './core/mixins';
-
 @import './components/base';
 @import './components/bestsellers';
 @import './components/categories';
@@ -13,3 +12,14 @@
 @import './components/productdetail';
 @import './components/productpage';
 @import './components/registerform';
+@import './components/showcase';
+@import './components/reviews';
+@import './components/login';
+@import './components/register';
+@import './components/accountinput';
+@import './components/forgotpassword';
+@import './components/newpassword';
+@import './components/verifyphonenumber';
+@import './components/otp';
+@import './components/editaccount';
+@import './components/accountpage';

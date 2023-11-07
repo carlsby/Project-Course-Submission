@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Project_Course_Submission.Migrations.Data;
 using Project_Course_Submission.Models.Entities;
 using Project_Course_Submission.Services.Repositories;
 using Project_Course_Submission.ViewModels;
-using ImageEntity = Project_Course_Submission.Migrations.Data.ImageEntity;
 
 namespace Project_Course_Submission.Services
 {

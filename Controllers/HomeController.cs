@@ -1,6 +1,5 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using Project_Course_Submission.Migrations.Data;
 using Project_Course_Submission.Services;
 using Project_Course_Submission.Services.Repositories;
 using Project_Course_Submission.ViewModels;

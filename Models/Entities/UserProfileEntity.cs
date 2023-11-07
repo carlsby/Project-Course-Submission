@@ -22,6 +22,8 @@ namespace Project_Course_Submission.Models.Entities
             {
                 FirstName = model.FirstName!,
                 LastName = model.LastName!,
+                PhoneNumber = model.User.PhoneNumber,
+                Email = model.User.Email,
             };
         }
     }

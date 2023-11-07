@@ -1,0 +1,61 @@
+﻿@model List<OrderHistoryViewModel>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div class="topnav">
+    <div class="row align-items-center">
+        <div class="col-auto" style="margin-left: 10px;">
+            <i class="fa-solid fa-chevron-left fa-lg"></i>
+        </div>
+        <div class="col text-center">
+            <h5>Order history</h5>
+        </div>
+    </div>
+</div>
+@foreach (var order in Model)
+{
+    <div class="card" style="width: auto;">
+        <div class="card-body" data-toggle="collapse" href="#cardExtension_@order.OrderId">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h6 class="card-subtitle mb-2 text-black">
+                        <a asp-controller="OrderTracking" asp-action="Tracking" asp-route-orderId="@order.OrderId">
+                            #@order.OrderId
+                        </a>
+                    </h6>
+                    <p class="card-text small">@order.OrderDate.ToString("MMM dd, yyyy 'at' h:mm tt")</p>
+                </div>
+                <div>
+                    <h6 class="card-subtitle mb-2 text-right">@order.OrderStatus</h6>
+                    <p class="card-text text-right">$@order.TotalAmount.ToString("0.00")</p>
+                </div>
+            </div>
+        </div>
+        <div id="cardExtension_@order.OrderId" class="collapse bg-light p-3">
+            <div class="row">
+                @foreach (var item in order.OrderItems)
+                {
+                    <div class="col">
+                        <p class="card-text small">@item.ProductName, @item.Size, @item.Color</p>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex justify-content-end">
+                            <p class="card-text small">@item.Quantity x</p>
+                            <p class="card-text ml-1 small">$@item.Price.ToString("0.00")</p>
+                        </div>
+                    </div>
+                }
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-repeat fa-2xs m-1"></i>
+                        <h6 class="card-subtitle text-black small">repeat order</h6>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <h6 class="card-subtitle text-right small">leave a review</h6>
+                        <i class="fa-solid fa-chevron-right fa-2xs m-1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
