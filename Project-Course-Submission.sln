@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project-Course-Submission",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project-Course-Filippa.Tests", "..\Project-Course-Submission.Tests\Project-Course-Filippa.Tests.csproj", "{F5583951-36C0-4274-85D8-205C8465AB14}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project-Course-Submission.Tests", "..\Project-Test-Filippa\Project-Course-Submission.Tests\Project-Course-Submission.Tests.csproj", "{321B19E7-2032-4BE3-8509-95960B337DC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F5583951-36C0-4274-85D8-205C8465AB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5583951-36C0-4274-85D8-205C8465AB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5583951-36C0-4274-85D8-205C8465AB14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{321B19E7-2032-4BE3-8509-95960B337DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{321B19E7-2032-4BE3-8509-95960B337DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{321B19E7-2032-4BE3-8509-95960B337DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{321B19E7-2032-4BE3-8509-95960B337DC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

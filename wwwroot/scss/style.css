@@ -624,13 +624,13 @@ body {
 .showcase .latest-container {
   width: 600px;
   position: relative;
-  width: 600px;
+  height: 400px;
 }
 .showcase .card-text {
   font-family: 'Mulish', sans-serif;
   position: absolute;
-  margin-top: 40%;
-  bottom: 6rem;
+  margin-top: 30%;
+  bottom: 12rem;
   left: 70px;
   font-weight: 700;
   color: #ffffff;
@@ -646,8 +646,8 @@ body {
 .showcase .btn-shop-now {
   margin-top: 20px;
   cursor: pointer;
-  bottom: 50px;
-  left: 80px;
+  bottom: 60px;
+  left: 60px;
   font-family: 'Mulish', sans-serif;
   padding: 10px 35px;
   border: 1px solid #111111;
