@@ -1,0 +1,46 @@
+﻿h2 {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.category-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px 20px;
+    margin-top: 20px;
+}
+
+.category-box {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    margin: 10px;
+    transition: background-color 0.5s;
+    cursor:pointer;
+
+}
+
+.category-box:hover {
+    background-color:darkgrey;
+}
+
+.category-title {
+    font-size: 18px;
+    margin-top: 55px;
+}
+
+.category-description {
+    font-size: 14px;
+    color: #666;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+}

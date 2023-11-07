@@ -1,0 +1,22 @@
+﻿@model List<string>
+
+<h2>Search Category</h2>
+
+<partial name="/Views/Partials/_Search.cshtml" />
+
+
+
+
+    <div class="category-container">
+
+    @foreach (var category in Model)
+    {
+        <div class="category-box">
+            <h2 class="category-title">@category</h2>
+            
+        </div>
+
+
+    }
+    </div>
+
