@@ -6,17 +6,16 @@
 
 
 
-
-    <div class="category-container">
+<div class="category-container">
 
     @foreach (var category in Model)
     {
         <div class="category-box">
-            <h2 class="category-title">@category</h2>
-            
+            <img class="category-image" src="~/images/featured/200x122.svg" alt="...">
+            <div class="text-overlay">
+                <h2 class="category-title">@category</h2>
+            </div>
         </div>
-
-
     }
-    </div>
+</div>
 

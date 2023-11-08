@@ -5,7 +5,7 @@ namespace Project_Course_Submission.Controllers
     public class SearchController : Controller
     {
 
-        private List<string> Categories = new List<string> { "T-shirts", "Shirts", "Blouses", "Sweaters", "Jackets", "Coats", "Vests", "Hoodies", "Jeans", "Trousers", "Shorts", "Shoes", "kids" };
+        public List<string> Categories = new List<string> { "T-shirts", "Shirts", "Blouses", "Sweaters", "Jackets", "Coats", "Vests", "Hoodies", "Jeans", "Trousers", "Shorts", "Shoes", "Kids", "Sport","Dresses" };
 
         public IActionResult Index(string searchText)
         {
