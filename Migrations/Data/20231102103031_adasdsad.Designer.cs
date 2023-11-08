@@ -9,11 +9,11 @@ using Project_Course_Submission.Contexts;
 
 #nullable disable
 
-namespace Project_Course_Submission.Migrations
+namespace Project_Course_Submission.Migrations.Data
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231027072140_dbu")]
-    partial class dbu
+    [Migration("20231102103031_adasdsad")]
+    partial class adasdsad
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,28 +173,6 @@ namespace Project_Course_Submission.Migrations
                     b.ToTable("Tracks");
                 });
 
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.AddressEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostalCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StreetName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AddressEntity");
-                });
-
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.CategoryEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -232,7 +210,7 @@ namespace Project_Course_Submission.Migrations
 
                     b.HasIndex("ImageId");
 
-                    b.ToTable("CategoryImageEntity");
+                    b.ToTable("CategoryImages");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ImageEntity", b =>
@@ -323,7 +301,7 @@ namespace Project_Course_Submission.Migrations
 
                     b.HasIndex("ReviewId");
 
-                    b.ToTable("ProductReviewEntity");
+                    b.ToTable("ProductReviews");
                 });
 
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.ProductTagEntity", b =>
@@ -380,48 +358,6 @@ namespace Project_Course_Submission.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserAddressEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserAddressEntity");
-                });
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserProfileEntity", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("UserProfileEntity");
-                });
-
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.WishlistsEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -468,7 +404,7 @@ namespace Project_Course_Submission.Migrations
 
             modelBuilder.Entity("Project_Course_Submission.Entities.OrderEntity", b =>
                 {
-                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "User")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -594,36 +530,6 @@ namespace Project_Course_Submission.Migrations
                     b.Navigation("Tag");
                 });
 
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserAddressEntity", b =>
-                {
-                    b.HasOne("Project_Course_Submission.Models.Entities.AddressEntity", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "User")
-                        .WithMany("Addresses")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Address");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserProfileEntity", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.WishlistsEntity", b =>
                 {
                     b.HasOne("Project_Course_Submission.Models.Entities.ProductEntity", "Products")
@@ -632,7 +538,7 @@ namespace Project_Course_Submission.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Project_Course_Submission.Models.Entities.UserProfileEntity", "User")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -681,11 +587,6 @@ namespace Project_Course_Submission.Migrations
             modelBuilder.Entity("Project_Course_Submission.Models.Entities.TagEntity", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Project_Course_Submission.Models.Entities.UserProfileEntity", b =>
-                {
-                    b.Navigation("Addresses");
                 });
 #pragma warning restore 612, 618
         }

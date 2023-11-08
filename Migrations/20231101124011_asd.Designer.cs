@@ -9,11 +9,11 @@ using Project_Course_Submission.Contexts;
 
 #nullable disable
 
-namespace Project_Course_Submission.Migrations.Identity
+namespace Project_Course_Submission.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20231027072430_dbuidentity")]
-    partial class dbuidentity
+    [Migration("20231101124011_asd")]
+    partial class asd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -238,6 +238,9 @@ namespace Project_Course_Submission.Migrations.Identity
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

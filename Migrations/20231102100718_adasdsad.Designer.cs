@@ -12,8 +12,8 @@ using Project_Course_Submission.Contexts;
 namespace Project_Course_Submission.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20231101102939_adresses")]
-    partial class adresses
+    [Migration("20231102100718_adasdsad")]
+    partial class adasdsad
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
