@@ -6,11 +6,10 @@ namespace Project_Course_Submission.Contexts
 {
     public class DataContext : DbContext
     {
-
-
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
+        
         public DbSet<WishlistsEntity> Wishlist { get; set; }
         public DbSet<OrderTrackEntity> Tracks { get; set; }
         public DbSet<CategoryEntity> Categories { get; set; }
@@ -24,6 +23,5 @@ namespace Project_Course_Submission.Contexts
         public DbSet<TagEntity> Tags { get; set; }
         public DbSet<ProductEntity> Products { get; set; }
         public DbSet<OrderEntity> Orders { get; set; }
-
     }
 }
