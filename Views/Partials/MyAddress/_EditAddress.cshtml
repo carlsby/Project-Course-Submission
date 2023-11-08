@@ -1,0 +1,127 @@
+﻿@model Address
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+
+<div class="topnav">
+    <div class="row align-items-center">
+        <div class="col-auto" style="margin-left: 14px;">
+            <i class="fa-solid fa-chevron-left"></i>
+        </div>
+        <div class="col text-center" style="padding-right:57px;">
+            <p style=" font-size:large;" class="text-xl-center">Edit address</p>
+        </div>
+    </div>
+</div>
+<div style="padding-bottom:600px;" class="content">
+    <form asp-controller="MyAddress" asp-action="EditAddress" method="post">
+        <input type="hidden" asp-for="Id" />
+        <fieldset id="title">
+            <legend id="title">Edit Address</legend>
+            <input type="text" id="addressInput" asp-for="Type" />
+        </fieldset>
+        <fieldset id="title">
+            <legend id="title">Street Address</legend>
+            <input type="text" id="addressInput" asp-for="StreetName" />
+        </fieldset>
+        <fieldset id="title">
+            <legend id="title1">Postal Code</legend>
+            <input type="text" id="addressInput" asp-for="PostalCode" />
+        </fieldset>
+        <fieldset id="title">
+            <legend id="title">City</legend>
+            <input type="text" id="addressInput" asp-for="City" />
+        </fieldset>
+        <div style="justify-content: center; display: flex;">
+            <button type="submit" id="address">Save Address</button>
+        </div>
+    </form>
+</div>
+<style>
+
+    button#address {
+        border-radius: 50px;
+        color: white;
+        font-size: 13px;
+        font-weight: 500;
+        border: none;
+        background-color: black;
+        height: 46px;
+        width: 90%;
+    }
+
+    legend#title1 {
+        margin-left: 22px;
+        width: 31px;
+        padding-left: 3px;
+        background-color: white;
+        margin-bottom: 1px;
+        margin-top: -11px;
+    }
+
+
+    legend#title {
+        margin-left: 22px;
+        width: 121px;
+        padding-left: 3px;
+        background-color: white;
+        margin-bottom: 1px;
+        margin-top: -11px;
+    }
+
+    fieldset#title {
+        margin-bottom: 20px;
+        margin: 17px;
+        border: solid 1px aqua;
+        border-opac
+        border-radius: 50px;
+    }
+
+    legend {
+        font-size: 12px;
+    }
+
+
+    input#addressInput {
+        border-inline-color: white;
+        border-color: transparent;
+        width: 100%;
+        max-width: 90%;
+        margin-bottom: 9px;
+        margin-left: 19px;
+        padding-right: 0px;
+        margin-right: 20%;
+        font-size: 15px;
+    }
+
+
+    input#type {
+        border-inline-color: white;
+        border-color: transparent;
+        width: 100%;
+        max-width: 90%;
+        margin-bottom: 9px;
+        margin-left: 19px;
+        padding-right: 0px;
+        margin-right: 20%;
+        font-size: 15px;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    #map {
+        height: 300px;
+    }
+
+    #addressInput {
+        width: 100%;
+    }
+</style>
