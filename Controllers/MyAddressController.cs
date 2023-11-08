@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using System.Security.Claims;
 using System.Collections.Generic;
-using Project_Course_Submission.Models.Entities; 
-using Project_Course_Submission.ViewModels; 
+using Project_Course_Submission.Models.Entities;
+using Project_Course_Submission.ViewModels;
 using Project_Course_Submission.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
@@ -109,7 +109,7 @@ public class MyAddressController : Controller
 
         if (addressEntity == null)
         {
-            return NotFound(); 
+            return NotFound();
         }
 
         var address = new Address
@@ -134,7 +134,7 @@ public class MyAddressController : Controller
 
             if (addressEntity == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
 
             addressEntity.Type = address.Type;
@@ -144,8 +144,8 @@ public class MyAddressController : Controller
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index"); 
-        
+            return RedirectToAction("Index");
+
         }
 
         return View("Views/Partials/MyAddress/_EditAddress.cshtml", address);
