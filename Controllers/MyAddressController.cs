@@ -105,7 +105,6 @@ public class MyAddressController : Controller
 
     public IActionResult EditAddress(int id)
     {
-        // Retrieve the address by its ID
         var addressEntity = _context.Addresses.Find(id);
 
         if (addressEntity == null)
