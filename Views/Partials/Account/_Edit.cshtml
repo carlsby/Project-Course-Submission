@@ -29,14 +29,18 @@
                         <p class="Edit-input-text">Email</p>
                     </div>
                     <div class="Edit-input-div col-12 mb-3 d-flex justify-content-center">
-                        <input asp-for="@Model.Content!.PhoneNumber" type="tel" class="form-control Edit-input" id="rr-number" oninput="PhoneNumber()" value="@Model.Content!.PhoneNumber" />
-                        <i class="fas fa-xmark Edit-input-check rr-phone-check"></i>
+                        <input asp-for="@Model.Content!.PhoneNumber" type="tel" class="form-control Edit-input" id="phonenumber" oninput="validatePhoneNumber()" value="@Model.Content!.PhoneNumber" />
+                        <i class="fas fa-xmark Edit-input-check phone-check"></i>
                         <p class="Edit-input-text">Phone number</p>
                     </div>
                     <div class="col-12 d-flex justify-content-center align-items-center">
                         <a class="edit-change-pw" asp-controller="account" asp-action="newpassword">
                             Change password <i class="fa-light fa-lock-open"></i>
                         </a>
+                    </div>
+
+                    <div class="col-"12>
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger register-validation mb-3"></div>
                     </div>
 
                     <div class="mb-4">

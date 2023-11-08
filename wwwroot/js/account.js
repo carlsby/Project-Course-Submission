@@ -11,9 +11,9 @@ function validateForm() {
     validateFirstName();
     validateLastName();
     validateEmail();
+    validatePhoneNumber();
     validationScript();
 }
-
 
 function togglePassword() {
     var x = document.getElementById("pw");
@@ -90,12 +90,24 @@ function validateEmail() {
     }
 }
 
+function validatePhoneNumber() {
+    var phoneInput = document.getElementById("phonenumber");
+    var icon = document.querySelector(".phone-check");
+
+    var phonePattern = /^\d{7,15}$/;
+
+    if (phonePattern.test(phoneInput.value)) {
+        icon.classList.remove("fa-times"); 
+        icon.classList.add("fa-check");    
+    } else {
+        icon.classList.remove("fa-check");    
+        icon.classList.add("fa-times");       
+    }
+}
 
 function validationScript() {
     const myInput = document.getElementById("pw");
     const confirm = document.getElementById("confirm-pw");
-    const firstName = document.getElementById("firstname");
-    const lastName = document.getElementById("lastname");
 
     const confirmMessage = document.getElementById("confirm-pw-message");
 
@@ -105,10 +117,7 @@ function validationScript() {
     const length = document.getElementById("length");
     const compare = document.getElementById("compare");
     const special = document.getElementById("special");
-    const fName = document.getElementById("fnameCheck");
-    const lName = document.getElementById("lnameCheck");
 
-    const regName = /^[a-öA-Ö]+(?:[é'-][a-öA-Ö]+)*$/;
     const numbers = /[0-9]/g;
     const specCharReg = /^(?=.*[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?]).*$/;
 
@@ -188,33 +197,5 @@ function validationScript() {
                 compare.classList.add("invalid");
             }
         })
-    }
-
-    if (firstName != null) {
-        firstName.addEventListener("keyup", function () {
-            if (firstName.value.match(regName)) {
-                fName.style.display = "none";
-                fName.classList.remove("invalid");
-                fName.classList.add("valid");
-            } else {
-                fName.style.display = "block";
-                fName.classList.remove("valid");
-                fName.classList.add("invalid");
-            }
-        })
-    }
-
-    if (lastName != null) {
-        lastName.onkeyup = function () {
-            if (lastName.value.match(regName)) {
-                lName.style.display = "none";
-                lName.classList.remove("invalid");
-                lName.classList.add("valid");
-            } else {
-                lName.style.display = "block";
-                lName.classList.remove("valid");
-                lName.classList.add("invalid");
-            }
-        }
     }
 }

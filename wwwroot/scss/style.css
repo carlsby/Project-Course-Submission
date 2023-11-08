@@ -1262,6 +1262,19 @@ img {
 .Edit-section .Edit-container {
   text-align: center;
 }
+.Edit-section .Edit-container .register-validation {
+  margin: 0;
+  padding: 0;
+  color: #ef1c1c;
+  background: none;
+  border: none;
+}
+.Edit-section .Edit-container .register-validation ul {
+  list-style-type: none;
+  margin: 0;
+  font-weight: 700;
+  padding: 0;
+}
 @media (min-width: 800px) {
   .Edit-section .Edit-container {
     width: 70%;

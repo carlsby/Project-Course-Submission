@@ -110,11 +110,16 @@ namespace Project_Course_Submission.Controllers
         {
             var response = await _userService.EditUserAsync(model.Content!, User);
 
-            if (response.StatusCode == Enums.StatusCode.Ok)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Account");
-            }
 
+                if (response.StatusCode == Enums.StatusCode.Ok)
+                {
+                    return RedirectToAction("Index", "Account");
+                }
+
+            }
+            ModelState.AddModelError("", "An error has occured.");
             return View(model);
         }
 

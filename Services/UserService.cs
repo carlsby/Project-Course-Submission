@@ -7,6 +7,7 @@ using Project_Course_Submission.ViewModels;
 using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 
 namespace Project_Course_Submission.Services
 {
@@ -94,7 +95,7 @@ namespace Project_Course_Submission.Services
             }
             catch { return null!; }
         }
-        
+
         public async Task<ServiceResponse<ChangePasswordViewModel>> ChangePasswordAsync(string userId, string currentPassword, string newPassword)
         {
             var response = new ServiceResponse<ChangePasswordViewModel>();
@@ -127,14 +128,12 @@ namespace Project_Course_Submission.Services
 
             try
             {
-                var currentUserResponse = await GetCurrentUserAsync(claim);
-
-                var currentUser = currentUserResponse.Content;
+                var currentUserResponse = claim.FindFirstValue("Id");
 
                 var userProfileEntity = await _identityContext.UserProfiles
                     .Include(x => x.User)
                     .Include(x => x.Addresses)
-                    .FirstOrDefaultAsync(x => x.User.Email == currentUser!.Email);
+                    .FirstOrDefaultAsync(x => x.User.Id == currentUserResponse);
 
                 if (userProfileEntity != null)
                 {
