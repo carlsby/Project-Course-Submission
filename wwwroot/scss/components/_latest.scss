@@ -4,16 +4,15 @@
         transition: transform 8s ease-in-out;
     }
 
-.latest-container {
-    width: 600px;
-    position: relative;
-    height: 600px;
+    .latest-container {
+        width: 600px;
+        position: relative;
+        height: 400px;
 
         .card-text {
             font-family: $font-mulish;
             position: absolute;
-            margin-top: 40%;
-            bottom: 10rem;
+            bottom: 6rem;
             left: 30px;
             font-weight: $font-weight-bold;
             color: $color-white;
@@ -24,7 +23,6 @@
 
         .latest-img {
             width: 100%;
-            height: 100%;
             overflow: hidden;
             object-fit: contain;
         }
@@ -53,9 +51,47 @@
             }
         }
     }
-}
-@media (min-width: 280px) and (max-width: 912px) {
 
+    @include md {
+        @include lg {
+            @include xl {
+                @include xxl {
+
+                    .latest-container {
+                        height: 400px;
+
+                        .card-text {
+                            font-size: 18px;
+                            bottom: 8rem;
+                        }
+
+                        .btn-shop-now {
+                            bottom: 5rem;
+                            left: 30px;
+                            padding: 8px 25px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media (min-width: 280px) and (max-width: 912px) {
+            .latest-container {
+                height: 300px;
+
+                .card-text {
+                    font-size: 18px;
+                    bottom: 8rem;
+                }
+
+                .btn-shop-now {
+                    bottom: 5rem;
+                    left: 30px;
+                    padding: 8px 25px;
+                    font-size: 14px;
+                }
+            }
+        }
     }
-
 }

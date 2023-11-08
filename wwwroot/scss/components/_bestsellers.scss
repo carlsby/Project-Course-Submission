@@ -1,15 +1,14 @@
 ﻿.best-sellers {
     display: flex;
-    
 
     .title {
-        padding-top: 20px;
+        padding-top: 60px;
         text-align: center;
     }
 
     .view-all {
         text-align: right;
-        margin: 12px;
+        margin-right: 20px;
     }
 
     a {
@@ -45,7 +44,6 @@
             }
         }
 
-
         #best-cart-icon {
             position: absolute;
             top: 50px;
@@ -55,18 +53,16 @@
         }
     }
 
-    #arrow-icon {
-        margin-left: 5px;
+    .view-all, #arrow-icon {
         font-size: 16px;
+        margin: 0 25px 8px 4px;
     }
 
-
-    .best-grid {
+     .best-grid {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
-
 
         .best-img {
             width: 100%;
@@ -80,155 +76,52 @@
 }
 
 
-
-@include md {
-    @include lg {
-        @include xl {
-            @include xxl {
-                .best-sellers {
-                    padding: 10px 20px;
-                    flex-direction: row;
-                    align-items: center;
-
-                    .view-all {
-                        text-align: right;
-                        margin-right: 20px;
-                        font-size: 14px;
-
-
-                        #arrow-icon {
-                            margin-left: 5px;
-                            font-size: 12px;
-                        }
-                    }
-
-                    .title {
-                        font-size: 22px;
-                        text-align: center;
-                    }
-
-
-                    .best-grid {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: center;
-                        gap: 10px;
-
-                        .bestSellers-item {
-                            width: 150px;
-
-                            .product-title {
-                                font-size: 12px;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                white-space: nowrap;
-                            }
-
-                            .product-price {
-                                font-size: 12px;
-                            }
-
-                            .best-img {
-                                width: 100%;
-                                height: 100px;
-                            }
-
-                            #icon-container {
-                                position: relative;
-
-                                #heart-icon {
-                                    position: absolute;
-                                    top: 8px;
-                                    right: 12px;
-                                    font-size: 14px;
-
-                                    &:hover {
-                                        color: $color-heart;
-                                    }
-                                }
-
-
-                                #add-to-cart-icon {
-                                    position: absolute;
-                                    top: 40px;
-                                    right: 12px;
-                                    font-size: 14px;
-                                    color: $color-grey;
-                                }
-                            }
-                        }
-
-                        .star-container {
-                            display: flex;
-                            align-items: center;
-                            justify-content: flex-start;
-                        }
-
-                        #star-icon {
-                            color: $color-star;
-                            font-size: 14px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-
-
     @media (min-width: 280px) and (max-width: 912px) {
         .best-sellers {
-            .best-grid {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
+            .title {
+                padding-top: 40px;
+                font-size: 22px;
+            }
 
-                .bestSellers-item {
-                    width: 120px;
+            .view-all, #arrow-icon {
+                font-size: 14px;
+                margin-right: 20px;
+                }
 
-                    .product-title {
-                        font-size: 12px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                    }
+                .best-grid {
+                    .bestSellers-item {
+                        width: 100px;
 
-                    .product-price {
-                        font-size: 12px;
-                    }
-
-                    .best-img {
-                        width: 100%;
-                        height: 100px;
-                    }
-
-                    #icon-container {
-                        position: relative;
-
-                        #heart-best-icon {
-                            position: absolute;
-                            top: 10px;
-                            right: 20px;
-                            font-size: 14px;
-
-                            &:hover {
-                                color: $color-heart;
-                            }
+                        .product-title {
+                            font-size: 12px;
                         }
 
+                        .product-price {
+                            font-size: 12px;
+                        }
 
-                        #best-cart-icon {
-                            position: absolute;
-                            top: 30px;
-                            right: 20px;
-                            font-size: 14px;
-                            color: $color-grey;
+                        .best-img {
+                            width: 100%;
+                            height: 100px;
+                        }
+
+                        #icon-container {
+                            position: relative;
+
+                            #heart-best-icon {
+                                top: 10px;
+                                right: 20px;
+                                font-size: 14px;
+                            }
+
+                            #best-cart-icon {
+                                top: 30px;
+                                right: 20px;
+                                font-size: 14px;
+                            }
                         }
                     }
                 }
             }
         }
-    }
-}
+
