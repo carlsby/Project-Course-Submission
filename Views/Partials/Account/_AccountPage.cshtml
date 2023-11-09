@@ -18,7 +18,7 @@
                 <p class="account-email">@Model.Content?.Email</p>
             </div>
 
-            <a asp-controller="order" asp-action="history">
+            <a asp-controller="OrderHistory" asp-action="History">
                 <div class="account-links-div col-12 d-flex justify-content-center align-items-center">
                     <i class="fa-regular fa-calendar account-link-icon-left"></i><div class="account-link-title"> Order history</div><i class="fa-regular fa-chevron-right account-link-icon-right"></i>
                 </div>
@@ -36,7 +36,7 @@
                 </div>
             </a>
 
-            <a asp-controller="OrderHistory" asp-action="Index">
+            <a asp-controller="order" asp-action="history">
                 <div class="account-links-div col-12 d-flex justify-content-center align-items-center">
                     <i class="fa-regular fa-gift account-link-icon-left"></i><div class="account-link-title"> My promocodes</div><i class="fa-regular fa-chevron-right account-link-icon-right"></i>
                 </div>
