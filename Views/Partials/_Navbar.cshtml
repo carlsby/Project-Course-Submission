@@ -21,6 +21,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" asp-controller="Contacts" asp-action="Index">Contacts</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" asp-controller="Search" asp-action="Index">SEARCH</a>
+                </li>
                 <li class="nav-item dropdown">
 
                     @if (signInManager.IsSignedIn(User))
@@ -32,7 +35,7 @@
                             <li><a class="dropdown-item" asp-controller="Account" asp-action="index"> Account</a></li>
                             <li><a class="dropdown-item" asp-controller="Wishlist" asp-action="Wishlist"> Wishlist</a></li>
                             <li><a class="dropdown-item" asp-controller="OrderHistory" asp-action="History"> Order history</a></li>
-                            <li><a class="dropdown-item" asp-controller="MyAdress" asp-action="Index"> My Adress</a></li>
+                            <li><a class="dropdown-item" asp-controller="MyAddress" asp-action="Index"> My Adress</a></li>
                             <li><a class="dropdown-item" asp-controller="logout" asp-action="index"> Logout</a></li>
                         </ul>
                     }
