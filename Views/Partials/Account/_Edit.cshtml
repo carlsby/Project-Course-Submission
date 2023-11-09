@@ -1,4 +1,4 @@
-﻿@model UserViewModel
+﻿@model ServiceResponse<UserViewModel>
 
 <section class="Edit-section">
     <div class="container Edit-container">
@@ -12,35 +12,44 @@
                     <div class="rounded-circle"></div>
                 </div>    
 
-                <form class="Edit-Form" action="#">
+                <form method="post" class="Edit-Form" novalidate>
                     <div class="Edit-input-div col-12 mb-3 d-flex justify-content-center">
-                        <input type="tel" class="form-control Edit-input" id="firstname" oninput="validateFirstName()" value="@Model.FirstName" />
+                        <input asp-for="@Model.Content!.FirstName" type="tel" class="form-control Edit-input" id="firstname" oninput="validateFirstName()" value="@Model.Content!.FirstName" />
                         <i class="fas fa-xmark Edit-input-check firstname-check"></i>
                         <p class="Edit-input-text">First name</p>
                     </div>
                     <div class="Edit-input-div col-12 mb-3 d-flex justify-content-center">
-                        <input type="tel" class="form-control Edit-input" id="lastname" oninput="validateLastName()" value="@Model.LastName" />
+                        <input asp-for="@Model.Content.LastName" type="tel" class="form-control Edit-input" id="lastname" oninput="validateLastName()" value="@Model.Content!.LastName" />
                         <i class="fas fa-xmark Edit-input-check lastname-check"></i>
                         <p class="Edit-input-text">Last name</p>
                     </div>
                     <div class="Edit-input-div col-12 mb-3 d-flex justify-content-center">
-                        <input type="tel" class="form-control Edit-input" id="email" oninput="validateEmail()" value="@Model.Email" />
+                        <input asp-for="@Model.Content!.Email" type="tel" class="form-control Edit-input" id="email" oninput="validateEmail()" value="@Model.Content!.Email" />
                         <i class="fas fa-xmark Edit-input-check email-check"></i>
                         <p class="Edit-input-text">Email</p>
                     </div>
                     <div class="Edit-input-div col-12 mb-3 d-flex justify-content-center">
-                        <input type="tel" class="form-control Edit-input" id="rr-number" oninput="PhoneNumber()" value="@Model.PhoneNumber" />
-                        <i class="fas fa-xmark Edit-input-check rr-phone-check"></i>
-                        <p class="Edit-input-text">Phone Number</p>
+                        <input asp-for="@Model.Content!.PhoneNumber" type="tel" class="form-control Edit-input" id="phonenumber" oninput="validatePhoneNumber()" value="@Model.Content!.PhoneNumber" />
+                        <i class="fas fa-xmark Edit-input-check phone-check"></i>
+                        <p class="Edit-input-text">Phone number</p>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center align-items-center">
+                        <a class="edit-change-pw" asp-controller="account" asp-action="newpassword">
+                            Change password <i class="fa-light fa-lock-open"></i>
+                        </a>
+                    </div>
+
+                    <div class="col-"12>
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger register-validation mb-3"></div>
+                    </div>
+
+                    <div class="mb-4">
+                        <button type="submit" class="Edit-send-btn col-6">
+                            Save Changes
+                        </button>
                     </div>
                 </form>
-
-                <div class="mb-4">
-                    <button class="Edit-send-btn col-6">
-                        Save Changes
-                    </button>
-                </div> 
-
+ 
             </div>
         </div>
     </div>

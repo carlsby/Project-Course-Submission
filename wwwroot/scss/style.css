@@ -884,6 +884,27 @@ img {
   top: 12px;
 }
 
+#message {
+  display: block;
+  color: #000;
+  position: relative;
+}
+
+#message p {
+  padding: 10px 35px;
+}
+
+.valid {
+  color: green;
+  display: none;
+}
+
+.invalid {
+  color: red;
+  border: none !important;
+  font-size: 0.8rem;
+}
+
 .forgotpw-section {
   display: flex;
   justify-content: center;
@@ -1067,6 +1088,19 @@ img {
 .newpw-section .newpw-container .newpw-welcome-div .newpw-title {
   font-size: 2rem;
 }
+.newpw-section .newpw-container .row .register-validation {
+  margin: 0;
+  padding: 0;
+  color: #ef1c1c;
+  background: none;
+  border: none;
+}
+.newpw-section .newpw-container .row .register-validation ul {
+  list-style-type: none;
+  margin: 0;
+  font-weight: 700;
+  padding: 0;
+}
 
 .PhoneNumber-section {
   display: flex;
@@ -1218,8 +1252,28 @@ img {
   min-height: 70vh;
   margin-top: 20px;
 }
+.Edit-section .edit-change-pw {
+  text-decoration: none;
+  color: black;
+}
+.Edit-section .edit-change-pw:hover {
+  color: gray;
+}
 .Edit-section .Edit-container {
   text-align: center;
+}
+.Edit-section .Edit-container .register-validation {
+  margin: 0;
+  padding: 0;
+  color: #ef1c1c;
+  background: none;
+  border: none;
+}
+.Edit-section .Edit-container .register-validation ul {
+  list-style-type: none;
+  margin: 0;
+  font-weight: 700;
+  padding: 0;
 }
 @media (min-width: 800px) {
   .Edit-section .Edit-container {
