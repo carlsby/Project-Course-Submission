@@ -80,15 +80,20 @@ namespace Project_Course_Submission.Services
                 AddressViewModel addressViewModel = new();
                 var response = new ServiceResponse<UserViewModel>();
 
-                var user = await _userManager.FindByEmailAsync(claim.Identity!.Name!);
+                var user = claim.FindFirstValue("Id");
+
+                var userProfileEntity = await _identityContext.UserProfiles
+                    .Include(x => x.User)
+                    .Include(x => x.Addresses)
+                    .FirstOrDefaultAsync(x => x.User.Id == user);
 
                 if (user != null)
                 {
-                    var profile = await GetAsync(x => x.UserId == user.Id);
+                    var profile = await GetAsync(x => x.User.Id == user);
 
                     userViewModel = profile.Content!;
-                    userViewModel.Email = user.UserName;
-                    userViewModel.PhoneNumber = user.PhoneNumber;
+                    userViewModel.Email = profile.Content.User.Email;
+                    userViewModel.PhoneNumber = profile.Content.User.PhoneNumber;
                     response.Content = userViewModel;
                 }
                 return response;
@@ -140,9 +145,13 @@ namespace Project_Course_Submission.Services
                     userProfileEntity.FirstName = model.FirstName!;
                     userProfileEntity.LastName = model.LastName!;
                     userProfileEntity.User.Email = model.Email;
+                    userProfileEntity.User.UserName = model.Email;
                     userProfileEntity.User.PhoneNumber = model.PhoneNumber;
 
+
                     response.StatusCode = Enums.StatusCode.Ok;
+
+                    await _userManager.SetEmailAsync(userProfileEntity.User, model.Email);
 
                     await _identityContext.SaveChangesAsync();
                 }
