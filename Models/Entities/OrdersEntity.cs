@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Project_Course_Submission.Models.Entities;
+﻿using Project_Course_Submission.Models.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace Project_Course_Submission.Entities
@@ -13,7 +12,7 @@ namespace Project_Course_Submission.Entities
         public decimal TotalPrice { get; set; }
 
 
-        public IdentityUser User { get; set; }
+        public UserProfileEntity? User { get; set; }
         public string UserId { get; set; }
 
         public List<OrderItemEntity> OrderItems { get; set; }

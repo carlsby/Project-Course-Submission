@@ -25,3 +25,4 @@ namespace Project_Course_Submission.Contexts
         public DbSet<OrderEntity> Orders { get; set; }
     }
 }
+
