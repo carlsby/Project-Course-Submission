@@ -28,6 +28,7 @@ namespace Project_Course_Submission.Factories
             claimsIdentity.AddClaim(new Claim("LastName", $"{userProfileEntity.Content!.LastName}"));
             claimsIdentity.AddClaim(new Claim("Email", $"{userProfileEntity.Content!.User.Email}"));
 
+            claimsIdentity.AddClaim(new Claim("Id", $"{userProfileEntity.Content!.User.Id}"));
 
 
             return claimsIdentity;

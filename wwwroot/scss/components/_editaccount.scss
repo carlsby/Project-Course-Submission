@@ -6,8 +6,32 @@
     min-height: 70vh;
     margin-top: 20px;
 
+    .edit-change-pw {
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+            color: gray;
+        }
+    }
+
     .Edit-container {
         text-align: center;
+
+        .register-validation {
+            margin: 0;
+            padding: 0;
+            color: #ef1c1c;
+            background: none;
+            border: none;
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                font-weight: 700;
+                padding: 0;
+            }
+        }
 
         @media (min-width: 800px) {
             width: 70%;

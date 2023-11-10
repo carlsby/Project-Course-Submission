@@ -1,9 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
+    validateForm();
+
+    const inputElements = document.querySelectorAll(".Edit-input");
+    inputElements.forEach(function (element) {
+        element.addEventListener("input", validateForm);
+    });
+});
+
+function validateForm() {
     validateFirstName();
     validateLastName();
     validateEmail();
-});
-
+    validatePhoneNumber();
+    validationScript();
+}
 
 function togglePassword() {
     var x = document.getElementById("pw");
@@ -77,5 +87,115 @@ function validateEmail() {
     } else {
         icon.classList.remove("fa-check");
         icon.classList.add("fa-xmark");
+    }
+}
+
+function validatePhoneNumber() {
+    var phoneInput = document.getElementById("phonenumber");
+    var icon = document.querySelector(".phone-check");
+
+    var phonePattern = /^\d{7,15}$/;
+
+    if (phonePattern.test(phoneInput.value)) {
+        icon.classList.remove("fa-times"); 
+        icon.classList.add("fa-check");    
+    } else {
+        icon.classList.remove("fa-check");    
+        icon.classList.add("fa-times");       
+    }
+}
+
+function validationScript() {
+    const myInput = document.getElementById("pw");
+    const confirm = document.getElementById("confirm-pw");
+
+    const confirmMessage = document.getElementById("confirm-pw-message");
+
+    const letter = document.getElementById("letter");
+    const capital = document.getElementById("capital");
+    const number = document.getElementById("number");
+    const length = document.getElementById("length");
+    const compare = document.getElementById("compare");
+    const special = document.getElementById("special");
+
+    const numbers = /[0-9]/g;
+    const specCharReg = /^(?=.*[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?]).*$/;
+
+    if (myInput != null) {
+        myInput.addEventListener("focus", function () {
+            message.style.display = "block";
+        });
+
+        myInput.addEventListener("blur", function () {
+            message.style.display = "none";
+        });
+
+        myInput.addEventListener("keyup", function () {
+
+            const lowerCaseLetters = /(?=.*[a-zåäö])/g;
+
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            if (myInput.value.match(specCharReg)) {
+                special.classList.remove("invalid");
+                special.classList.add("valid");
+            } else {
+                special.classList.remove("valid");
+                special.classList.add("invalid");
+            }
+
+            const upperCaseLetters = /(?=.*[A-ZÅÄÖ])/g;
+
+
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        })
+    }
+
+    if (confirm != null) {
+        confirm.addEventListener("focus", function () {
+            confirmMessage.style.display = "block";
+        });
+
+        confirm.addEventListener("blur", function () {
+            confirmMessage.style.display = "none";
+        });
+
+        confirm.addEventListener("keyup", function () {
+            if (confirm.value.match(myInput.value)) {
+                compare.classList.remove("invalid");
+                compare.classList.add("valid");
+            } else {
+                compare.classList.remove("valid");
+                compare.classList.add("invalid");
+            }
+        })
     }
 }

@@ -1,4 +1,4 @@
-﻿@model UserViewModel
+﻿@model ServiceResponse<UserViewModel>
 
 <div class="account-section mt-3">
     <div class="container account-container">
@@ -11,14 +11,14 @@
               </div>
               
             <div class="col-12 m-0 d-flex justify-content-center">
-                <h2 class="account-name">@User.FindFirst("FullName")?.Value</h2>
+                <h2 class="account-name">@Model.Content?.FirstName</h2>
             </div>
 
             <div class="col-12 d-flex justify-content-center">
-                <p class="account-email">@User.FindFirst("Email")?.Value</p>
+                <p class="account-email">@Model.Content?.Email</p>
             </div>
 
-            <a asp-controller="order" asp-action="history">
+            <a asp-controller="OrderHistory" asp-action="History">
                 <div class="account-links-div col-12 d-flex justify-content-center align-items-center">
                     <i class="fa-regular fa-calendar account-link-icon-left"></i><div class="account-link-title"> Order history</div><i class="fa-regular fa-chevron-right account-link-icon-right"></i>
                 </div>
@@ -30,7 +30,7 @@
                 </div>
             </a>
 
-            <a asp-controller="account" asp-action="address">
+            <a asp-controller="MyAddress" asp-action="Index">
                 <div class="account-links-div col-12 d-flex justify-content-center align-items-center">
                     <i class="fa-regular fa-location-dot account-link-icon-left" account-link-icon-left></i><div class="account-link-title"> My address</div><i class="fa-regular fa-chevron-right account-link-icon-right"></i>
                 </div>

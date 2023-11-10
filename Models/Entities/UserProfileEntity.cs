@@ -26,5 +26,13 @@ namespace Project_Course_Submission.Models.Entities
                 Email = model.User.Email,
             };
         }
+
+        public static implicit operator ChangePasswordViewModel(UserProfileEntity model)
+        {
+            return new ChangePasswordViewModel
+            {
+                UserId = model.UserId,
+            };
+        }
     }
 }

@@ -36,15 +36,31 @@
                     <i class="fas fa-eye-slash input-pw" onclick="togglePassword()"></i>
                     <p class="input-text">Password</p>
                 </div>
-                <div class="input-div col-12 mb-3 d-flex justify-content-center">
+                <div id="message" style="display:none;">
+                    <small class="text-danger"><span asp-validation-for="Password"></span></small>
+                    <span id="letter" class="invalid">A <b>lowercase</b> letter,</span>
+                    <span id="number" class="invalid">a <b>number,</b></span>
+                    <span id="capital" class="invalid">a <b>capital (uppercase)</b> letter,</span>
+                    <span id="length" class="invalid">Minimum <b>8 characters,</b></span>
+                    <span id="special" class="invalid">Minimum 1 <b>special</b> character</span>
+                </div>
+
+                <div class="input-div col-12 mb-3 mt-3 d-flex justify-content-center">
                     <input asp-for="ConfirmPassword" type="password" class="form-control account-input" id="confirm-pw" />
                     <i class="fas fa-eye-slash input-confirm-pw" onclick="toggleConfirmPassword()"></i>
                     <p class="input-text">Confirm password</p>
                 </div>
+
+                <div id="confirm-pw-message" style="display:none;">
+                    <small class="text-danger"><span asp-validation-for="ConfirmPassword"></span></small>
+                    <span id="compare" class="invalid">Passwords must <b>match</b></span>
+                </div>
+
+
                 <div class="col-"12>
                     <div asp-validation-summary="ModelOnly" class="alert alert-danger register-validation mb-3"></div>
-
                 </div>
+
                 <div class="mb-4">
                     <button type="submit"class="rr-btn col-12">
                         Sign Up
