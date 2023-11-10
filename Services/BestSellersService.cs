@@ -10,7 +10,7 @@ namespace Project_Course_Submission.Services
             Ingress = "View All",
             BestItems = new List<BestSellersItemViewModel>
             { 
-                new BestSellersItemViewModel { Id = "1", Title = "Soft Chill Pants", Description = "Stretchigt, mjukt material. Vikning i midjan, utsvängda byxben.", Price = 40, ImageUrl = "/images/bestsellers/270x295.svg"},
+                new BestSellersItemViewModel { Id = "1", Title = "Welcome To Manero", Description = "Stretchigt, mjukt material. Vikning i midjan, utsvängda byxben.", Price = 40, ImageUrl = "/images/bestsellers/270x295.svg"},
 				new BestSellersItemViewModel { Id = "2", Title = "Short Warm Jacket", Description = "Dubbelknäppning på framsidan. Lång, rak ärm med en slejf vid ärmslutet.", Price = 300, ImageUrl = "/images/bestsellers/270x295.svg" },
 				new BestSellersItemViewModel { Id = "3", Title = "Short Pocket Jacket", Description = "Knappar framtill. Lång ärm med en slejf vid ärmslutet", Price = 50, ImageUrl = "/images/bestsellers/270x295.svg" },
 				new BestSellersItemViewModel { Id = "4", Title = "Suit Pants", Description = "Mjukt, stretchigt material i trikå. Hällor. Byxor med vida ben.", Price = 40, ImageUrl = "/images/bestsellers/270x295.svg" },
