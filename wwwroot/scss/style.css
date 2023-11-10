@@ -95,7 +95,7 @@ html, body {
 
 @media (min-width: 280px) and (max-width: 912px) {
   .best-sellers .title {
-    padding-top: 40px;
+    padding-top: 60px;
     font-size: 22px;
   }
   .best-sellers .view-all, .best-sellers #arrow-icon {
@@ -314,6 +314,7 @@ p {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  padding-bottom: 30px;
 }
 .featured .featured-grid .featured-img {
   height: 200px;
