@@ -27,14 +27,14 @@ namespace Project_Course_Submission.Controllers
 
         public async Task<IActionResult> Index()
         {
-			
-			var categoryName = await _productService.GetCategoriesAsync();
+
+            var categoryName = await _productService.GetCategoriesAsync();
             var categoryImagesId = _categoriesService.GetCategoryImagesId();
-			var categoryItems = categoryName.Select(categoryName =>
-		new CategoryItemViewModel
-		{
+            var categoryItems = categoryName.Select(categoryName =>
+        new CategoryItemViewModel
+        {
             CategoryName = categoryName,
-            
+
 
         }).ToList();
 
@@ -49,7 +49,7 @@ namespace Project_Course_Submission.Controllers
                 FeaturedProducts = _featuredProductsService.GetFeaturedProducts()
             };
             return View(viewModel);
-        
+
         }
         public IActionResult Details(string id)
         {
@@ -63,9 +63,9 @@ namespace Project_Course_Submission.Controllers
             }
 
             var viewModel = new CollectionDetailViewModel
-            { 
+            {
 
-            BestSellers = new BestSellersViewModel
+                BestSellers = new BestSellersViewModel
                 {
                     BestItems = bestSellersItem != null ? new List<BestSellersItemViewModel> { bestSellersItem } : new List<BestSellersItemViewModel>()
                 },
