@@ -6,3 +6,7 @@ Starta vår databasfil och byt sedan connectionstring i appsettings.json. Använ
 # Inloggning:
 johdoe@mail.com
 BytMig123!
+
+# Tester
+Vi har lagt alla våra tester i ett separat repo.
+https://github.com/carlsby/Project-Course-Submission.Tests
