@@ -1,0 +1,31 @@
+﻿@import '../core/_colors.scss';
+html, body {
+    padding: 0;
+    margin: 0;
+}
+.title{
+    font-size: 30px;
+    font-family: $font-mulish;
+    color: $color-black;
+    font-weight: $font-weight-bold;
+}
+
+.product-title {
+    font-size: 16px;
+    font-family: $font-mulish;
+    color: $color-grey;
+}
+
+.product-price {
+    font-size: 18px;
+    font-family: $font-mulish;
+    color: $color-black;
+}
+
+.view-all {
+    font-size: 18px;
+    font-family: $font-mulish;
+    color: $color-black;
+   text-transform:lowercase;
+
+}

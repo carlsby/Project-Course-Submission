@@ -1,0 +1,91 @@
+﻿@model UserRegisterViewModel
+@{
+
+}
+<div class="register-section">
+    <div class="container register-container d-flex justify-content-center align-items-center">
+        <div class="row">
+            <!-- <div class="col-12">
+                <h4 class="si-page-name">Sign in</h4>
+            </div> -->
+            <div class="col-12 mb-3 si-welcome-div">
+                <h1 class="rr-title">
+                    Sign up
+                </h1>
+            </div>
+
+            <form method="post" novalidate>
+
+                <div class="input-div col-12 mb-3 d-flex justify-content-center">
+                    <input asp-for="FirstName" type="text" class="form-control account-input" id="firstname" oninput="validateFirstName()" />
+                    <i class="fas fa-xmark input-check firstname-check"></i>
+                    <p class="input-text">First name</p>
+                </div>
+                <div class="input-div col-12 mb-3 d-flex justify-content-center">
+                    <input asp-for="LastName" type="text" class="form-control account-input" id="lastname" oninput="validateLastName()" />
+                    <i class="fas fa-xmark input-check lastname-check"></i>
+                    <p class="input-text">Last name</p>
+                </div>
+                <div class="input-div col-12 mb-3 d-flex justify-content-center">
+                    <input asp-for="Email" type="email" class="form-control account-input" id="email" oninput="validateEmail()" />
+                    <i class="fas fa-xmark input-check email-check"></i>
+                    <p class="input-text">Email</p>
+                </div>
+                <div class="input-div col-12 mb-3 d-flex justify-content-center">
+                    <input asp-for="Password" type="password" class="form-control account-input" id="pw" />
+                    <i class="fas fa-eye-slash input-pw" onclick="togglePassword()"></i>
+                    <p class="input-text">Password</p>
+                </div>
+                <div id="message" style="display:none;">
+                    <small class="text-danger"><span asp-validation-for="Password"></span></small>
+                    <span id="letter" class="invalid">A <b>lowercase</b> letter,</span>
+                    <span id="number" class="invalid">a <b>number,</b></span>
+                    <span id="capital" class="invalid">a <b>capital (uppercase)</b> letter,</span>
+                    <span id="length" class="invalid">Minimum <b>8 characters,</b></span>
+                    <span id="special" class="invalid">Minimum 1 <b>special</b> character</span>
+                </div>
+
+                <div class="input-div col-12 mb-3 mt-3 d-flex justify-content-center">
+                    <input asp-for="ConfirmPassword" type="password" class="form-control account-input" id="confirm-pw" />
+                    <i class="fas fa-eye-slash input-confirm-pw" onclick="toggleConfirmPassword()"></i>
+                    <p class="input-text">Confirm password</p>
+                </div>
+
+                <div id="confirm-pw-message" style="display:none;">
+                    <small class="text-danger"><span asp-validation-for="ConfirmPassword"></span></small>
+                    <span id="compare" class="invalid">Passwords must <b>match</b></span>
+                </div>
+
+
+                <div class="col-"12>
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger register-validation mb-3"></div>
+                </div>
+
+                <div class="mb-4">
+                    <button type="submit"class="rr-btn col-12">
+                        Sign Up
+                    </button>
+                </div>
+
+            </form>
+
+            <div class="col-12 mb-4">
+                <a asp-controller="login" asp-action="Index" class="rr-link">Already have an account? Sign in.</a>
+            </div>
+
+            <div class="rr-brands-div">
+                <div class="row">
+                    <div class="col-4">
+                        <a href="https://www.facebook.com/" target="_blank" class="rr-brand-link"><i class="fa-brands fa-facebook-f rr-brand-logo rr-facebook"></i></a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.twitter.com" target="_blank" class="rr-brand-link"><i class="fa-brands fa-twitter rr-brand-logo rr-twitter"></i></a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://myaccount.google.com/" target="_blank" class="rr-brand-link"><i class="fa-brands fa-google-plus-g rr-brand-logo rr-googleplus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

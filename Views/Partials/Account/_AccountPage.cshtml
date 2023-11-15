@@ -1,0 +1,53 @@
+﻿@model ServiceResponse<UserViewModel>
+
+<div class="account-section mt-3">
+    <div class="container account-container">
+        <div class="row account-row">
+
+            <div class="col-12 m-0 d-flex justify-content-center">
+                <div class="account-circle">
+                    <a class="account-pen" asp-controller="account" asp-action="edit"><i class="fa-light fa-pen account-pen-icon"></i></a>
+                </div>            
+              </div>
+              
+            <div class="col-12 m-0 d-flex justify-content-center">
+                <h2 class="account-name">@Model.Content?.FirstName</h2>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center">
+                <p class="account-email">@Model.Content?.Email</p>
+            </div>
+
+            <a asp-controller="OrderHistory" asp-action="History">
+                <div class="account-links-div col-12 d-flex justify-content-center align-items-center">
+                    <i class="fa-regular fa-calendar account-link-icon-left"></i><div class="account-link-title"> Order history</div><i class="fa-regular fa-chevron-right account-link-icon-right"></i>
+                </div>
+            </a>
+     
+            <a asp-controller="order" asp-action="payment">
+                <div class="account-links-div col-12 d-flex justify-content-center align-items-center">
+                    <i class="fa-regular fa-credit-card account-link-icon-left"></i><div class="account-link-title"> Payment method</div><i class="fa-regular fa-chevron-right account-link-icon-right"></i>
+                </div>
+            </a>
+
+            <a asp-controller="MyAddress" asp-action="Index">
+                <div class="account-links-div col-12 d-flex justify-content-center align-items-center">
+                    <i class="fa-regular fa-location-dot account-link-icon-left" account-link-icon-left></i><div class="account-link-title"> My address</div><i class="fa-regular fa-chevron-right account-link-icon-right"></i>
+                </div>
+            </a>
+
+            <a asp-controller="order" asp-action="history">
+                <div class="account-links-div col-12 d-flex justify-content-center align-items-center">
+                    <i class="fa-regular fa-gift account-link-icon-left"></i><div class="account-link-title"> My promocodes</div><i class="fa-regular fa-chevron-right account-link-icon-right"></i>
+                </div>
+            </a>
+
+            <a class="mb-3" asp-controller="logout" asp-action="index">
+                <div class="account-links-div col-12 d-flex justify-content-center align-items-center">
+                    <i class="fa-regular fa-arrow-right-from-bracket account-link-icon-left"></i><div class="account-link-title"> Sign out</div><i class="fa-regular fa-chevron-right account-link-icon-right"></i>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</div>

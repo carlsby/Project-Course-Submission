@@ -1,4 +1,62 @@
-﻿
-@{
-	/* Design för detailjsidan */
-}
+﻿@model ProductEntity
+
+<section class="detail-section">
+    <div class="container">
+        <div id="icon-detail-container">
+            <img src="~/images/270x295.svg" alt="Detail ProductPage" class="detail-img">
+            <i class="fa-regular fa-heart" id="heart-detail-icon"></i>
+        </div>
+        <div class="detail-container">
+        <h5 class="detail-title">@Model.ProductName</h5>
+    <div class="detail-price">@Model.Price.ToString("0:-")</div>
+    <div class="detail-description">@Model.Description</div>
+		</div>
+        <div class="star-detail-container">
+            <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+            <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+            <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+            <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+            <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+        </div>
+        <div class="size-text">Size</div>
+        <div class="icon-size-container">
+
+            <div class="icon-size">xs</div>
+            <div class="icon-size">s</div>
+            <div class="icon-size">m</div>
+            <div class="icon-size">l</div>
+            <div class="icon-size">xl</div>
+            <div class="icon-size">xxl</div>
+        </div>
+
+
+        <div class="icon-color-container">
+            <div class="size-text">Color</div>
+            <div class="icon-color red"></div>
+            <div class="icon-color blue"></div>
+            <div class="icon-color beige"></div>
+            <div class="icon-color navy"></div>
+            <div class="icon-color black"></div>
+
+        </div>
+
+        <div class="col-md-3 col-lg-3 col-xl-2 d-flex" id="quantity-container">
+            <button class="btn btn-link px-2" id="minus-button"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                <i class="fas fa-minus"></i>
+            </button>
+            <input id="form-quantity" min="0" name="quantity" value="1" type="number"
+                   class="form-control form-control-sm" />
+            <button class="btn btn-link px-2" id="plus-button"
+                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <button class="btn-add-to-cart">Add To Cart</button>
+
+        <div class="link-products">
+			<a asp-action="Index" asp-controller="Products">Back to Products</a>
+		</div>
+	</div>
+</section>

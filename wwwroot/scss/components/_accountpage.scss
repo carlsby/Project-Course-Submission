@@ -1,0 +1,93 @@
+﻿.account-section {
+
+    .account-container {
+
+        a {
+            margin: 0;
+            padding: 0;
+            color: black;
+
+            &:hover {
+                color: gray;
+            }
+        }
+
+        .account-row {
+            @media (min-width: 1000px) {
+                width: 40%;
+                margin: 0 auto;
+                display: block;
+                margin-bottom: 50px;
+            }
+        }
+
+        .account-circle {
+            width: 150px;
+            height: 150px;
+            line-height: 80px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            border: 7px solid #DBE3F5;
+            position: relative;
+
+            .account-pen {
+                position: absolute;
+                background: #DBE3F5;
+                width: 45px;
+                height: 45px;
+                bottom: -3px;
+                right: 0px;
+                border-radius: 100%;
+
+                &:hover {
+                    transition: 0.2s;
+                    background: #c8d0e3;
+                }
+
+
+                .account-pen-icon {
+                    position: absolute;
+                    bottom: 11px;
+                    right: 11px;
+                    color: black;
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .account-name {
+            margin-top: 7px;
+            margin-bottom: 0;
+        }
+
+
+
+        .account-links-div {
+            border: 1px solid #DBE3F5;
+            border-right: none;
+            border-left: none;
+            position: relative;
+            padding: 30px;
+
+            .account-link-icon-left {
+                position: absolute;
+                left: 40px;
+                font-size: 18px;
+            }
+
+            .account-link-title {
+                position: absolute;
+                left: 90px;
+                font-size: 18px;
+            }
+
+            .account-link-icon-right {
+                position: absolute;
+                right: 40px;
+                font-size: 14px;
+            }
+        }
+    }
+}
