@@ -1,5 +1,8 @@
 ﻿@import '../core/_colors.scss';
-
+html, body {
+    padding: 0;
+    margin: 0;
+}
 .title{
     font-size: 30px;
     font-family: $font-mulish;

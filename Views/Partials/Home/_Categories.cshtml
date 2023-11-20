@@ -3,7 +3,7 @@
 <div class="category-icons">
     @foreach (var category in Model.Categories)
     {
-        <a asp-controller="Categories" asp-action="Details" asp-route-id="@category.CategoryName">
+        <a asp-controller="Categories" asp-action="Details" asp-route-id="@category.CategoryName" id="category-text">
         <div class="category-icon">
                 @if (Model.CategoryImagesId != null)
                 {
@@ -12,7 +12,7 @@
                         if (categoryImage.CategoryName == category.CategoryName)
                         { 
                             <div class="category-icon-circle">
-							<img src="@categoryImage.ImageUrl" alt="Image" />
+							<img src="@categoryImage.ImageUrl" alt="Image" id="category-img"/>
 						</div>
                         }
                     }

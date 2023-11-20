@@ -17,6 +17,7 @@ builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<CategoriesService>();
 builder.Services.AddScoped<BestSellersService>();
 builder.Services.AddScoped<FeaturedProductsService>();
+builder.Services.AddScoped<LatestProductsService>();
 builder.Services.AddScoped<ProductRepository>();
 
 

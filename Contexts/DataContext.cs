@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Project_Course_Submission.Entities;
 using Project_Course_Submission.Models.Entities;
 
@@ -9,7 +10,7 @@ namespace Project_Course_Submission.Contexts
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-        
+
         public DbSet<WishlistsEntity> Wishlist { get; set; }
         public DbSet<OrderTrackEntity> Tracks { get; set; }
         public DbSet<CategoryEntity> Categories { get; set; }
@@ -23,5 +24,19 @@ namespace Project_Course_Submission.Contexts
         public DbSet<TagEntity> Tags { get; set; }
         public DbSet<ProductEntity> Products { get; set; }
         public DbSet<OrderEntity> Orders { get; set; }
+        public DbSet<OrderItemEntity> OrderItems { get; set; }
+
+        public DbSet<UserProfileEntity> UserProfiles { get; set; }
+        public DbSet<UserAddressEntity> UserAddress { get; set; }
+        public DbSet<AddressEntity> Addresses { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<IdentityUser>().ToTable("Users");
+
+        }
     }
 }
+

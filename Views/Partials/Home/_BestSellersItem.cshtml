@@ -1,14 +1,14 @@
 ﻿@model BestSellersItemViewModel
 
- <a asp-controller="products" asp-action="details" asp-route-id="@Model.Id" class="bestSellers-item">
+    <a asp-controller="Home" asp-action="Details" asp-route-id="@Model.Id" class="bestSellers-item">
 	<div id="icon-container">
      <img src="@Model.ImageUrl" alt="@Model.Title" class="best-img">
-		<i class="add-cart fa-regular fa-cart-plus"></i>
-        <i class="fa-regular fa-heart" id="heart-icon"></i>
+        <i class="add-cart fa-regular fa-cart-plus" id="best-cart-icon"></i>
+        <i class="fa-regular fa-heart" id="heart-best-icon"></i>
 	</div>
                 <div class="product-container">
                     <div class="star-container">
-                          <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
+            <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
             <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
             <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
             <span class="star"><i class="fa-solid fa-star" id="star-icon"></i></span>
@@ -17,7 +17,6 @@
                     <div class="product-title">@Model.Title</div>
                     <div class="info">
                         <div class="product-price">$@Model.Price</div>
-                       
                     </div>
                 </div>
             </a>

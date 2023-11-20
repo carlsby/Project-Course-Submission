@@ -7,8 +7,8 @@ namespace Project_Course_Submission.Services
         #region CategoriesViewModel
         private readonly CategoryImagesViewModel _categoryImages = new()
         {
-         
-            
+
+
             CategoryItems = new List<CategoryImageItemsViewModel>
         {
             new CategoryImageItemsViewModel { Id = "1", ImageUrl = "images/categories/accessories.jpg", CategoryName = "Accessories" },
@@ -18,15 +18,15 @@ namespace Project_Course_Submission.Services
             new CategoryImageItemsViewModel { Id = "5", ImageUrl = "images/categories/shoes.jpg", CategoryName = "Shoes"},
             new CategoryImageItemsViewModel { Id = "6", ImageUrl = "images/categories/sport.jpg", CategoryName = "Sport"},
             new CategoryImageItemsViewModel { Id = "7", ImageUrl = "images/categories/women.jpg", CategoryName = "Women"},
-            
+
         }
         };
-   #endregion
+        #endregion
         public List<CategoryImageItemsViewModel> GetCategoryImagesId()
         {
             return _categoryImages.CategoryItems.ToList();
         }
-     
+
 
         public CategoryImagesViewModel GetCategoryImages()
         {

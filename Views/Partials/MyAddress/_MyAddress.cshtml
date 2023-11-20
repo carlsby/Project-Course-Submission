@@ -1,4 +1,5 @@
 ﻿@model List<Address>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <div class="topnav" style="margin-bottom:20px;">
     <div class="row align-items-center">
         <div class="col-auto" style="margin-left: 14px;">
@@ -11,6 +12,7 @@
 </div
 
 <div class="align-content-center" style="margin-bottom: 55px;">
+     <div class="center-content">
 @foreach (var address in Model)
 {
     <div class="row" style="margin-top: -2px; margin-bottom: 7px;">
@@ -23,12 +25,13 @@
         </div>
         <div class="col-auto" style="margin-top: 6px;  margin-right:26px;">
             <a asp-controller="MyAddress" asp-action="EditAddress" asp-route-id="@address.Id">
-        <i class="fa-regular fa-pen-line fa-sm" style="vertical-align: middle;"></i>
+        <i class="fa-regular fa-pen-line fa-sm" style="vertical-align: middle; color:black;"></i>
 </a>
         </div>
         <hr style="margin-top:17px;" />
     </div>
 }
+    </div>
     
     <div style="text-align:center; margin-top: 11px; margin-bottom: 5px;"class="col-12 d-flex justify-content-center">
         <a style="color:black;text-decoration:none;" href="/MyAddress/AddAddress"<i class="fa-sharp fa-regular fa-plus"></i></a>
@@ -36,3 +39,16 @@
             <p style="text-align:center;">Add new adress</p>
 </div>
 
+        <style>    
+
+            .align-content-center {
+    text-align: center;
+}
+                .center-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+    </style>

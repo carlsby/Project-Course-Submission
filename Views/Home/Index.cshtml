@@ -2,11 +2,13 @@
 
 @{
     ViewData["Title"] = Model.Title;
+
+    
 }
  
 
 <partial name="/Views/Partials/Home/_Categories.cshtml"/>
 <partial name="/Views/Partials/Home/_CategoryImages.cshtml" model="@Model.CategoryImages"/>
-<partial name="/Views/Partials/Home/_Showcase.cshtml" />
+<partial name="/Views/Partials/Home/_Latest.cshtml" model="@Model.LatestProducts"/>
 <partial name="/Views/Partials/Home/_BestSellers.cshtml" model="@Model.BestSellers" />
 <partial name="/Views/Partials/Home/_Featured.cshtml" model="@Model.FeaturedProducts" />

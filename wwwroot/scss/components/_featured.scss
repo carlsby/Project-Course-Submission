@@ -1,10 +1,9 @@
 ﻿.featured {
     display: flex;
-    padding: 40px 20px;
 
-    
     .title {
-        text-align: left;
+        padding-top: 60px;
+        text-align: center;
     }
 
     a {
@@ -27,12 +26,20 @@
 
     #icon-container {
         position: relative;
-        
 
-        #heart-icon {
+        #cart-featured-icon {
             position: absolute;
-            top: 30px;
-            right: 50px;
+            top: 50px;
+            right: 20px;
+            font-size: 16px;
+        }
+
+
+        #heart-featured-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 16px;
 
             &:hover {
                 color: $color-heart;
@@ -48,23 +55,123 @@
         color: $color-grey;
     }
 
+    .view-all {
+        text-align: end;
+        margin-right: 20px;
+    }
+
     #arrow-icon {
         margin-left: 5px;
         font-size: 16px;
     }
- 
-    .featured-img{
-        height: 200px;
-        object-fit: contain;
-    }
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
+    .featured-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 20px;
+        padding-bottom: 30px;
+
+        .featured-img {
+            height: 200px;
+            width: 300px;
+        }
     }
 
     .product-container {
         margin-bottom: 20px;
+    }
+}
+
+@include md {
+    @include lg {
+        @include xl {
+            @include xxl {
+                .featured {
+                    flex-direction: row;
+                    align-items: center;
+
+                    .view-all {
+                        text-align: right;
+                        margin-right: 50px;
+                        font-size: 14px;
+
+
+                        #arrow-icon {
+                            margin-left: 5px;
+                            font-size: 12px;
+                        }
+                    }
+
+                    .title {
+                        font-size: 22px;
+                        text-align: center;
+                    }
+
+
+                    .featured-grid {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        gap: 10px;
+
+                        .featured-item {
+                            width: 150px;
+
+                            .product-title {
+                                font-size: 12px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+
+                            .product-price {
+                                font-size: 12px;
+                            }
+
+                            .featured-img {
+                                width: 100%;
+                                height: 100px;
+                            }
+
+                            #icon-container {
+                                position: relative;
+
+                                #heart-featured-icon {
+                                    position: absolute;
+                                    top: 10px;
+                                    right: 12px;
+                                    font-size: 14px;
+
+                                    &:hover {
+                                        color: $color-heart;
+                                    }
+                                }
+
+
+                                #cart-featured-icon {
+                                    position: absolute;
+                                    top: 30px;
+                                    right: 12px;
+                                    font-size: 14px;
+                                    color: $color-grey;
+                                }
+                            }
+                        }
+
+                        .star-container {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                        }
+
+                        #star-icon {
+                            color: $color-star;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

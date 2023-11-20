@@ -6,7 +6,7 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">GurraG</a>
+        <a class="navbar-brand" href="/">Manero</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,16 +19,17 @@
                     <a class="nav-link active" asp-controller="Products" asp-action="Index">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" asp-controller="Contacts" asp-action="Index">Contacts</a>
+                    <a class="nav-link active" asp-controller="Search" asp-action="Index">Search</a>
                 </li>
                 <li class="nav-item dropdown">
 
                     @if (signInManager.IsSignedIn(User))
                     {
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            @User.FindFirst("FirstName")?.Value
+                            <i class="fa-solid fa-user"></i>
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="Account" asp-action="index"> Account</a></li>
                             <li><a class="dropdown-item" asp-controller="Wishlist" asp-action="Wishlist"> Wishlist</a></li>
                             <li><a class="dropdown-item" asp-controller="OrderHistory" asp-action="History"> Order history</a></li>
                             <li><a class="dropdown-item" asp-controller="MyAddress" asp-action="Index"> My Adress</a></li>

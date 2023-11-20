@@ -15,8 +15,6 @@ public class IdentityContext : IdentityDbContext
     public DbSet<UserAddressEntity> UserAddress { get; set; }
     public DbSet<AddressEntity> Addresses { get; set; }
 
-
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
