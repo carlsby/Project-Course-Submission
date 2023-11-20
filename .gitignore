@@ -366,3 +366,5 @@ FodyWeavers.xsd
 Project-Course-Submission.Tests/
 
 
+/Contexts/db.mdf
+/Contexts/db_log.ldf
